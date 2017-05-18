@@ -1,0 +1,46 @@
+buildscript {
+	repositories.jcenter()
+	dependencies {
+		classpath 'org.xtext:xtext-gradle-plugin:1.0.17'
+	}
+}
+
+ext.versions = [
+    xtext: '2.12.0.M1',
+    lsp4j: '0.2.0.M7'
+]
+
+subprojects {
+	repositories {
+		jcenter()
+		maven {
+			name 'sonatype-snapshots'
+			url 'https://oss.sonatype.org/content/repositories/snapshots/'
+		}
+	}
+	
+	apply plugin: 'java'
+	apply plugin: 'org.xtext.xtend'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	
+	group = 'io.typefox.sprotty'
+	version = '0.1.0-SNAPSHOT'
+	
+	sourceCompatibility = '1.8'
+
+    sourceSets {
+		main {
+			java.srcDirs = ['src/main/java', 'src/main/xtext-gen']
+			resources.srcDirs = ['src/main/resources', 'src/main/xtext-gen']
+		}
+		test {
+			java.srcDirs = ['src/test/java', 'src/test/xtext-gen']
+			resources.srcDirs = ['src/test/resources', 'src/test/xtext-gen']
+		}
+	}
+	
+	configurations.all {
+		exclude group: 'asm'
+	}
+}

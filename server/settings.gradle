@@ -1,0 +1,4 @@
+rootProject.name = 'theia-sprotty-example-server'
+
+include 'io.typefox.sprotty.example.multicore'
+include 'io.typefox.sprotty.example.multicore.ide'
