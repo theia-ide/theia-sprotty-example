@@ -25,6 +25,9 @@ Workflow {
 				baseName = "io.typefox.sprotty.example.multicore"
 				rootPath = rootPath
 				mavenLayout = true
+				genericIde = {
+					enabled = true
+				}
 			}
 			code = {
 				encoding = "UTF-8"
