@@ -1,5 +1,10 @@
+apply plugin: 'application'
+
 dependencies {
 	compile project(':io.typefox.sprotty.example.multicore')
 	compile "org.eclipse.xtext:org.eclipse.xtext.ide:$versions.xtext"
 	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:$versions.xtext"
 }
+
+mainClassName = 'org.eclipse.xtext.ide.server.ServerLauncher'
+applicationName = 'example-server'
