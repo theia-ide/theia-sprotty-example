@@ -3,7 +3,10 @@ apply plugin: 'application'
 dependencies {
 	compile project(':io.typefox.sprotty.example.multicore')
 	compile "org.eclipse.xtext:org.eclipse.xtext.ide:$versions.xtext"
-	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:$versions.xtext"
+	compile "org.eclipse.lsp4j:org.eclipse.lsp4j:$versions.lsp4j"
+	compile "org.eclipse.elk:org.eclipse.elk.alg.layered:$versions.elk"
+	compile "io.typefox.sprotty:diagram-server:$versions.sprotty"
+	compile "io.typefox.sprotty:diagram-layout-engine:$versions.sprotty"
 }
 
 mainClassName = 'org.eclipse.xtext.ide.server.ServerLauncher'

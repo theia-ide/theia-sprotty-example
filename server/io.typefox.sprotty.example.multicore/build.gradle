@@ -1,6 +1,5 @@
 dependencies {
 	compile "org.eclipse.xtext:org.eclipse.xtext:$versions.xtext"
-	compile "org.eclipse.xtext:org.eclipse.xtext.xbase:$versions.xtext"
 }
 
 jar {
