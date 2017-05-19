@@ -11,7 +11,7 @@
     "monaco-editor": "^0.8.3",
     "monaco-editor-core": "^0.8.2",
     "monaco-languages": "^0.7.0",
-    "theia-core": "^0.0.1-alpha.1"
+    "theia-core": "file:../../theia"
   },
   "scripts": {
     "prepublish": "npm run copy-ls && npm run build",
@@ -22,6 +22,7 @@
     "watch": "tsc --watch"
   },
   "devDependencies": {
+    "tslint": "^5.2.0",
     "typescript": "^2.3.2"
   },
   "files": [
