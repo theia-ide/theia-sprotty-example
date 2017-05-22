@@ -14,7 +14,7 @@ import io.typefox.sprotty.example.multicore.multicoreAllocation.Step
 import io.typefox.sprotty.example.multicore.multicoreAllocation.TaskAllocation
 import io.typefox.sprotty.layout.LayoutUtil
 import java.util.List
-import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.service.OperationCanceledManager
 import org.eclipse.xtext.util.CancelIndicator
@@ -31,6 +31,8 @@ class DiagramService {
 	@Inject MulticoreAllocationDiagramGenerator diagramGenerator
 	
 	@Inject extension OperationCanceledManager
+
+	@Inject extension EObjectAtOffsetHelper
 	
 	val List<MulticoreAllocationDiagramServer> diagramServers = newArrayList
 	
@@ -44,10 +46,6 @@ class DiagramService {
 		synchronized (diagramServers) {
 			diagramServers.remove(server)
 		}
-	}
-	
-	def void compute(XtextResource resource) {
-		compute(resource, CancelIndicator.NullImpl)
 	}
 	
 	def void compute(XtextResource resource, CancelIndicator cancelIndicator) {
@@ -76,19 +74,21 @@ class DiagramService {
 		}
 	}
 	
-	def void setSelection(XtextResource resource, String resourceId, EObject selectedElement) {
-		val previousElement = selectionProvider.getSelection(resourceId)
+	def void setSelection(XtextResource resource, int offset, CancelIndicator cancelIndicator) {
+		val uri = resource.URI.toString
+		val previousElement = selectionProvider.getSelection(uri)
 		val previousStep = previousElement.getContainerOfType(Step)
 		val previousTaskAllocation = previousElement.getContainerOfType(TaskAllocation)
+		val selectedElement = resource.resolveContainedElementAt(offset)
 		val selectedStep = selectedElement.getContainerOfType(Step)
 		val selectedTaskAllocation = selectedElement.getContainerOfType(TaskAllocation)
 		if (previousStep != selectedStep || previousTaskAllocation != selectedTaskAllocation) {
 			if (selectedTaskAllocation !== null && previousStep != selectedStep) {
-				selectionProvider.setSelection(resourceId, previousElement.getContainerOfType(Step) ?: selectedStep)
-				compute(resource)
+				selectionProvider.setSelection(uri, previousElement.getContainerOfType(Step) ?: selectedStep)
+				compute(resource, cancelIndicator)
 			}
-			selectionProvider.setSelection(resourceId, selectedElement)
-			compute(resource)
+			selectionProvider.setSelection(uri, selectedElement)
+			compute(resource, cancelIndicator)
 		}
 	}
 	
