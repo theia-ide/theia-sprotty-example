@@ -8,12 +8,12 @@ import { ContainerModule } from "inversify";
 
 export default new ContainerModule(bind => {
     monaco.languages.register({
-        id: 'dsl',
-        aliases: ['DSL', 'dsl'],
-        extensions: ['.dsl'],
-        mimetypes: ['text/dsl']
+        id: 'multicore',
+        aliases: ['Multicore', 'multicore'],
+        extensions: ['.multicore'],
+        mimetypes: ['text/multicore']
     })
-    monaco.languages.setLanguageConfiguration('dsl', {
+    monaco.languages.setLanguageConfiguration('multicore', {
         comments: {
             lineComment: "//",
             blockComment: ['/*', '*/']
@@ -29,21 +29,18 @@ export default new ContainerModule(bind => {
                 close: ')'
             }]
     })
-    monaco.languages.setMonarchTokensProvider('dsl', <any>{
+    monaco.languages.setMonarchTokensProvider('multicore', <any>{
         // Set defaultToken to invalid to see what you do not tokenize yet
         // defaultToken: 'invalid',
 
         keywords: [
-            'protocol', 'type', 'request', 'notification', 'extends'
+            'program', 'for', 'cores', 'kernel', 'duration', 'stackSize', 'stackStartAddr', 'task', 'execute', 'barrier', 'join',
+            'then', 'step', 'core', 'runs', '$pc', '$sp', 'srcfile', 'stackTrace', 'core', 'finished'
         ],
 
-        typeKeywords: [
-            'boolean', 'number', 'string'
-        ],
+        typeKeywords: [],
 
-        operators: [
-            ':'
-        ],
+        operators: [],
 
         // we include these common regular expressions
         symbols: /[=><!~?:&|+\-*\/\^%]+/,

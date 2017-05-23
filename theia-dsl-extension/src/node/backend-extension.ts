@@ -19,11 +19,11 @@ const EXECUTABLE = './node_modules/theia-dsl-extension/build/example-server/bin/
 class DSLContribution implements LanguageContribution {
 
     readonly description = {
-        id: 'dsl',
-        name: 'DSL',
-        documentSelector: ['dsl'],
+        id: 'multicore',
+        name: 'Multicore',
+        documentSelector: ['multicore'],
         fileEvents: [
-            '**/*.dsl'
+            '**/*.multicore'
         ]
     }
 

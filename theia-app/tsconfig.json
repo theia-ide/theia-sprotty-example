@@ -16,9 +16,14 @@
       "es6",
       "dom"
     ],
+    "typeRoots": [
+      "node_modules/@types", "typings"
+    ],
+    "jsx": "react",
+    "reactNamespace": "JSX",
     "sourceMap": true
   },
   "include": [
-    "src"
+    "src", "typings"
   ]
 }

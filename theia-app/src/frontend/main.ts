@@ -25,6 +25,8 @@ import "theia-core/src/terminal/browser/terminal.css";
 import terminalFrontendModule from 'theia-core/lib/terminal/browser/terminal-frontend-module';
 import "xterm/dist/xterm.css";
 
+import { diagramModule } from "./diagram/diagram-module"
+
 // java extension
 // import { browserJavaModule } from 'theia-core/lib/java/browser/browser-java-module';
 // import 'theia-core/lib/java/browser/monaco-contribution';
@@ -50,6 +52,8 @@ import "xterm/dist/xterm.css";
     container.load(terminalFrontendModule);
 
     container.load(dslFrontendExtension);
+
+    container.load(diagramModule)
 
     // Obtain application and start.
     const application = container.get(FrontendApplication);
