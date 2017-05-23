@@ -11,11 +11,11 @@ import { messagingModule } from "theia-core/lib/messaging/browser";
 import { navigatorModule } from "theia-core/lib/navigator/browser";
 import { fileSystemClientModule } from "theia-core/lib/filesystem/browser";
 import { editorModule } from "theia-core/lib/editor/browser";
-import { browserLanguagesModule } from 'theia-core/lib/languages/browser';
+import { frontendLanguagesModule } from 'theia-core/lib/languages/browser';
 import { monacoModule } from 'theia-core/lib/monaco/browser';
 import { browserClipboardModule } from 'theia-core/lib/application/browser/clipboard/clipboard-module';
 import { browserMenuModule } from "theia-core/lib/application/browser/menu/menu-module";
-import dslFrontendExtension from 'theia-dsl-extension/lib/browser/frontend-extension'
+import multiCoreFrontendExtension from 'theia-dsl-extension/lib/browser/frontend-extension'
 import "theia-core/src/application/browser/style/index.css";
 import "theia-core/src/monaco/browser/style/index.css";
 import "theia-core/src/navigator/browser/style/index.css";
@@ -27,10 +27,6 @@ import "xterm/dist/xterm.css";
 
 import { diagramModule } from "./diagram/diagram-module"
 
-// java extension
-// import { browserJavaModule } from 'theia-core/lib/java/browser/browser-java-module';
-// import 'theia-core/lib/java/browser/monaco-contribution';
-
 (() => {
 
     // Create the client container and load the common contributions.
@@ -40,9 +36,8 @@ import { diagramModule } from "./diagram/diagram-module"
     container.load(navigatorModule);
     container.load(fileSystemClientModule);
     container.load(editorModule);
-    container.load(browserLanguagesModule);
+    container.load(frontendLanguagesModule);
     container.load(monacoModule);
-    // container.load(browserJavaModule);
 
     // Load the browser specific contributions.
     container.load(browserMenuModule);
@@ -51,7 +46,7 @@ import { diagramModule } from "./diagram/diagram-module"
     // terminal extension
     container.load(terminalFrontendModule);
 
-    container.load(dslFrontendExtension);
+    container.load(multiCoreFrontendExtension);
 
     container.load(diagramModule)
 
