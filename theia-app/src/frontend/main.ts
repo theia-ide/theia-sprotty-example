@@ -20,6 +20,8 @@ import "theia-core/src/application/browser/style/index.css";
 import "theia-core/src/monaco/browser/style/index.css";
 import "theia-core/src/navigator/browser/style/index.css";
 import "theia-core/src/terminal/browser/terminal.css";
+import "./classdiagram/css/diagram.css"
+import "./classdiagram/css/page.css"
 
 // terminal extension
 import terminalFrontendModule from 'theia-core/lib/terminal/browser/terminal-frontend-module';

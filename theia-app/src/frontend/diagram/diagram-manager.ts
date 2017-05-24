@@ -3,7 +3,8 @@ import { OpenerOptions, OpenHandler, FrontendApplication, FrontendApplicationCon
 import URI from "theia-core/lib/application/common/uri"
 import { DiagramWidget } from "./diagram-widget"
 import { WidgetRegistry } from "./diagram-registry"
-import { SvgViewer } from "./diagram"
+import { DiagramModelSource } from "./diagram-model-source"
+import { SelectionService } from "theia-core/lib/application/common"
 
 export const DiagramManager = Symbol("DiagramManager")
 
@@ -22,9 +23,9 @@ export class DiagramManagerImpl implements DiagramManager {
         this._resolveApp = resolve
     )
 
-    constructor(@inject(SvgViewer) protected readonly svgViewProvider: SvgViewer,
-                @inject(WidgetRegistry) protected readonly widgetRegistry: WidgetRegistry) {
-
+    constructor(@inject(DiagramModelSource) protected readonly svgViewProvider: DiagramModelSource,
+                @inject(WidgetRegistry) protected readonly widgetRegistry: WidgetRegistry,
+                @inject(SelectionService) protected readonly selectionService: SelectionService) {
     }
 
     onStart(app: FrontendApplication): void {
@@ -36,9 +37,15 @@ export class DiagramManagerImpl implements DiagramManager {
     }
 
     open(uri: URI, input?: OpenerOptions): Promise<DiagramWidget> {
-        const editor = this.getOrCreateEditor(uri)
+        const promiseDiagramWidget = this.getOrCreateEditor(uri)
+        promiseDiagramWidget.then((diagramWidget) => {
+            this.resolveApp.then(app =>
+                app.shell.activateMain(diagramWidget.id)
+            )
+        })
 
-        return editor
+
+        return promiseDiagramWidget
     }
 
     protected getOrCreateEditor(uri: URI): Promise<DiagramWidget> {
@@ -48,7 +55,6 @@ export class DiagramManagerImpl implements DiagramManager {
                 return widget
             }
             return this.svgViewProvider.loadView(uri).then(newWidget => {
-
                 newWidget.title.closable = true
                 newWidget.title.label = uri.lastSegment
                 this.widgetRegistry.addWidget(uri, newWidget)

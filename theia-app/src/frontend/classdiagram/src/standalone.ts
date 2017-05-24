@@ -5,12 +5,12 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { TYPES } from "sprotty/lib/base"
+import { TYPES, overrideViewerOptions } from "sprotty/lib/base"
 import { SGraphSchema } from "sprotty/lib/graph"
 import createContainer from "./di.config"
 import { LocalModelSource } from "sprotty/lib/local"
 
-export default function runClassDiagram() {
+export default function runClassDiagram(containerId: string) {
     const container = createContainer(false)
 
     // Initialize model
@@ -62,6 +62,9 @@ export default function runClassDiagram() {
 
     // Run
     const modelSource = container.get<LocalModelSource>(TYPES.ModelSource)
+    overrideViewerOptions(container, {
+        baseDiv: containerId
+    })
     modelSource.popupModelProvider = (elementId) => {
         if (elementId === 'node0') {
             return {
