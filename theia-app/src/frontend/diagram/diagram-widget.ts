@@ -5,7 +5,7 @@ import runClassDiagram from "../classdiagram/src/standalone"
 export class DiagramWidget extends Widget {
 
     constructor(protected readonly svgContainer: HTMLElement) {
-        super({node:document.createElement('div')})
+        super({node: document.createElement('div')})
     }
 
     protected onAfterAttach(msg: Message): void {
@@ -24,7 +24,7 @@ export class DiagramWidget extends Widget {
     }
 
     protected onCloseRequest(msg: Message): void {
-        super.onCloseRequest(msg);
-        this.dispose();
+        super.onCloseRequest(msg)
+        this.dispose()
     }
 }
