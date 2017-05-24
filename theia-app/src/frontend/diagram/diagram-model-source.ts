@@ -1,6 +1,6 @@
 import { injectable } from "inversify"
-import URI from "theia-core/lib/application/common/uri"
 import { DiagramWidget } from "./diagram-widget"
+import URI from "theia-core/lib/application/common/uri"
 
 @injectable()
 export class DiagramModelSource {
