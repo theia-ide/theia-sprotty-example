@@ -1,4 +1,3 @@
-import { TheiaDiagramConnector } from './flow/theia-diagram-server-connector';
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
@@ -19,7 +18,6 @@ export class MultiCoreLanguageClientContribution extends BaseLanguageClientContr
         @inject(Workspace) workspace: Workspace,
         @inject(Languages) languages: Languages,
         @inject(LanguageClientFactory) languageClientFactory: LanguageClientFactory,
-        @inject(TheiaDiagramConnector) protected diagramConnector: TheiaDiagramConnector
     ) {
         super(workspace, languages, languageClientFactory)
     }
@@ -33,6 +31,5 @@ export class MultiCoreLanguageClientContribution extends BaseLanguageClientContr
     protected onReady(languageClient: ILanguageClient): void {
         // handle custom notifications here
         super.onReady(languageClient)
-        this.diagramConnector.connect(languageClient)
     }
 }

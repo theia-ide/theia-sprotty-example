@@ -1,21 +1,22 @@
+import { MultiCoreLanguageClientContribution } from '../language-client-contribution';
 import { TYPES } from 'sprotty/lib/base';
 import { TheiaDiagramServer } from './theia-diagram-server';
 import { NotificationType } from 'vscode-jsonrpc/lib/messages';
-import { ILanguageClient } from 'theia-core/lib/languages/browser';
-import { injectable } from "inversify"
+import { LanguageClientContribution } from 'theia-core/lib/languages/browser';
+import { injectable, inject } from "inversify"
 import diagramContainer from "./di.config"
 
 @injectable()
 export class TheiaDiagramConnector {
 
-    private languageClient: ILanguageClient
     private servers: TheiaDiagramServer[] = []
-
-    connect(languageClient: ILanguageClient) {
-        this.languageClient = languageClient
-        languageClient.onNotification(actionMessageType, this.messageReceived.bind(this))
+    
+    constructor(@inject(LanguageClientContribution) private languageClientContribution: MultiCoreLanguageClientContribution) {
+        languageClientContribution.languageClient.then(
+            lc => lc.onNotification(actionMessageType, this.messageReceived.bind(this)
+        ))
     }
-
+    
     createDiagramServer(widgetId:string): TheiaDiagramServer {
         const newServer = diagramContainer(widgetId).get<TheiaDiagramServer>(TYPES.ModelSource)
         newServer.connect(this)
@@ -24,7 +25,7 @@ export class TheiaDiagramConnector {
     }
 
     sendMessage(message: string) {
-        this.languageClient.sendNotification(actionMessageType, message) 
+        this.languageClientContribution.languageClient.then(lc => lc.sendNotification(actionMessageType, message))
     }
 
     messageReceived(message: string) {
