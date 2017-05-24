@@ -6,17 +6,19 @@
  */
 
 import { injectable, ContainerModule } from "inversify";
-import { LanguageContribution, IConnection, createServerProcess, forward } from "theia-core/lib/languages/node";
-
+import { BaseLanguageServerContribution, IConnection, LanguageServerContribution } from "theia-core/lib/languages/node";
 
 export default new ContainerModule(bind => {
-    bind<LanguageContribution>(LanguageContribution).to(DSLContribution);
+    bind(LanguageServerContribution).to(MultiCoreLanguageServerContribution).inSingletonScope();
 });
 
-const EXECUTABLE = './node_modules/theia-dsl-extension/build/example-server/bin/example-server'
+const EXECUTABLE = './node_modules/theia-dsl-extension/build/example-server/bin/example-server';
 
 @injectable()
-class DSLContribution implements LanguageContribution {
+class MultiCoreLanguageServerContribution extends BaseLanguageServerContribution {
+
+    readonly id = 'multicore';
+    readonly name = 'Multicore';
 
     readonly description = {
         id: 'multicore',
@@ -27,20 +29,10 @@ class DSLContribution implements LanguageContribution {
         ]
     }
 
-    listen(clientConnection: IConnection): void {
+    start(clientConnection: IConnection): void {
         const args: string[] = [];
-        try {
-            const serverConnection = createServerProcess(this.description.name, EXECUTABLE, args);
-            forward(clientConnection, serverConnection);
-        } catch (err) {
-            console.error(err)
-            console.error("Error starting python language server.")
-            console.error("Please make sure it is installed on your system.")
-            console.error("Use the following command: 'pip install https://github.com/palantir/python-language-server/archive/master.zip'")
-        }
+        const serverConnection = this.createProcessStreamConnection(EXECUTABLE, args);
+        this.forward(clientConnection, serverConnection);
     }
 
 }
-
-
-

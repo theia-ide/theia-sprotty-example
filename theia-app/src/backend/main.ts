@@ -12,12 +12,10 @@ import * as express from 'express';
 import { BackendApplication, BackendApplicationContribution, applicationModule } from "theia-core/lib/application/node";
 import { fileSystemServerModule } from "theia-core/lib/filesystem/node";
 import { messagingModule } from "theia-core/lib/messaging/node";
-import { nodeLanguagesModule } from 'theia-core/lib/languages/node';
-// import { nodeJavaModule } from 'theia-core/lib/java/node';
-// import { nodePythonModule } from 'theia-core/lib/languages/python/node/node-python-module';
-import terminalBackendModule from 'theia-core/lib/terminal/node/terminal-backend-module'
+import { backendLanguagesModule } from 'theia-core/lib/languages/node';
+import terminalBackendModule from 'theia-core/lib/terminal/node/terminal-backend-module';
 
-import dslExtension from 'theia-dsl-extension/lib/node/backend-extension'
+import multiCoreBackendExtension from 'theia-dsl-extension/lib/node/backend-extension';
 
 // FIXME introduce default error handler contribution
 process.on('uncaughtException', function (err: any) {
@@ -40,11 +38,9 @@ const container = new Container();
 container.load(applicationModule);
 container.load(messagingModule);
 container.load(fileSystemServerModule);
-container.load(nodeLanguagesModule);
+container.load(backendLanguagesModule);
 container.load(terminalBackendModule);
-// container.load(nodeJavaModule);
-// container.load(nodePythonModule);
-container.load(dslExtension);
+container.load(multiCoreBackendExtension);
 container.bind(BackendApplicationContribution).to(StaticServer);
 const application = container.get(BackendApplication);
 application.start();
