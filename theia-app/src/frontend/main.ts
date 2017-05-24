@@ -20,8 +20,8 @@ import "theia-core/src/application/browser/style/index.css";
 import "theia-core/src/monaco/browser/style/index.css";
 import "theia-core/src/navigator/browser/style/index.css";
 import "theia-core/src/terminal/browser/terminal.css";
-import "./classdiagram/css/diagram.css"
-import "./classdiagram/css/page.css"
+import "../../../theia-dsl-extension/src/browser/flow/css/diagram.css"
+import "../../../theia-dsl-extension/src/browser/flow/css/page.css"
 
 // terminal extension
 import terminalFrontendModule from 'theia-core/lib/terminal/browser/terminal-frontend-module';
@@ -51,7 +51,7 @@ import { diagramModule } from "./diagram/diagram-module"
     container.load(multiCoreFrontendExtension);
 
     container.load(diagramModule)
-
+    
     // Obtain application and start.
     const application = container.get(FrontendApplication);
     application.start();

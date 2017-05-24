@@ -1,3 +1,4 @@
+import { TheiaDiagramConnector } from './flow/theia-diagram-server-connector';
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
@@ -7,8 +8,6 @@
 
 import { injectable, inject } from "inversify"
 import { BaseLanguageClientContribution, Workspace, Languages, LanguageClientFactory, ILanguageClient } from "theia-core/lib/languages/browser"
-import { NotificationType0 } from "theia-core/lib/messaging/common"
-import { ActionMessage } from "sprotty/lib/remote"
 
 @injectable()
 export class MultiCoreLanguageClientContribution extends BaseLanguageClientContribution {
@@ -19,7 +18,8 @@ export class MultiCoreLanguageClientContribution extends BaseLanguageClientContr
     constructor(
         @inject(Workspace) workspace: Workspace,
         @inject(Languages) languages: Languages,
-        @inject(LanguageClientFactory) languageClientFactory: LanguageClientFactory
+        @inject(LanguageClientFactory) languageClientFactory: LanguageClientFactory,
+        @inject(TheiaDiagramConnector) protected diagramConnector: TheiaDiagramConnector
     ) {
         super(workspace, languages, languageClientFactory)
     }
@@ -33,11 +33,6 @@ export class MultiCoreLanguageClientContribution extends BaseLanguageClientContr
     protected onReady(languageClient: ILanguageClient): void {
         // handle custom notifications here
         super.onReady(languageClient)
-        // languageClient.onNotification()
+        this.diagramConnector.connect(languageClient)
     }
-
-}
-
-export class ActionMessageNotificationType extends NotificationType0<ActionMessage> {
-
 }

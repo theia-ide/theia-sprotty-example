@@ -2,7 +2,7 @@
   "compilerOptions": {
     "declaration": true,
     "noImplicitAny": true,
-    "noEmitOnError": false,
+    "noEmitOnError": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
@@ -16,7 +16,12 @@
       "es6",
       "dom"
     ],
-    "sourceMap": true
+    "typeRoots": [
+      "node_modules/@types", "typings"
+    ],
+    "jsx": "react",
+    "sourceMap": true,
+    "reactNamespace": "JSX"
   },
   "include": [
     "src"

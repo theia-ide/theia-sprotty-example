@@ -1,9 +1,11 @@
+import {
+    TheiaDiagramConnector
+} from 'theia-dsl-extension/lib/browser/flow/theia-diagram-server-connector';
 import { injectable, inject } from "inversify"
 import { OpenerOptions, OpenHandler, FrontendApplication, FrontendApplicationContribution } from "theia-core/lib/application/browser"
 import URI from "theia-core/lib/application/common/uri"
 import { DiagramWidget } from "./diagram-widget"
 import { WidgetRegistry } from "./diagram-registry"
-import { DiagramModelSource } from "./diagram-model-source"
 import { SelectionService } from "theia-core/lib/application/common"
 
 export const DiagramManager = Symbol("DiagramManager")
@@ -23,7 +25,7 @@ export class DiagramManagerImpl implements DiagramManager {
         this._resolveApp = resolve
     )
 
-    constructor(@inject(DiagramModelSource) protected readonly svgViewProvider: DiagramModelSource,
+    constructor(@inject(TheiaDiagramConnector) protected readonly diagramConnector: TheiaDiagramConnector,
                 @inject(WidgetRegistry) protected readonly widgetRegistry: WidgetRegistry,
                 @inject(SelectionService) protected readonly selectionService: SelectionService) {
     }
@@ -54,18 +56,15 @@ export class DiagramManagerImpl implements DiagramManager {
             if (widget !== undefined) {
                 return widget
             }
-            return this.svgViewProvider.loadView(uri).then(newWidget => {
-                newWidget.title.closable = true
-                newWidget.title.label = uri.lastSegment
-                this.widgetRegistry.addWidget(uri, newWidget)
-                newWidget.disposed.connect(() =>
-                    this.widgetRegistry.removeWidget(uri)
-                )
-                app.shell.addToMainArea(newWidget)
-                return newWidget
-            })
+            const newWidget = new DiagramWidget(uri, this.diagramConnector)
+            newWidget.title.closable = true
+            newWidget.title.label = uri.lastSegment
+            this.widgetRegistry.addWidget(uri, newWidget)
+            newWidget.disposed.connect(() =>
+                this.widgetRegistry.removeWidget(uri)
+            )
+            app.shell.addToMainArea(newWidget)
+            return newWidget
         })
     }
-
-
 }
