@@ -1,0 +1,1222 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/koehnlein/.nvm/versions/node/v6.9.1/bin/node',
+1 verbose cli   '/Users/koehnlein/.nvm/versions/node/v6.9.1/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@3.10.8
+3 info using node@v6.9.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData electron
+20 silly mapToRegistry name electron
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry data Result {
+23 silly mapToRegistry   raw: 'electron',
+23 silly mapToRegistry   scope: null,
+23 silly mapToRegistry   escapedName: 'electron',
+23 silly mapToRegistry   name: 'electron',
+23 silly mapToRegistry   rawSpec: '',
+23 silly mapToRegistry   spec: 'latest',
+23 silly mapToRegistry   type: 'tag' }
+24 silly mapToRegistry uri https://registry.npmjs.org/electron
+25 silly fetchNamedPackageData monaco-css
+26 silly mapToRegistry name monaco-css
+27 silly mapToRegistry using default registry
+28 silly mapToRegistry registry https://registry.npmjs.org/
+29 silly mapToRegistry data Result {
+29 silly mapToRegistry   raw: 'monaco-css',
+29 silly mapToRegistry   scope: null,
+29 silly mapToRegistry   escapedName: 'monaco-css',
+29 silly mapToRegistry   name: 'monaco-css',
+29 silly mapToRegistry   rawSpec: '',
+29 silly mapToRegistry   spec: 'latest',
+29 silly mapToRegistry   type: 'tag' }
+30 silly mapToRegistry uri https://registry.npmjs.org/monaco-css
+31 silly fetchNamedPackageData monaco-editor
+32 silly mapToRegistry name monaco-editor
+33 silly mapToRegistry using default registry
+34 silly mapToRegistry registry https://registry.npmjs.org/
+35 silly mapToRegistry data Result {
+35 silly mapToRegistry   raw: 'monaco-editor',
+35 silly mapToRegistry   scope: null,
+35 silly mapToRegistry   escapedName: 'monaco-editor',
+35 silly mapToRegistry   name: 'monaco-editor',
+35 silly mapToRegistry   rawSpec: '',
+35 silly mapToRegistry   spec: 'latest',
+35 silly mapToRegistry   type: 'tag' }
+36 silly mapToRegistry uri https://registry.npmjs.org/monaco-editor
+37 silly fetchNamedPackageData monaco-editor-core
+38 silly mapToRegistry name monaco-editor-core
+39 silly mapToRegistry using default registry
+40 silly mapToRegistry registry https://registry.npmjs.org/
+41 silly mapToRegistry data Result {
+41 silly mapToRegistry   raw: 'monaco-editor-core',
+41 silly mapToRegistry   scope: null,
+41 silly mapToRegistry   escapedName: 'monaco-editor-core',
+41 silly mapToRegistry   name: 'monaco-editor-core',
+41 silly mapToRegistry   rawSpec: '',
+41 silly mapToRegistry   spec: 'latest',
+41 silly mapToRegistry   type: 'tag' }
+42 silly mapToRegistry uri https://registry.npmjs.org/monaco-editor-core
+43 silly fetchNamedPackageData monaco-html
+44 silly mapToRegistry name monaco-html
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry data Result {
+47 silly mapToRegistry   raw: 'monaco-html',
+47 silly mapToRegistry   scope: null,
+47 silly mapToRegistry   escapedName: 'monaco-html',
+47 silly mapToRegistry   name: 'monaco-html',
+47 silly mapToRegistry   rawSpec: '',
+47 silly mapToRegistry   spec: 'latest',
+47 silly mapToRegistry   type: 'tag' }
+48 silly mapToRegistry uri https://registry.npmjs.org/monaco-html
+49 silly fetchNamedPackageData monaco-json
+50 silly mapToRegistry name monaco-json
+51 silly mapToRegistry using default registry
+52 silly mapToRegistry registry https://registry.npmjs.org/
+53 silly mapToRegistry data Result {
+53 silly mapToRegistry   raw: 'monaco-json',
+53 silly mapToRegistry   scope: null,
+53 silly mapToRegistry   escapedName: 'monaco-json',
+53 silly mapToRegistry   name: 'monaco-json',
+53 silly mapToRegistry   rawSpec: '',
+53 silly mapToRegistry   spec: 'latest',
+53 silly mapToRegistry   type: 'tag' }
+54 silly mapToRegistry uri https://registry.npmjs.org/monaco-json
+55 silly fetchNamedPackageData monaco-languages
+56 silly mapToRegistry name monaco-languages
+57 silly mapToRegistry using default registry
+58 silly mapToRegistry registry https://registry.npmjs.org/
+59 silly mapToRegistry data Result {
+59 silly mapToRegistry   raw: 'monaco-languages',
+59 silly mapToRegistry   scope: null,
+59 silly mapToRegistry   escapedName: 'monaco-languages',
+59 silly mapToRegistry   name: 'monaco-languages',
+59 silly mapToRegistry   rawSpec: '',
+59 silly mapToRegistry   spec: 'latest',
+59 silly mapToRegistry   type: 'tag' }
+60 silly mapToRegistry uri https://registry.npmjs.org/monaco-languages
+61 silly fetchNamedPackageData monaco-typescript
+62 silly mapToRegistry name monaco-typescript
+63 silly mapToRegistry using default registry
+64 silly mapToRegistry registry https://registry.npmjs.org/
+65 silly mapToRegistry data Result {
+65 silly mapToRegistry   raw: 'monaco-typescript',
+65 silly mapToRegistry   scope: null,
+65 silly mapToRegistry   escapedName: 'monaco-typescript',
+65 silly mapToRegistry   name: 'monaco-typescript',
+65 silly mapToRegistry   rawSpec: '',
+65 silly mapToRegistry   spec: 'latest',
+65 silly mapToRegistry   type: 'tag' }
+66 silly mapToRegistry uri https://registry.npmjs.org/monaco-typescript
+67 silly fetchNamedPackageData reflect-metadata
+68 silly mapToRegistry name reflect-metadata
+69 silly mapToRegistry using default registry
+70 silly mapToRegistry registry https://registry.npmjs.org/
+71 silly mapToRegistry data Result {
+71 silly mapToRegistry   raw: 'reflect-metadata',
+71 silly mapToRegistry   scope: null,
+71 silly mapToRegistry   escapedName: 'reflect-metadata',
+71 silly mapToRegistry   name: 'reflect-metadata',
+71 silly mapToRegistry   rawSpec: '',
+71 silly mapToRegistry   spec: 'latest',
+71 silly mapToRegistry   type: 'tag' }
+72 silly mapToRegistry uri https://registry.npmjs.org/reflect-metadata
+73 silly fetchDirectoryPackageData theia-core
+74 silly fetchDirectoryPackageData theia-dsl-extension
+75 silly fetchDirectoryPackageData sprotty
+76 verbose request uri https://registry.npmjs.org/monaco-css
+77 verbose request no auth needed
+78 info attempt registry request try #1 at 11:17:24
+79 verbose request id 81fd13383ec49fff
+80 http request GET https://registry.npmjs.org/monaco-css
+81 verbose request uri https://registry.npmjs.org/monaco-html
+82 verbose request no auth needed
+83 info attempt registry request try #1 at 11:17:24
+84 http request GET https://registry.npmjs.org/monaco-html
+85 verbose request uri https://registry.npmjs.org/monaco-json
+86 verbose request no auth needed
+87 info attempt registry request try #1 at 11:17:24
+88 http request GET https://registry.npmjs.org/monaco-json
+89 verbose request uri https://registry.npmjs.org/monaco-typescript
+90 verbose request no auth needed
+91 info attempt registry request try #1 at 11:17:24
+92 http request GET https://registry.npmjs.org/monaco-typescript
+93 verbose request uri https://registry.npmjs.org/electron
+94 verbose request no auth needed
+95 info attempt registry request try #1 at 11:17:24
+96 verbose etag W/"5921b8d1-19348"
+97 verbose lastModified Sun, 21 May 2017 15:57:05 GMT
+98 http request GET https://registry.npmjs.org/electron
+99 verbose request uri https://registry.npmjs.org/monaco-editor-core
+100 verbose request no auth needed
+101 info attempt registry request try #1 at 11:17:24
+102 verbose etag W/"58b6ba43-83ab"
+103 verbose lastModified Wed, 01 Mar 2017 12:10:43 GMT
+104 http request GET https://registry.npmjs.org/monaco-editor-core
+105 verbose request uri https://registry.npmjs.org/monaco-editor
+106 verbose request no auth needed
+107 info attempt registry request try #1 at 11:17:24
+108 verbose etag W/"59053e74-736d"
+109 verbose lastModified Sun, 30 Apr 2017 01:31:32 GMT
+110 http request GET https://registry.npmjs.org/monaco-editor
+111 silly resolveWithNewModule theia-dsl-extension@1.0.0 checking installable status
+112 silly cache add args [ 'theia-dsl-extension@file:../theia-dsl-extension', null ]
+113 verbose cache add spec theia-dsl-extension@file:../theia-dsl-extension
+114 verbose request uri https://registry.npmjs.org/monaco-languages
+115 verbose request no auth needed
+116 info attempt registry request try #1 at 11:17:24
+117 verbose etag W/"57f66d3f-4b5d"
+118 verbose lastModified Thu, 06 Oct 2016 15:26:55 GMT
+119 http request GET https://registry.npmjs.org/monaco-languages
+120 verbose request uri https://registry.npmjs.org/reflect-metadata
+121 verbose request no auth needed
+122 info attempt registry request try #1 at 11:17:24
+123 verbose etag W/"58bdf32e-7088"
+124 verbose lastModified Mon, 06 Mar 2017 23:39:26 GMT
+125 http request GET https://registry.npmjs.org/reflect-metadata
+126 silly cache add parsed spec Result {
+126 silly cache add   raw: 'theia-dsl-extension@file:../theia-dsl-extension',
+126 silly cache add   scope: null,
+126 silly cache add   escapedName: 'theia-dsl-extension',
+126 silly cache add   name: 'theia-dsl-extension',
+126 silly cache add   rawSpec: 'file:../theia-dsl-extension',
+126 silly cache add   spec: '/Users/koehnlein/Documents/devel/Ericsson/git/theia-sprotty-example/theia-dsl-extension',
+126 silly cache add   type: 'directory' }
+127 silly resolveWithNewModule sprotty@0.1.0 checking installable status
+128 silly cache add args [ 'sprotty@file:../../sprotty/client', null ]
+129 verbose cache add spec sprotty@file:../../sprotty/client
+130 verbose addLocalDirectory /Users/koehnlein/.npm/theia-dsl-extension/1.0.0/package.tgz not in flight; packing
+131 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+132 silly cache add parsed spec Result {
+132 silly cache add   raw: 'sprotty@file:../../sprotty/client',
+132 silly cache add   scope: null,
+132 silly cache add   escapedName: 'sprotty',
+132 silly cache add   name: 'sprotty',
+132 silly cache add   rawSpec: 'file:../../sprotty/client',
+132 silly cache add   spec: '/Users/koehnlein/Documents/devel/Ericsson/git/sprotty/client',
+132 silly cache add   type: 'directory' }
+133 silly resolveWithNewModule theia-core@0.0.1-alpha.1 checking installable status
+134 silly cache add args [ 'theia-core@file:../../theia', null ]
+135 verbose cache add spec theia-core@file:../../theia
+136 silly cache add parsed spec Result {
+136 silly cache add   raw: 'theia-core@file:../../theia',
+136 silly cache add   scope: null,
+136 silly cache add   escapedName: 'theia-core',
+136 silly cache add   name: 'theia-core',
+136 silly cache add   rawSpec: 'file:../../theia',
+136 silly cache add   spec: '/Users/koehnlein/Documents/devel/Ericsson/git/theia',
+136 silly cache add   type: 'directory' }
+137 info lifecycle theia-dsl-extension@1.0.0~prepublish: theia-dsl-extension@1.0.0
+138 verbose lifecycle theia-dsl-extension@1.0.0~prepublish: unsafe-perm in lifecycle true
+139 verbose lifecycle theia-dsl-extension@1.0.0~prepublish: PATH: /Users/koehnlein/.nvm/versions/node/v6.9.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/koehnlein/Documents/devel/Ericsson/git/theia-sprotty-example/theia-dsl-extension/node_modules/.bin:/Users/koehnlein/.nvm/versions/node/v6.9.1/bin:/Users/koehnlein/miniconda3/bin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/koehnlein/miniconda3/bin:/opt/local/bin:/opt/local/sbin:/usr/texbin:/Users/koehnlein/.rvm/bin:/usr/texbin:/Users/koehnlein/.rvm/bin
+140 verbose lifecycle theia-dsl-extension@1.0.0~prepublish: CWD: /Users/koehnlein/Documents/devel/Ericsson/git/theia-sprotty-example/theia-dsl-extension
+141 silly lifecycle theia-dsl-extension@1.0.0~prepublish: Args: [ '-c', 'npm run copy-ls && npm run build' ]
+142 verbose addLocalDirectory /Users/koehnlein/.npm/sprotty/0.1.0/package.tgz not in flight; packing
+143 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+144 verbose addLocalDirectory /Users/koehnlein/.npm/theia-core/0.0.1-alpha.1/package.tgz not in flight; packing
+145 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+146 info lifecycle sprotty@0.1.0~prepublish: sprotty@0.1.0
+147 silly lifecycle sprotty@0.1.0~prepublish: no script for prepublish, continuing
+148 info lifecycle theia-core@0.0.1-alpha.1~prepublish: theia-core@0.0.1-alpha.1
+149 verbose tar pack [ '/Users/koehnlein/.npm/sprotty/0.1.0/package.tgz',
+149 verbose tar pack   '/Users/koehnlein/Documents/devel/Ericsson/git/sprotty/client' ]
+150 verbose tarball /Users/koehnlein/.npm/sprotty/0.1.0/package.tgz
+151 verbose folder /Users/koehnlein/Documents/devel/Ericsson/git/sprotty/client
+152 silly lifecycle theia-core@0.0.1-alpha.1~prepublish: no script for prepublish, continuing
+153 verbose tar pack [ '/Users/koehnlein/.npm/theia-core/0.0.1-alpha.1/package.tgz',
+153 verbose tar pack   '/Users/koehnlein/Documents/devel/Ericsson/git/theia' ]
+154 verbose tarball /Users/koehnlein/.npm/theia-core/0.0.1-alpha.1/package.tgz
+155 verbose folder /Users/koehnlein/Documents/devel/Ericsson/git/theia
+156 http 200 https://registry.npmjs.org/monaco-css
+157 verbose headers { server: 'nginx/1.10.1',
+157 verbose headers   'content-type': 'application/json',
+157 verbose headers   'last-modified': 'Fri, 27 Jan 2017 15:04:50 GMT',
+157 verbose headers   etag: 'W/"588b6192-5182"',
+157 verbose headers   'content-encoding': 'gzip',
+157 verbose headers   'cache-control': 'max-age=300',
+157 verbose headers   'content-length': '3054',
+157 verbose headers   'accept-ranges': 'bytes',
+157 verbose headers   date: 'Wed, 24 May 2017 09:17:25 GMT',
+157 verbose headers   via: '1.1 varnish',
+157 verbose headers   age: '191',
+157 verbose headers   connection: 'keep-alive',
+157 verbose headers   'x-served-by': 'cache-hhn1524-HHN',
+157 verbose headers   'x-cache': 'HIT',
+157 verbose headers   'x-cache-hits': '1',
+157 verbose headers   'x-timer': 'S1495617445.012863,VS0,VE0',
+157 verbose headers   vary: 'Accept-Encoding' }
+158 silly get cb [ 200,
+158 silly get   { server: 'nginx/1.10.1',
+158 silly get     'content-type': 'application/json',
+158 silly get     'last-modified': 'Fri, 27 Jan 2017 15:04:50 GMT',
+158 silly get     etag: 'W/"588b6192-5182"',
+158 silly get     'content-encoding': 'gzip',
+158 silly get     'cache-control': 'max-age=300',
+158 silly get     'content-length': '3054',
+158 silly get     'accept-ranges': 'bytes',
+158 silly get     date: 'Wed, 24 May 2017 09:17:25 GMT',
+158 silly get     via: '1.1 varnish',
+158 silly get     age: '191',
+158 silly get     connection: 'keep-alive',
+158 silly get     'x-served-by': 'cache-hhn1524-HHN',
+158 silly get     'x-cache': 'HIT',
+158 silly get     'x-cache-hits': '1',
+158 silly get     'x-timer': 'S1495617445.012863,VS0,VE0',
+158 silly get     vary: 'Accept-Encoding' } ]
+159 verbose get saving monaco-css to /Users/koehnlein/.npm/registry.npmjs.org/monaco-css/.cache.json
+160 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+161 http 200 https://registry.npmjs.org/monaco-html
+162 verbose headers { server: 'nginx/1.10.1',
+162 verbose headers   'content-type': 'application/json',
+162 verbose headers   'last-modified': 'Fri, 27 Jan 2017 15:02:20 GMT',
+162 verbose headers   etag: 'W/"588b60fc-2cec"',
+162 verbose headers   'content-encoding': 'gzip',
+162 verbose headers   'cache-control': 'max-age=300',
+162 verbose headers   'content-length': '2136',
+162 verbose headers   'accept-ranges': 'bytes',
+162 verbose headers   date: 'Wed, 24 May 2017 09:17:25 GMT',
+162 verbose headers   via: '1.1 varnish',
+162 verbose headers   age: '0',
+162 verbose headers   connection: 'keep-alive',
+162 verbose headers   'x-served-by': 'cache-hhn1526-HHN',
+162 verbose headers   'x-cache': 'MISS',
+162 verbose headers   'x-cache-hits': '0',
+162 verbose headers   'x-timer': 'S1495617445.012721,VS0,VE18',
+162 verbose headers   vary: 'Accept-Encoding' }
+163 silly get cb [ 200,
+163 silly get   { server: 'nginx/1.10.1',
+163 silly get     'content-type': 'application/json',
+163 silly get     'last-modified': 'Fri, 27 Jan 2017 15:02:20 GMT',
+163 silly get     etag: 'W/"588b60fc-2cec"',
+163 silly get     'content-encoding': 'gzip',
+163 silly get     'cache-control': 'max-age=300',
+163 silly get     'content-length': '2136',
+163 silly get     'accept-ranges': 'bytes',
+163 silly get     date: 'Wed, 24 May 2017 09:17:25 GMT',
+163 silly get     via: '1.1 varnish',
+163 silly get     age: '0',
+163 silly get     connection: 'keep-alive',
+163 silly get     'x-served-by': 'cache-hhn1526-HHN',
+163 silly get     'x-cache': 'MISS',
+163 silly get     'x-cache-hits': '0',
+163 silly get     'x-timer': 'S1495617445.012721,VS0,VE18',
+163 silly get     vary: 'Accept-Encoding' } ]
+164 verbose get saving monaco-html to /Users/koehnlein/.npm/registry.npmjs.org/monaco-html/.cache.json
+165 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+166 http 304 https://registry.npmjs.org/reflect-metadata
+167 verbose headers { date: 'Wed, 24 May 2017 09:17:25 GMT',
+167 verbose headers   via: '1.1 varnish',
+167 verbose headers   'cache-control': 'max-age=300',
+167 verbose headers   etag: 'W/"58bdf32e-7088"',
+167 verbose headers   age: '21',
+167 verbose headers   connection: 'keep-alive',
+167 verbose headers   'x-served-by': 'cache-hhn1537-HHN',
+167 verbose headers   'x-cache': 'HIT',
+167 verbose headers   'x-cache-hits': '1',
+167 verbose headers   'x-timer': 'S1495617445.055797,VS0,VE0',
+167 verbose headers   vary: 'Accept-Encoding' }
+168 silly get cb [ 304,
+168 silly get   { date: 'Wed, 24 May 2017 09:17:25 GMT',
+168 silly get     via: '1.1 varnish',
+168 silly get     'cache-control': 'max-age=300',
+168 silly get     etag: 'W/"58bdf32e-7088"',
+168 silly get     age: '21',
+168 silly get     connection: 'keep-alive',
+168 silly get     'x-served-by': 'cache-hhn1537-HHN',
+168 silly get     'x-cache': 'HIT',
+168 silly get     'x-cache-hits': '1',
+168 silly get     'x-timer': 'S1495617445.055797,VS0,VE0',
+168 silly get     vary: 'Accept-Encoding' } ]
+169 verbose etag https://registry.npmjs.org/reflect-metadata from cache
+170 verbose get saving reflect-metadata to /Users/koehnlein/.npm/registry.npmjs.org/reflect-metadata/.cache.json
+171 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+172 http 200 https://registry.npmjs.org/monaco-languages
+173 verbose headers { server: 'nginx/1.10.1',
+173 verbose headers   'content-type': 'application/json',
+173 verbose headers   'last-modified': 'Wed, 18 Jan 2017 14:26:14 GMT',
+173 verbose headers   etag: 'W/"587f7b06-51ef"',
+173 verbose headers   'content-encoding': 'gzip',
+173 verbose headers   'cache-control': 'max-age=300',
+173 verbose headers   'content-length': '3227',
+173 verbose headers   'accept-ranges': 'bytes',
+173 verbose headers   date: 'Wed, 24 May 2017 09:17:25 GMT',
+173 verbose headers   via: '1.1 varnish',
+173 verbose headers   age: '191',
+173 verbose headers   connection: 'keep-alive',
+173 verbose headers   'x-served-by': 'cache-hhn1547-HHN',
+173 verbose headers   'x-cache': 'HIT',
+173 verbose headers   'x-cache-hits': '1',
+173 verbose headers   'x-timer': 'S1495617445.046141,VS0,VE0',
+173 verbose headers   vary: 'Accept-Encoding' }
+174 silly get cb [ 200,
+174 silly get   { server: 'nginx/1.10.1',
+174 silly get     'content-type': 'application/json',
+174 silly get     'last-modified': 'Wed, 18 Jan 2017 14:26:14 GMT',
+174 silly get     etag: 'W/"587f7b06-51ef"',
+174 silly get     'content-encoding': 'gzip',
+174 silly get     'cache-control': 'max-age=300',
+174 silly get     'content-length': '3227',
+174 silly get     'accept-ranges': 'bytes',
+174 silly get     date: 'Wed, 24 May 2017 09:17:25 GMT',
+174 silly get     via: '1.1 varnish',
+174 silly get     age: '191',
+174 silly get     connection: 'keep-alive',
+174 silly get     'x-served-by': 'cache-hhn1547-HHN',
+174 silly get     'x-cache': 'HIT',
+174 silly get     'x-cache-hits': '1',
+174 silly get     'x-timer': 'S1495617445.046141,VS0,VE0',
+174 silly get     vary: 'Accept-Encoding' } ]
+175 verbose get saving monaco-languages to /Users/koehnlein/.npm/registry.npmjs.org/monaco-languages/.cache.json
+176 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+177 silly resolveWithNewModule monaco-css@1.3.1 checking installable status
+178 silly cache add args [ 'monaco-css@^1.3.1', null ]
+179 verbose cache add spec monaco-css@^1.3.1
+180 silly cache add parsed spec Result {
+180 silly cache add   raw: 'monaco-css@^1.3.1',
+180 silly cache add   scope: null,
+180 silly cache add   escapedName: 'monaco-css',
+180 silly cache add   name: 'monaco-css',
+180 silly cache add   rawSpec: '^1.3.1',
+180 silly cache add   spec: '>=1.3.1 <2.0.0',
+180 silly cache add   type: 'range' }
+181 silly addNamed monaco-css@>=1.3.1 <2.0.0
+182 verbose addNamed ">=1.3.1 <2.0.0" is a valid semver range for monaco-css
+183 silly addNameRange { name: 'monaco-css', range: '>=1.3.1 <2.0.0', hasData: false }
+184 silly mapToRegistry name monaco-css
+185 silly mapToRegistry using default registry
+186 silly mapToRegistry registry https://registry.npmjs.org/
+187 silly mapToRegistry data Result {
+187 silly mapToRegistry   raw: 'monaco-css',
+187 silly mapToRegistry   scope: null,
+187 silly mapToRegistry   escapedName: 'monaco-css',
+187 silly mapToRegistry   name: 'monaco-css',
+187 silly mapToRegistry   rawSpec: '',
+187 silly mapToRegistry   spec: 'latest',
+187 silly mapToRegistry   type: 'tag' }
+188 silly mapToRegistry uri https://registry.npmjs.org/monaco-css
+189 verbose addNameRange registry:https://registry.npmjs.org/monaco-css not in flight; fetching
+190 silly resolveWithNewModule monaco-html@1.2.1 checking installable status
+191 silly cache add args [ 'monaco-html@^1.2.1', null ]
+192 verbose cache add spec monaco-html@^1.2.1
+193 silly cache add parsed spec Result {
+193 silly cache add   raw: 'monaco-html@^1.2.1',
+193 silly cache add   scope: null,
+193 silly cache add   escapedName: 'monaco-html',
+193 silly cache add   name: 'monaco-html',
+193 silly cache add   rawSpec: '^1.2.1',
+193 silly cache add   spec: '>=1.2.1 <2.0.0',
+193 silly cache add   type: 'range' }
+194 silly addNamed monaco-html@>=1.2.1 <2.0.0
+195 verbose addNamed ">=1.2.1 <2.0.0" is a valid semver range for monaco-html
+196 silly addNameRange { name: 'monaco-html', range: '>=1.2.1 <2.0.0', hasData: false }
+197 silly mapToRegistry name monaco-html
+198 silly mapToRegistry using default registry
+199 silly mapToRegistry registry https://registry.npmjs.org/
+200 silly mapToRegistry data Result {
+200 silly mapToRegistry   raw: 'monaco-html',
+200 silly mapToRegistry   scope: null,
+200 silly mapToRegistry   escapedName: 'monaco-html',
+200 silly mapToRegistry   name: 'monaco-html',
+200 silly mapToRegistry   rawSpec: '',
+200 silly mapToRegistry   spec: 'latest',
+200 silly mapToRegistry   type: 'tag' }
+201 silly mapToRegistry uri https://registry.npmjs.org/monaco-html
+202 verbose addNameRange registry:https://registry.npmjs.org/monaco-html not in flight; fetching
+203 http 304 https://registry.npmjs.org/monaco-editor
+204 verbose headers { date: 'Wed, 24 May 2017 09:17:25 GMT',
+204 verbose headers   via: '1.1 varnish',
+204 verbose headers   'cache-control': 'max-age=300',
+204 verbose headers   etag: 'W/"59053e74-736d"',
+204 verbose headers   age: '0',
+204 verbose headers   connection: 'keep-alive',
+204 verbose headers   'x-served-by': 'cache-hhn1520-HHN',
+204 verbose headers   'x-cache': 'HIT',
+204 verbose headers   'x-cache-hits': '1',
+204 verbose headers   'x-timer': 'S1495617445.025704,VS0,VE92',
+204 verbose headers   vary: 'Accept-Encoding' }
+205 silly get cb [ 304,
+205 silly get   { date: 'Wed, 24 May 2017 09:17:25 GMT',
+205 silly get     via: '1.1 varnish',
+205 silly get     'cache-control': 'max-age=300',
+205 silly get     etag: 'W/"59053e74-736d"',
+205 silly get     age: '0',
+205 silly get     connection: 'keep-alive',
+205 silly get     'x-served-by': 'cache-hhn1520-HHN',
+205 silly get     'x-cache': 'HIT',
+205 silly get     'x-cache-hits': '1',
+205 silly get     'x-timer': 'S1495617445.025704,VS0,VE92',
+205 silly get     vary: 'Accept-Encoding' } ]
+206 verbose etag https://registry.npmjs.org/monaco-editor from cache
+207 verbose get saving monaco-editor to /Users/koehnlein/.npm/registry.npmjs.org/monaco-editor/.cache.json
+208 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+209 silly resolveWithNewModule reflect-metadata@0.1.10 checking installable status
+210 silly cache add args [ 'reflect-metadata@^0.1.10', null ]
+211 verbose cache add spec reflect-metadata@^0.1.10
+212 silly cache add parsed spec Result {
+212 silly cache add   raw: 'reflect-metadata@^0.1.10',
+212 silly cache add   scope: null,
+212 silly cache add   escapedName: 'reflect-metadata',
+212 silly cache add   name: 'reflect-metadata',
+212 silly cache add   rawSpec: '^0.1.10',
+212 silly cache add   spec: '>=0.1.10 <0.2.0',
+212 silly cache add   type: 'range' }
+213 silly addNamed reflect-metadata@>=0.1.10 <0.2.0
+214 verbose addNamed ">=0.1.10 <0.2.0" is a valid semver range for reflect-metadata
+215 silly addNameRange { name: 'reflect-metadata',
+215 silly addNameRange   range: '>=0.1.10 <0.2.0',
+215 silly addNameRange   hasData: false }
+216 silly mapToRegistry name reflect-metadata
+217 silly mapToRegistry using default registry
+218 silly mapToRegistry registry https://registry.npmjs.org/
+219 silly mapToRegistry data Result {
+219 silly mapToRegistry   raw: 'reflect-metadata',
+219 silly mapToRegistry   scope: null,
+219 silly mapToRegistry   escapedName: 'reflect-metadata',
+219 silly mapToRegistry   name: 'reflect-metadata',
+219 silly mapToRegistry   rawSpec: '',
+219 silly mapToRegistry   spec: 'latest',
+219 silly mapToRegistry   type: 'tag' }
+220 silly mapToRegistry uri https://registry.npmjs.org/reflect-metadata
+221 verbose addNameRange registry:https://registry.npmjs.org/reflect-metadata not in flight; fetching
+222 silly resolveWithNewModule monaco-languages@0.7.0 checking installable status
+223 silly cache add args [ 'monaco-languages@^0.7.0', null ]
+224 verbose cache add spec monaco-languages@^0.7.0
+225 silly cache add parsed spec Result {
+225 silly cache add   raw: 'monaco-languages@^0.7.0',
+225 silly cache add   scope: null,
+225 silly cache add   escapedName: 'monaco-languages',
+225 silly cache add   name: 'monaco-languages',
+225 silly cache add   rawSpec: '^0.7.0',
+225 silly cache add   spec: '>=0.7.0 <0.8.0',
+225 silly cache add   type: 'range' }
+226 silly addNamed monaco-languages@>=0.7.0 <0.8.0
+227 verbose addNamed ">=0.7.0 <0.8.0" is a valid semver range for monaco-languages
+228 silly addNameRange { name: 'monaco-languages',
+228 silly addNameRange   range: '>=0.7.0 <0.8.0',
+228 silly addNameRange   hasData: false }
+229 silly mapToRegistry name monaco-languages
+230 silly mapToRegistry using default registry
+231 silly mapToRegistry registry https://registry.npmjs.org/
+232 silly mapToRegistry data Result {
+232 silly mapToRegistry   raw: 'monaco-languages',
+232 silly mapToRegistry   scope: null,
+232 silly mapToRegistry   escapedName: 'monaco-languages',
+232 silly mapToRegistry   name: 'monaco-languages',
+232 silly mapToRegistry   rawSpec: '',
+232 silly mapToRegistry   spec: 'latest',
+232 silly mapToRegistry   type: 'tag' }
+233 silly mapToRegistry uri https://registry.npmjs.org/monaco-languages
+234 verbose addNameRange registry:https://registry.npmjs.org/monaco-languages not in flight; fetching
+235 verbose get https://registry.npmjs.org/monaco-css not expired, no request
+236 silly addNameRange number 2 { name: 'monaco-css', range: '>=1.3.1 <2.0.0', hasData: true }
+237 silly addNameRange versions [ 'monaco-css',
+237 silly addNameRange   [ '0.0.1',
+237 silly addNameRange     '1.0.0',
+237 silly addNameRange     '1.1.0',
+237 silly addNameRange     '1.1.1',
+237 silly addNameRange     '1.1.2',
+237 silly addNameRange     '1.1.3-next.1',
+237 silly addNameRange     '1.1.4',
+237 silly addNameRange     '1.2.0',
+237 silly addNameRange     '1.2.1',
+237 silly addNameRange     '1.3.0',
+237 silly addNameRange     '1.3.1' ] ]
+238 silly addNamed monaco-css@1.3.1
+239 verbose addNamed "1.3.1" is a plain semver version for monaco-css
+240 verbose get https://registry.npmjs.org/monaco-html not expired, no request
+241 silly addNameRange number 2 { name: 'monaco-html', range: '>=1.2.1 <2.0.0', hasData: true }
+242 silly addNameRange versions [ 'monaco-html',
+242 silly addNameRange   [ '1.0.0-next.1', '1.0.0', '1.1.0', '1.2.0', '1.2.1' ] ]
+243 silly addNamed monaco-html@1.2.1
+244 verbose addNamed "1.2.1" is a plain semver version for monaco-html
+245 http 200 https://registry.npmjs.org/monaco-typescript
+246 verbose headers { server: 'nginx/1.10.1',
+246 verbose headers   'content-type': 'application/json',
+246 verbose headers   'last-modified': 'Fri, 03 Mar 2017 16:41:05 GMT',
+246 verbose headers   etag: 'W/"58b99ca1-699f"',
+246 verbose headers   'content-encoding': 'gzip',
+246 verbose headers   'cache-control': 'max-age=300',
+246 verbose headers   'content-length': '3588',
+246 verbose headers   'accept-ranges': 'bytes',
+246 verbose headers   date: 'Wed, 24 May 2017 09:17:25 GMT',
+246 verbose headers   via: '1.1 varnish',
+246 verbose headers   age: '0',
+246 verbose headers   connection: 'keep-alive',
+246 verbose headers   'x-served-by': 'cache-hhn1528-HHN',
+246 verbose headers   'x-cache': 'MISS',
+246 verbose headers   'x-cache-hits': '0',
+246 verbose headers   'x-timer': 'S1495617445.027217,VS0,VE94',
+246 verbose headers   vary: 'Accept-Encoding' }
+247 silly get cb [ 200,
+247 silly get   { server: 'nginx/1.10.1',
+247 silly get     'content-type': 'application/json',
+247 silly get     'last-modified': 'Fri, 03 Mar 2017 16:41:05 GMT',
+247 silly get     etag: 'W/"58b99ca1-699f"',
+247 silly get     'content-encoding': 'gzip',
+247 silly get     'cache-control': 'max-age=300',
+247 silly get     'content-length': '3588',
+247 silly get     'accept-ranges': 'bytes',
+247 silly get     date: 'Wed, 24 May 2017 09:17:25 GMT',
+247 silly get     via: '1.1 varnish',
+247 silly get     age: '0',
+247 silly get     connection: 'keep-alive',
+247 silly get     'x-served-by': 'cache-hhn1528-HHN',
+247 silly get     'x-cache': 'MISS',
+247 silly get     'x-cache-hits': '0',
+247 silly get     'x-timer': 'S1495617445.027217,VS0,VE94',
+247 silly get     vary: 'Accept-Encoding' } ]
+248 verbose get saving monaco-typescript to /Users/koehnlein/.npm/registry.npmjs.org/monaco-typescript/.cache.json
+249 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+250 silly mapToRegistry name monaco-css
+251 silly mapToRegistry using default registry
+252 silly mapToRegistry registry https://registry.npmjs.org/
+253 silly mapToRegistry data Result {
+253 silly mapToRegistry   raw: 'monaco-css',
+253 silly mapToRegistry   scope: null,
+253 silly mapToRegistry   escapedName: 'monaco-css',
+253 silly mapToRegistry   name: 'monaco-css',
+253 silly mapToRegistry   rawSpec: '',
+253 silly mapToRegistry   spec: 'latest',
+253 silly mapToRegistry   type: 'tag' }
+254 silly mapToRegistry uri https://registry.npmjs.org/monaco-css
+255 verbose addRemoteTarball https://registry.npmjs.org/monaco-css/-/monaco-css-1.3.1.tgz not in flight; adding
+256 verbose addRemoteTarball [ 'https://registry.npmjs.org/monaco-css/-/monaco-css-1.3.1.tgz',
+256 verbose addRemoteTarball   '7b0cada02d20b62248b30f9256f52701def7b42b' ]
+257 silly mapToRegistry name monaco-html
+258 silly mapToRegistry using default registry
+259 silly mapToRegistry registry https://registry.npmjs.org/
+260 silly mapToRegistry data Result {
+260 silly mapToRegistry   raw: 'monaco-html',
+260 silly mapToRegistry   scope: null,
+260 silly mapToRegistry   escapedName: 'monaco-html',
+260 silly mapToRegistry   name: 'monaco-html',
+260 silly mapToRegistry   rawSpec: '',
+260 silly mapToRegistry   spec: 'latest',
+260 silly mapToRegistry   type: 'tag' }
+261 silly mapToRegistry uri https://registry.npmjs.org/monaco-html
+262 verbose addRemoteTarball https://registry.npmjs.org/monaco-html/-/monaco-html-1.2.1.tgz not in flight; adding
+263 verbose addRemoteTarball [ 'https://registry.npmjs.org/monaco-html/-/monaco-html-1.2.1.tgz',
+263 verbose addRemoteTarball   'c0063b5dbddc68c80c4c05928454fe8f06887622' ]
+264 verbose get https://registry.npmjs.org/reflect-metadata not expired, no request
+265 silly addNameRange number 2 { name: 'reflect-metadata',
+265 silly addNameRange   range: '>=0.1.10 <0.2.0',
+265 silly addNameRange   hasData: true }
+266 silly addNameRange versions [ 'reflect-metadata',
+266 silly addNameRange   [ '0.0.2',
+266 silly addNameRange     '0.0.3',
+266 silly addNameRange     '0.1.0',
+266 silly addNameRange     '0.1.1',
+266 silly addNameRange     '0.1.2',
+266 silly addNameRange     '0.1.3',
+266 silly addNameRange     '0.1.4',
+266 silly addNameRange     '0.1.5',
+266 silly addNameRange     '0.1.6',
+266 silly addNameRange     '0.1.7',
+266 silly addNameRange     '0.1.8',
+266 silly addNameRange     '0.1.9',
+266 silly addNameRange     '0.1.10' ] ]
+267 silly addNamed reflect-metadata@0.1.10
+268 verbose addNamed "0.1.10" is a plain semver version for reflect-metadata
+269 verbose get https://registry.npmjs.org/monaco-languages not expired, no request
+270 silly addNameRange number 2 { name: 'monaco-languages',
+270 silly addNameRange   range: '>=0.7.0 <0.8.0',
+270 silly addNameRange   hasData: true }
+271 silly addNameRange versions [ 'monaco-languages',
+271 silly addNameRange   [ '0.0.1',
+271 silly addNameRange     '0.1.1',
+271 silly addNameRange     '0.2.0',
+271 silly addNameRange     '0.2.1',
+271 silly addNameRange     '0.3.0',
+271 silly addNameRange     '0.3.1',
+271 silly addNameRange     '0.4.0',
+271 silly addNameRange     '0.5.0',
+271 silly addNameRange     '0.6.0',
+271 silly addNameRange     '0.6.1',
+271 silly addNameRange     '0.7.0' ] ]
+272 silly addNamed monaco-languages@0.7.0
+273 verbose addNamed "0.7.0" is a plain semver version for monaco-languages
+274 silly mapToRegistry name monaco-languages
+275 silly mapToRegistry using default registry
+276 silly mapToRegistry registry https://registry.npmjs.org/
+277 silly mapToRegistry data Result {
+277 silly mapToRegistry   raw: 'monaco-languages',
+277 silly mapToRegistry   scope: null,
+277 silly mapToRegistry   escapedName: 'monaco-languages',
+277 silly mapToRegistry   name: 'monaco-languages',
+277 silly mapToRegistry   rawSpec: '',
+277 silly mapToRegistry   spec: 'latest',
+277 silly mapToRegistry   type: 'tag' }
+278 silly mapToRegistry uri https://registry.npmjs.org/monaco-languages
+279 verbose addRemoteTarball https://registry.npmjs.org/monaco-languages/-/monaco-languages-0.7.0.tgz not in flight; adding
+280 verbose addRemoteTarball [ 'https://registry.npmjs.org/monaco-languages/-/monaco-languages-0.7.0.tgz',
+280 verbose addRemoteTarball   '52d979986e3008eea312c11c7c9902369b72f2d2' ]
+281 http 200 https://registry.npmjs.org/electron
+282 verbose headers { server: 'nginx/1.10.1',
+282 verbose headers   'content-type': 'application/json',
+282 verbose headers   'last-modified': 'Tue, 23 May 2017 18:24:06 GMT',
+282 verbose headers   etag: 'W/"59247e46-1935b"',
+282 verbose headers   'content-encoding': 'gzip',
+282 verbose headers   'cache-control': 'max-age=300',
+282 verbose headers   'content-length': '9392',
+282 verbose headers   'accept-ranges': 'bytes',
+282 verbose headers   date: 'Wed, 24 May 2017 09:17:25 GMT',
+282 verbose headers   via: '1.1 varnish',
+282 verbose headers   age: '0',
+282 verbose headers   connection: 'keep-alive',
+282 verbose headers   'x-served-by': 'cache-hhn1538-HHN',
+282 verbose headers   'x-cache': 'HIT',
+282 verbose headers   'x-cache-hits': '1',
+282 verbose headers   'x-timer': 'S1495617445.021483,VS0,VE93',
+282 verbose headers   vary: 'Accept-Encoding' }
+283 silly get cb [ 200,
+283 silly get   { server: 'nginx/1.10.1',
+283 silly get     'content-type': 'application/json',
+283 silly get     'last-modified': 'Tue, 23 May 2017 18:24:06 GMT',
+283 silly get     etag: 'W/"59247e46-1935b"',
+283 silly get     'content-encoding': 'gzip',
+283 silly get     'cache-control': 'max-age=300',
+283 silly get     'content-length': '9392',
+283 silly get     'accept-ranges': 'bytes',
+283 silly get     date: 'Wed, 24 May 2017 09:17:25 GMT',
+283 silly get     via: '1.1 varnish',
+283 silly get     age: '0',
+283 silly get     connection: 'keep-alive',
+283 silly get     'x-served-by': 'cache-hhn1538-HHN',
+283 silly get     'x-cache': 'HIT',
+283 silly get     'x-cache-hits': '1',
+283 silly get     'x-timer': 'S1495617445.021483,VS0,VE93',
+283 silly get     vary: 'Accept-Encoding' } ]
+284 verbose get saving electron to /Users/koehnlein/.npm/registry.npmjs.org/electron/.cache.json
+285 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+286 silly cache afterAdd reflect-metadata@0.1.10
+287 verbose afterAdd /Users/koehnlein/.npm/reflect-metadata/0.1.10/package/package.json not in flight; writing
+288 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+289 silly resolveWithNewModule monaco-editor@0.8.3 checking installable status
+290 silly cache add args [ 'monaco-editor@^0.8.3', null ]
+291 verbose cache add spec monaco-editor@^0.8.3
+292 silly cache add parsed spec Result {
+292 silly cache add   raw: 'monaco-editor@^0.8.3',
+292 silly cache add   scope: null,
+292 silly cache add   escapedName: 'monaco-editor',
+292 silly cache add   name: 'monaco-editor',
+292 silly cache add   rawSpec: '^0.8.3',
+292 silly cache add   spec: '>=0.8.3 <0.9.0',
+292 silly cache add   type: 'range' }
+293 silly addNamed monaco-editor@>=0.8.3 <0.9.0
+294 verbose addNamed ">=0.8.3 <0.9.0" is a valid semver range for monaco-editor
+295 silly addNameRange { name: 'monaco-editor',
+295 silly addNameRange   range: '>=0.8.3 <0.9.0',
+295 silly addNameRange   hasData: false }
+296 silly mapToRegistry name monaco-editor
+297 silly mapToRegistry using default registry
+298 silly mapToRegistry registry https://registry.npmjs.org/
+299 silly mapToRegistry data Result {
+299 silly mapToRegistry   raw: 'monaco-editor',
+299 silly mapToRegistry   scope: null,
+299 silly mapToRegistry   escapedName: 'monaco-editor',
+299 silly mapToRegistry   name: 'monaco-editor',
+299 silly mapToRegistry   rawSpec: '',
+299 silly mapToRegistry   spec: 'latest',
+299 silly mapToRegistry   type: 'tag' }
+300 silly mapToRegistry uri https://registry.npmjs.org/monaco-editor
+301 verbose addNameRange registry:https://registry.npmjs.org/monaco-editor not in flight; fetching
+302 info retry fetch attempt 1 at 11:17:25
+303 info attempt registry request try #1 at 11:17:25
+304 http fetch GET https://registry.npmjs.org/monaco-css/-/monaco-css-1.3.1.tgz
+305 info retry fetch attempt 1 at 11:17:25
+306 info attempt registry request try #1 at 11:17:25
+307 http fetch GET https://registry.npmjs.org/monaco-languages/-/monaco-languages-0.7.0.tgz
+308 info retry fetch attempt 1 at 11:17:25
+309 info attempt registry request try #1 at 11:17:25
+310 http fetch GET https://registry.npmjs.org/monaco-html/-/monaco-html-1.2.1.tgz
+311 silly resolveWithNewModule monaco-typescript@2.1.2 checking installable status
+312 silly cache add args [ 'monaco-typescript@^2.1.2', null ]
+313 verbose cache add spec monaco-typescript@^2.1.2
+314 silly cache add parsed spec Result {
+314 silly cache add   raw: 'monaco-typescript@^2.1.2',
+314 silly cache add   scope: null,
+314 silly cache add   escapedName: 'monaco-typescript',
+314 silly cache add   name: 'monaco-typescript',
+314 silly cache add   rawSpec: '^2.1.2',
+314 silly cache add   spec: '>=2.1.2 <3.0.0',
+314 silly cache add   type: 'range' }
+315 silly addNamed monaco-typescript@>=2.1.2 <3.0.0
+316 verbose addNamed ">=2.1.2 <3.0.0" is a valid semver range for monaco-typescript
+317 silly addNameRange { name: 'monaco-typescript',
+317 silly addNameRange   range: '>=2.1.2 <3.0.0',
+317 silly addNameRange   hasData: false }
+318 silly mapToRegistry name monaco-typescript
+319 silly mapToRegistry using default registry
+320 silly mapToRegistry registry https://registry.npmjs.org/
+321 silly mapToRegistry data Result {
+321 silly mapToRegistry   raw: 'monaco-typescript',
+321 silly mapToRegistry   scope: null,
+321 silly mapToRegistry   escapedName: 'monaco-typescript',
+321 silly mapToRegistry   name: 'monaco-typescript',
+321 silly mapToRegistry   rawSpec: '',
+321 silly mapToRegistry   spec: 'latest',
+321 silly mapToRegistry   type: 'tag' }
+322 silly mapToRegistry uri https://registry.npmjs.org/monaco-typescript
+323 verbose addNameRange registry:https://registry.npmjs.org/monaco-typescript not in flight; fetching
+324 http 200 https://registry.npmjs.org/monaco-json
+325 verbose headers { server: 'nginx/1.10.1',
+325 verbose headers   'content-type': 'application/json',
+325 verbose headers   'last-modified': 'Fri, 27 Jan 2017 15:02:51 GMT',
+325 verbose headers   etag: 'W/"588b611b-648f"',
+325 verbose headers   'content-encoding': 'gzip',
+325 verbose headers   'cache-control': 'max-age=300',
+325 verbose headers   'content-length': '3415',
+325 verbose headers   'accept-ranges': 'bytes',
+325 verbose headers   date: 'Wed, 24 May 2017 09:17:25 GMT',
+325 verbose headers   via: '1.1 varnish',
+325 verbose headers   age: '0',
+325 verbose headers   connection: 'keep-alive',
+325 verbose headers   'x-served-by': 'cache-hhn1550-HHN',
+325 verbose headers   'x-cache': 'MISS',
+325 verbose headers   'x-cache-hits': '0',
+325 verbose headers   'x-timer': 'S1495617445.022759,VS0,VE124',
+325 verbose headers   vary: 'Accept-Encoding' }
+326 silly get cb [ 200,
+326 silly get   { server: 'nginx/1.10.1',
+326 silly get     'content-type': 'application/json',
+326 silly get     'last-modified': 'Fri, 27 Jan 2017 15:02:51 GMT',
+326 silly get     etag: 'W/"588b611b-648f"',
+326 silly get     'content-encoding': 'gzip',
+326 silly get     'cache-control': 'max-age=300',
+326 silly get     'content-length': '3415',
+326 silly get     'accept-ranges': 'bytes',
+326 silly get     date: 'Wed, 24 May 2017 09:17:25 GMT',
+326 silly get     via: '1.1 varnish',
+326 silly get     age: '0',
+326 silly get     connection: 'keep-alive',
+326 silly get     'x-served-by': 'cache-hhn1550-HHN',
+326 silly get     'x-cache': 'MISS',
+326 silly get     'x-cache-hits': '0',
+326 silly get     'x-timer': 'S1495617445.022759,VS0,VE124',
+326 silly get     vary: 'Accept-Encoding' } ]
+327 verbose get saving monaco-json to /Users/koehnlein/.npm/registry.npmjs.org/monaco-json/.cache.json
+328 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+329 verbose get https://registry.npmjs.org/monaco-editor not expired, no request
+330 silly addNameRange number 2 { name: 'monaco-editor', range: '>=0.8.3 <0.9.0', hasData: true }
+331 silly addNameRange versions [ 'monaco-editor',
+331 silly addNameRange   [ '0.0.1',
+331 silly addNameRange     '0.2.3',
+331 silly addNameRange     '0.2.4',
+331 silly addNameRange     '0.3.1',
+331 silly addNameRange     '0.4.0',
+331 silly addNameRange     '0.5.0',
+331 silly addNameRange     '0.5.1',
+331 silly addNameRange     '0.5.3',
+331 silly addNameRange     '0.6.0',
+331 silly addNameRange     '0.6.1',
+331 silly addNameRange     '0.7.0',
+331 silly addNameRange     '0.8.0',
+331 silly addNameRange     '0.8.1',
+331 silly addNameRange     '0.8.2',
+331 silly addNameRange     '0.8.3' ] ]
+332 silly addNamed monaco-editor@0.8.3
+333 verbose addNamed "0.8.3" is a plain semver version for monaco-editor
+334 verbose get https://registry.npmjs.org/monaco-typescript not expired, no request
+335 silly addNameRange number 2 { name: 'monaco-typescript',
+335 silly addNameRange   range: '>=2.1.2 <3.0.0',
+335 silly addNameRange   hasData: true }
+336 silly addNameRange versions [ 'monaco-typescript',
+336 silly addNameRange   [ '0.0.1',
+336 silly addNameRange     '0.0.2',
+336 silly addNameRange     '0.0.3',
+336 silly addNameRange     '0.0.4',
+336 silly addNameRange     '0.0.5',
+336 silly addNameRange     '0.0.6',
+336 silly addNameRange     '0.1.1',
+336 silly addNameRange     '0.2.0',
+336 silly addNameRange     '0.2.1',
+336 silly addNameRange     '0.5.0',
+336 silly addNameRange     '0.6.0',
+336 silly addNameRange     '0.6.1',
+336 silly addNameRange     '2.0.0',
+336 silly addNameRange     '2.0.1',
+336 silly addNameRange     '2.1.0',
+336 silly addNameRange     '2.1.1',
+336 silly addNameRange     '2.1.2' ] ]
+337 silly addNamed monaco-typescript@2.1.2
+338 verbose addNamed "2.1.2" is a plain semver version for monaco-typescript
+339 verbose afterAdd /Users/koehnlein/.npm/reflect-metadata/0.1.10/package/package.json written
+340 silly mapToRegistry name monaco-typescript
+341 silly mapToRegistry using default registry
+342 silly mapToRegistry registry https://registry.npmjs.org/
+343 silly mapToRegistry data Result {
+343 silly mapToRegistry   raw: 'monaco-typescript',
+343 silly mapToRegistry   scope: null,
+343 silly mapToRegistry   escapedName: 'monaco-typescript',
+343 silly mapToRegistry   name: 'monaco-typescript',
+343 silly mapToRegistry   rawSpec: '',
+343 silly mapToRegistry   spec: 'latest',
+343 silly mapToRegistry   type: 'tag' }
+344 silly mapToRegistry uri https://registry.npmjs.org/monaco-typescript
+345 verbose addRemoteTarball https://registry.npmjs.org/monaco-typescript/-/monaco-typescript-2.1.2.tgz not in flight; adding
+346 verbose addRemoteTarball [ 'https://registry.npmjs.org/monaco-typescript/-/monaco-typescript-2.1.2.tgz',
+346 verbose addRemoteTarball   'baca3f209d11e63e83c89ab00a6c8910106ddc45' ]
+347 silly resolveWithNewModule electron@1.6.8 checking installable status
+348 silly cache add args [ 'electron@^1.6.2', null ]
+349 verbose cache add spec electron@^1.6.2
+350 silly cache add parsed spec Result {
+350 silly cache add   raw: 'electron@^1.6.2',
+350 silly cache add   scope: null,
+350 silly cache add   escapedName: 'electron',
+350 silly cache add   name: 'electron',
+350 silly cache add   rawSpec: '^1.6.2',
+350 silly cache add   spec: '>=1.6.2 <2.0.0',
+350 silly cache add   type: 'range' }
+351 silly addNamed electron@>=1.6.2 <2.0.0
+352 verbose addNamed ">=1.6.2 <2.0.0" is a valid semver range for electron
+353 silly addNameRange { name: 'electron', range: '>=1.6.2 <2.0.0', hasData: false }
+354 silly mapToRegistry name electron
+355 silly mapToRegistry using default registry
+356 silly mapToRegistry registry https://registry.npmjs.org/
+357 silly mapToRegistry data Result {
+357 silly mapToRegistry   raw: 'electron',
+357 silly mapToRegistry   scope: null,
+357 silly mapToRegistry   escapedName: 'electron',
+357 silly mapToRegistry   name: 'electron',
+357 silly mapToRegistry   rawSpec: '',
+357 silly mapToRegistry   spec: 'latest',
+357 silly mapToRegistry   type: 'tag' }
+358 silly mapToRegistry uri https://registry.npmjs.org/electron
+359 verbose addNameRange registry:https://registry.npmjs.org/electron not in flight; fetching
+360 info retry fetch attempt 1 at 11:17:25
+361 info attempt registry request try #1 at 11:17:25
+362 http fetch GET https://registry.npmjs.org/monaco-typescript/-/monaco-typescript-2.1.2.tgz
+363 silly cache afterAdd monaco-editor@0.8.3
+364 verbose afterAdd /Users/koehnlein/.npm/monaco-editor/0.8.3/package/package.json not in flight; writing
+365 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+366 http 304 https://registry.npmjs.org/monaco-editor-core
+367 verbose headers { date: 'Wed, 24 May 2017 09:17:25 GMT',
+367 verbose headers   via: '1.1 varnish',
+367 verbose headers   'cache-control': 'max-age=300',
+367 verbose headers   etag: 'W/"58b6ba43-83ab"',
+367 verbose headers   age: '0',
+367 verbose headers   connection: 'keep-alive',
+367 verbose headers   'x-served-by': 'cache-hhn1536-HHN',
+367 verbose headers   'x-cache': 'MISS',
+367 verbose headers   'x-cache-hits': '0',
+367 verbose headers   'x-timer': 'S1495617445.057283,VS0,VE118',
+367 verbose headers   vary: 'Accept-Encoding' }
+368 silly get cb [ 304,
+368 silly get   { date: 'Wed, 24 May 2017 09:17:25 GMT',
+368 silly get     via: '1.1 varnish',
+368 silly get     'cache-control': 'max-age=300',
+368 silly get     etag: 'W/"58b6ba43-83ab"',
+368 silly get     age: '0',
+368 silly get     connection: 'keep-alive',
+368 silly get     'x-served-by': 'cache-hhn1536-HHN',
+368 silly get     'x-cache': 'MISS',
+368 silly get     'x-cache-hits': '0',
+368 silly get     'x-timer': 'S1495617445.057283,VS0,VE118',
+368 silly get     vary: 'Accept-Encoding' } ]
+369 verbose etag https://registry.npmjs.org/monaco-editor-core from cache
+370 verbose get saving monaco-editor-core to /Users/koehnlein/.npm/registry.npmjs.org/monaco-editor-core/.cache.json
+371 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+372 verbose get https://registry.npmjs.org/electron not expired, no request
+373 silly addNameRange number 2 { name: 'electron', range: '>=1.6.2 <2.0.0', hasData: true }
+374 silly addNameRange versions [ 'electron',
+374 silly addNameRange   [ '0.1.0',
+374 silly addNameRange     '0.1.1',
+374 silly addNameRange     '0.1.2',
+374 silly addNameRange     '0.2.0',
+374 silly addNameRange     '0.2.1',
+374 silly addNameRange     '0.3.0',
+374 silly addNameRange     '0.4.0',
+374 silly addNameRange     '0.4.1',
+374 silly addNameRange     '1.3.1',
+374 silly addNameRange     '1.3.2',
+374 silly addNameRange     '1.3.3',
+374 silly addNameRange     '1.3.4',
+374 silly addNameRange     '1.3.5',
+374 silly addNameRange     '1.3.6',
+374 silly addNameRange     '1.4.0',
+374 silly addNameRange     '1.4.1',
+374 silly addNameRange     '1.3.7',
+374 silly addNameRange     '1.4.2',
+374 silly addNameRange     '1.4.3',
+374 silly addNameRange     '1.4.4',
+374 silly addNameRange     '1.3.8',
+374 silly addNameRange     '1.4.5',
+374 silly addNameRange     '1.4.6',
+374 silly addNameRange     '1.4.7',
+374 silly addNameRange     '1.3.9',
+374 silly addNameRange     '1.3.10',
+374 silly addNameRange     '1.4.8',
+374 silly addNameRange     '1.3.12',
+374 silly addNameRange     '1.4.10',
+374 silly addNameRange     '1.3.13',
+374 silly addNameRange     '1.4.11',
+374 silly addNameRange     '1.4.12',
+374 silly addNameRange     '1.4.13',
+374 silly addNameRange     '1.4.14',
+374 silly addNameRange     '1.4.15',
+374 silly addNameRange     '1.5.0',
+374 silly addNameRange     '1.5.1',
+374 silly addNameRange     '1.6.0',
+374 silly addNameRange     '1.6.1',
+374 silly addNameRange     '1.6.2',
+374 silly addNameRange     '1.6.3',
+374 silly addNameRange     '1.3.14',
+374 silly addNameRange     '1.6.4',
+374 silly addNameRange     '1.6.5',
+374 silly addNameRange     '1.4.16',
+374 silly addNameRange     '1.6.6',
+374 silly addNameRange     '1.6.7',
+374 silly addNameRange     '1.3.15',
+374 silly addNameRange     '1.6.8',
+374 silly addNameRange     '1.6.9',
+374 silly addNameRange     '1.7.0',
+374 silly addNameRange     '1.6.10',
+374 silly addNameRange     '1.7.1' ] ]
+375 silly addNamed electron@1.6.8
+376 verbose addNamed "1.6.8" is a plain semver version for electron
+377 silly resolveWithNewModule monaco-json@1.2.2 checking installable status
+378 silly cache add args [ 'monaco-json@^1.2.2', null ]
+379 verbose cache add spec monaco-json@^1.2.2
+380 silly cache add parsed spec Result {
+380 silly cache add   raw: 'monaco-json@^1.2.2',
+380 silly cache add   scope: null,
+380 silly cache add   escapedName: 'monaco-json',
+380 silly cache add   name: 'monaco-json',
+380 silly cache add   rawSpec: '^1.2.2',
+380 silly cache add   spec: '>=1.2.2 <2.0.0',
+380 silly cache add   type: 'range' }
+381 silly addNamed monaco-json@>=1.2.2 <2.0.0
+382 verbose addNamed ">=1.2.2 <2.0.0" is a valid semver range for monaco-json
+383 silly addNameRange { name: 'monaco-json', range: '>=1.2.2 <2.0.0', hasData: false }
+384 silly mapToRegistry name monaco-json
+385 silly mapToRegistry using default registry
+386 silly mapToRegistry registry https://registry.npmjs.org/
+387 silly mapToRegistry data Result {
+387 silly mapToRegistry   raw: 'monaco-json',
+387 silly mapToRegistry   scope: null,
+387 silly mapToRegistry   escapedName: 'monaco-json',
+387 silly mapToRegistry   name: 'monaco-json',
+387 silly mapToRegistry   rawSpec: '',
+387 silly mapToRegistry   spec: 'latest',
+387 silly mapToRegistry   type: 'tag' }
+388 silly mapToRegistry uri https://registry.npmjs.org/monaco-json
+389 verbose addNameRange registry:https://registry.npmjs.org/monaco-json not in flight; fetching
+390 verbose get https://registry.npmjs.org/monaco-json not expired, no request
+391 silly addNameRange number 2 { name: 'monaco-json', range: '>=1.2.2 <2.0.0', hasData: true }
+392 silly addNameRange versions [ 'monaco-json',
+392 silly addNameRange   [ '1.0.0',
+392 silly addNameRange     '1.0.1',
+392 silly addNameRange     '1.0.2',
+392 silly addNameRange     '1.0.3',
+392 silly addNameRange     '1.0.4-next.1',
+392 silly addNameRange     '1.0.4-next.2',
+392 silly addNameRange     '1.0.5-next.1',
+392 silly addNameRange     '1.0.6',
+392 silly addNameRange     '1.0.7',
+392 silly addNameRange     '1.1.0',
+392 silly addNameRange     '1.1.1',
+392 silly addNameRange     '1.2.0',
+392 silly addNameRange     '1.2.1',
+392 silly addNameRange     '1.2.2' ] ]
+393 silly addNamed monaco-json@1.2.2
+394 verbose addNamed "1.2.2" is a plain semver version for monaco-json
+395 verbose afterAdd /Users/koehnlein/.npm/monaco-editor/0.8.3/package/package.json written
+396 silly mapToRegistry name monaco-json
+397 silly mapToRegistry using default registry
+398 silly mapToRegistry registry https://registry.npmjs.org/
+399 silly mapToRegistry data Result {
+399 silly mapToRegistry   raw: 'monaco-json',
+399 silly mapToRegistry   scope: null,
+399 silly mapToRegistry   escapedName: 'monaco-json',
+399 silly mapToRegistry   name: 'monaco-json',
+399 silly mapToRegistry   rawSpec: '',
+399 silly mapToRegistry   spec: 'latest',
+399 silly mapToRegistry   type: 'tag' }
+400 silly mapToRegistry uri https://registry.npmjs.org/monaco-json
+401 verbose addRemoteTarball https://registry.npmjs.org/monaco-json/-/monaco-json-1.2.2.tgz not in flight; adding
+402 verbose addRemoteTarball [ 'https://registry.npmjs.org/monaco-json/-/monaco-json-1.2.2.tgz',
+402 verbose addRemoteTarball   '2ea1fcf25a985ccd2100044b506fb9a730cef01e' ]
+403 silly cache afterAdd electron@1.6.8
+404 verbose afterAdd /Users/koehnlein/.npm/electron/1.6.8/package/package.json not in flight; writing
+405 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+406 info retry fetch attempt 1 at 11:17:25
+407 info attempt registry request try #1 at 11:17:25
+408 http fetch GET https://registry.npmjs.org/monaco-json/-/monaco-json-1.2.2.tgz
+409 silly resolveWithNewModule monaco-editor-core@0.8.2 checking installable status
+410 silly cache add args [ 'monaco-editor-core@^0.8.2', null ]
+411 verbose cache add spec monaco-editor-core@^0.8.2
+412 silly cache add parsed spec Result {
+412 silly cache add   raw: 'monaco-editor-core@^0.8.2',
+412 silly cache add   scope: null,
+412 silly cache add   escapedName: 'monaco-editor-core',
+412 silly cache add   name: 'monaco-editor-core',
+412 silly cache add   rawSpec: '^0.8.2',
+412 silly cache add   spec: '>=0.8.2 <0.9.0',
+412 silly cache add   type: 'range' }
+413 silly addNamed monaco-editor-core@>=0.8.2 <0.9.0
+414 verbose addNamed ">=0.8.2 <0.9.0" is a valid semver range for monaco-editor-core
+415 silly addNameRange { name: 'monaco-editor-core',
+415 silly addNameRange   range: '>=0.8.2 <0.9.0',
+415 silly addNameRange   hasData: false }
+416 silly mapToRegistry name monaco-editor-core
+417 silly mapToRegistry using default registry
+418 silly mapToRegistry registry https://registry.npmjs.org/
+419 silly mapToRegistry data Result {
+419 silly mapToRegistry   raw: 'monaco-editor-core',
+419 silly mapToRegistry   scope: null,
+419 silly mapToRegistry   escapedName: 'monaco-editor-core',
+419 silly mapToRegistry   name: 'monaco-editor-core',
+419 silly mapToRegistry   rawSpec: '',
+419 silly mapToRegistry   spec: 'latest',
+419 silly mapToRegistry   type: 'tag' }
+420 silly mapToRegistry uri https://registry.npmjs.org/monaco-editor-core
+421 verbose addNameRange registry:https://registry.npmjs.org/monaco-editor-core not in flight; fetching
+422 verbose get https://registry.npmjs.org/monaco-editor-core not expired, no request
+423 silly addNameRange number 2 { name: 'monaco-editor-core',
+423 silly addNameRange   range: '>=0.8.2 <0.9.0',
+423 silly addNameRange   hasData: true }
+424 silly addNameRange versions [ 'monaco-editor-core',
+424 silly addNameRange   [ '0.0.1',
+424 silly addNameRange     '0.2.1',
+424 silly addNameRange     '0.2.2',
+424 silly addNameRange     '0.2.3',
+424 silly addNameRange     '0.3.0',
+424 silly addNameRange     '0.3.1',
+424 silly addNameRange     '0.4.0',
+424 silly addNameRange     '0.4.1',
+424 silly addNameRange     '0.4.2',
+424 silly addNameRange     '0.5.0',
+424 silly addNameRange     '0.5.1',
+424 silly addNameRange     '0.5.2',
+424 silly addNameRange     '0.5.3',
+424 silly addNameRange     '0.6.0',
+424 silly addNameRange     '0.6.1',
+424 silly addNameRange     '0.7.0',
+424 silly addNameRange     '0.7.0-next.2',
+424 silly addNameRange     '0.7.0-next.3',
+424 silly addNameRange     '0.7.0-next.4',
+424 silly addNameRange     '0.7.0-next.5',
+424 silly addNameRange     '0.7.1',
+424 silly addNameRange     '0.7.2',
+424 silly addNameRange     '0.7.3',
+424 silly addNameRange     '0.8.0',
+424 silly addNameRange     '0.8.1',
+424 silly addNameRange     '0.8.2' ] ]
+425 silly addNamed monaco-editor-core@0.8.2
+426 verbose addNamed "0.8.2" is a plain semver version for monaco-editor-core
+427 verbose afterAdd /Users/koehnlein/.npm/electron/1.6.8/package/package.json written
+428 silly cache afterAdd monaco-editor-core@0.8.2
+429 verbose afterAdd /Users/koehnlein/.npm/monaco-editor-core/0.8.2/package/package.json not in flight; writing
+430 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+431 http fetch 200 https://registry.npmjs.org/monaco-languages/-/monaco-languages-0.7.0.tgz
+432 http fetch 200 https://registry.npmjs.org/monaco-css/-/monaco-css-1.3.1.tgz
+433 verbose afterAdd /Users/koehnlein/.npm/monaco-editor-core/0.8.2/package/package.json written
+434 http fetch 200 https://registry.npmjs.org/monaco-html/-/monaco-html-1.2.1.tgz
+435 http fetch 200 https://registry.npmjs.org/monaco-json/-/monaco-json-1.2.2.tgz
+436 http fetch 200 https://registry.npmjs.org/monaco-typescript/-/monaco-typescript-2.1.2.tgz
+437 silly fetchAndShaCheck shasum 52d979986e3008eea312c11c7c9902369b72f2d2
+438 verbose addTmpTarball /var/folders/yp/g9xtd96931b85cmf5lcq7p280000gn/T/npm-74270-bc8a10e0/registry.npmjs.org/monaco-languages/-/monaco-languages-0.7.0.tgz not in flight; adding
+439 verbose addTmpTarball already have metadata; skipping unpack for monaco-languages@0.7.0
+440 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+441 silly cache afterAdd monaco-languages@0.7.0
+442 verbose afterAdd /Users/koehnlein/.npm/monaco-languages/0.7.0/package/package.json not in flight; writing
+443 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+444 silly fetchAndShaCheck shasum 2ea1fcf25a985ccd2100044b506fb9a730cef01e
+445 verbose afterAdd /Users/koehnlein/.npm/monaco-languages/0.7.0/package/package.json written
+446 verbose addTmpTarball /var/folders/yp/g9xtd96931b85cmf5lcq7p280000gn/T/npm-74270-bc8a10e0/registry.npmjs.org/monaco-json/-/monaco-json-1.2.2.tgz not in flight; adding
+447 verbose addTmpTarball already have metadata; skipping unpack for monaco-json@1.2.2
+448 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+449 silly fetchAndShaCheck shasum c0063b5dbddc68c80c4c05928454fe8f06887622
+450 verbose addTmpTarball /var/folders/yp/g9xtd96931b85cmf5lcq7p280000gn/T/npm-74270-bc8a10e0/registry.npmjs.org/monaco-html/-/monaco-html-1.2.1.tgz not in flight; adding
+451 verbose addTmpTarball already have metadata; skipping unpack for monaco-html@1.2.1
+452 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+453 silly cache afterAdd monaco-json@1.2.2
+454 verbose afterAdd /Users/koehnlein/.npm/monaco-json/1.2.2/package/package.json not in flight; writing
+455 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+456 verbose afterAdd /Users/koehnlein/.npm/monaco-json/1.2.2/package/package.json written
+457 silly cache afterAdd monaco-html@1.2.1
+458 verbose afterAdd /Users/koehnlein/.npm/monaco-html/1.2.1/package/package.json not in flight; writing
+459 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+460 verbose afterAdd /Users/koehnlein/.npm/monaco-html/1.2.1/package/package.json written
+461 silly fetchAndShaCheck shasum 7b0cada02d20b62248b30f9256f52701def7b42b
+462 verbose addTmpTarball /var/folders/yp/g9xtd96931b85cmf5lcq7p280000gn/T/npm-74270-bc8a10e0/registry.npmjs.org/monaco-css/-/monaco-css-1.3.1.tgz not in flight; adding
+463 verbose addTmpTarball already have metadata; skipping unpack for monaco-css@1.3.1
+464 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+465 silly cache afterAdd monaco-css@1.3.1
+466 verbose afterAdd /Users/koehnlein/.npm/monaco-css/1.3.1/package/package.json not in flight; writing
+467 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+468 verbose afterAdd /Users/koehnlein/.npm/monaco-css/1.3.1/package/package.json written
+469 silly lifecycle theia-dsl-extension@1.0.0~prepublish: Returned: code: 1  signal: null
+470 info lifecycle theia-dsl-extension@1.0.0~prepublish: Failed to exec prepublish script
+471 error addLocal Could not install /Users/koehnlein/Documents/devel/Ericsson/git/theia-sprotty-example/theia-dsl-extension
+472 warn Local package.json exists, but node_modules missing, did you mean to install?
+473 silly fetchAndShaCheck shasum baca3f209d11e63e83c89ab00a6c8910106ddc45
+474 verbose addTmpTarball /var/folders/yp/g9xtd96931b85cmf5lcq7p280000gn/T/npm-74270-bc8a10e0/registry.npmjs.org/monaco-typescript/-/monaco-typescript-2.1.2.tgz not in flight; adding
+475 verbose addTmpTarball already have metadata; skipping unpack for monaco-typescript@2.1.2
+476 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+477 silly cache afterAdd monaco-typescript@2.1.2
+478 verbose afterAdd /Users/koehnlein/.npm/monaco-typescript/2.1.2/package/package.json not in flight; writing
+479 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+480 verbose afterAdd /Users/koehnlein/.npm/monaco-typescript/2.1.2/package/package.json written
+481 verbose addLocalTarball adding from inside cache /Users/koehnlein/.npm/theia-core/0.0.1-alpha.1/package.tgz
+482 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+483 silly cache afterAdd theia-core@0.0.1-alpha.1
+484 verbose afterAdd /Users/koehnlein/.npm/theia-core/0.0.1-alpha.1/package/package.json not in flight; writing
+485 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+486 verbose afterAdd /Users/koehnlein/.npm/theia-core/0.0.1-alpha.1/package/package.json written
+487 verbose addLocalTarball adding from inside cache /Users/koehnlein/.npm/sprotty/0.1.0/package.tgz
+488 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+489 silly cache afterAdd sprotty@0.1.0
+490 verbose afterAdd /Users/koehnlein/.npm/sprotty/0.1.0/package/package.json not in flight; writing
+491 verbose correctMkdir /Users/koehnlein/.npm correctMkdir not in flight; initializing
+492 verbose afterAdd /Users/koehnlein/.npm/sprotty/0.1.0/package/package.json written
+493 silly rollbackFailedOptional Starting
+494 silly rollbackFailedOptional Finishing
+495 silly runTopLevelLifecycles Finishing
+496 silly install printInstalled
+497 verbose stack Error: theia-dsl-extension@1.0.0 prepublish: `npm run copy-ls && npm run build`
+497 verbose stack Exit status 1
+497 verbose stack     at EventEmitter.<anonymous> (/Users/koehnlein/.nvm/versions/node/v6.9.1/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+497 verbose stack     at emitTwo (events.js:106:13)
+497 verbose stack     at EventEmitter.emit (events.js:191:7)
+497 verbose stack     at ChildProcess.<anonymous> (/Users/koehnlein/.nvm/versions/node/v6.9.1/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+497 verbose stack     at emitTwo (events.js:106:13)
+497 verbose stack     at ChildProcess.emit (events.js:191:7)
+497 verbose stack     at maybeClose (internal/child_process.js:877:16)
+497 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+498 verbose pkgid theia-dsl-extension@1.0.0
+499 verbose cwd /Users/koehnlein/Documents/devel/Ericsson/git/theia-sprotty-example/theia-app
+500 error Darwin 16.5.0
+501 error argv "/Users/koehnlein/.nvm/versions/node/v6.9.1/bin/node" "/Users/koehnlein/.nvm/versions/node/v6.9.1/bin/npm" "install"
+502 error node v6.9.1
+503 error npm  v3.10.8
+504 error code ELIFECYCLE
+505 error theia-dsl-extension@1.0.0 prepublish: `npm run copy-ls && npm run build`
+505 error Exit status 1
+506 error Failed at the theia-dsl-extension@1.0.0 prepublish script 'npm run copy-ls && npm run build'.
+506 error Make sure you have the latest version of node.js and npm installed.
+506 error If you do, this is most likely a problem with the theia-dsl-extension package,
+506 error not with npm itself.
+506 error Tell the author that this fails on your system:
+506 error     npm run copy-ls && npm run build
+506 error You can get information on how to open an issue for this project with:
+506 error     npm bugs theia-dsl-extension
+506 error Or if that isn't available, you can get their info via:
+506 error     npm owner ls theia-dsl-extension
+506 error There is likely additional logging output above.
+507 verbose exit [ 1, true ]

@@ -1,23 +1,32 @@
+import {
+    TheiaDiagramConnector
+} from 'theia-dsl-extension/lib/browser/flow/theia-diagram-server-connector'
+import { RequestModelAction, IActionDispatcher } from 'sprotty/lib/base'
 import { Widget } from "@phosphor/widgets"
 import { Message } from "@phosphor/messaging/lib"
-import runClassDiagram from "../classdiagram/src/standalone"
-import { Container } from "inversify"
-import { TYPES, ActionDispatcher } from "sprotty/lib/base"
+import URI from "theia-core/lib/application/common/uri"
 import { InitializeCanvasBoundsAction } from "sprotty/lib/base/features/initialize-canvas"
+// import { TYPES, ActionDispatcher } from "sprotty/lib/base"
 
 export class DiagramWidget extends Widget {
 
-    private diagramModuleContainer: Container
+    private actionDispatcher: IActionDispatcher // TODO where do I get the actionDispatcher from
 
-    constructor(protected readonly svgContainer: HTMLElement) {
-        super({node: document.createElement('div')})
+    constructor(protected readonly uri: URI,
+                protected readonly diagramConnector: TheiaDiagramConnector) {
+        super()
     }
 
     protected onAfterAttach(msg: Message): void {
         super.onAfterAttach(msg)
-        this.svgContainer.id = this.id + "sprotty"
-        this.node.appendChild(this.svgContainer)
-        this.diagramModuleContainer = runClassDiagram(this.svgContainer.id)
+        const svgContainer = document.createElement("div")
+        svgContainer.id = this.id + "sprotty"
+        this.node.appendChild(svgContainer)
+        const diagramServer = this.diagramConnector.createDiagramServer(this.id)
+
+        diagramServer.handle(new RequestModelAction('flow', 'bla', {
+            resourceId: this.uri.toString()
+        })) 
     }
 
     protected onAfterShow(msg: Message): void {
@@ -37,19 +46,18 @@ export class DiagramWidget extends Widget {
 
     protected onResize(msg: Widget.ResizeMessage): void {
         super.onResize(msg)
-        if(this.diagramModuleContainer !== undefined) {
-            const actiondispatcher = this.diagramModuleContainer.get<ActionDispatcher>(TYPES.IActionDispatcher)
+        if(this.actionDispatcher !== undefined) {
             const newBounds = this.getBoundsInPage(this.node as Element)
-            actiondispatcher.dispatch(new InitializeCanvasBoundsAction(newBounds))
+            this.actionDispatcher.dispatch(new InitializeCanvasBoundsAction(newBounds))
         }
     }
 
     protected onActivateRequest(msg: Message): void {
         super.onActivateRequest(msg)
         // TODO: this must be changed with a more dynamically fetched element id.
-        const svgElement = document.getElementById('graph' + this.svgContainer.id)
-        if (svgElement !== null)
-            svgElement.focus()
+        // const svgElement = document.getElementById('graph' + this.svgContainer.id)
+        // if (svgElement !== null)
+        //     svgElement.focus()
     }
 
     protected onCloseRequest(msg: Message): void {
