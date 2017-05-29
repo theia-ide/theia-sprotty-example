@@ -5,16 +5,16 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { SCompartmentElementSchema, SShapeElement } from 'sprotty/lib/graph';
+import { SCompartmentElementSchema, SShapeElement } from 'sprotty/lib/graph'
 import { SChildElement, SModelElementSchema, SModelRootSchema } from "sprotty/lib/base"
 import { Bounds, Direction } from "sprotty/lib/utils"
 import {
     BoundsAware, boundsFeature, Fadeable, fadeFeature, layoutFeature, Layouting, Selectable,
     selectFeature, viewportFeature, hoverFeedbackFeature, popupFeature
-} from 'sprotty/lib/features';
+} from 'sprotty/lib/features'
 import { ViewportRootElement } from "sprotty/lib/features/viewport/viewport-root"
-import { CORE_DISTANCE, CORE_WIDTH } from "./views";
-import {Hoverable} from "sprotty/lib/features/hover/model";
+import { CORE_DISTANCE, CORE_WIDTH } from "./views"
+import { Hoverable } from "sprotty/lib/features/hover/model"
 
 export interface ProcessorSchema extends SModelRootSchema {
     rows: number
@@ -28,7 +28,7 @@ export class Processor extends ViewportRootElement implements BoundsAware {
     get bounds(): Bounds {
         return {
             x: -3 * CORE_DISTANCE,
-            y: -3 * CORE_DISTANCE, 
+            y: -3 * CORE_DISTANCE,
             width: this.columns * (CORE_WIDTH + CORE_DISTANCE) + 5 * CORE_DISTANCE,
             height: this.rows * (CORE_WIDTH + CORE_DISTANCE) + 5 * CORE_DISTANCE
         }
@@ -60,8 +60,8 @@ export class Core extends SShapeElement implements Selectable, Fadeable, Hoverab
     resizeContainer: boolean = false
 
     hasFeature(feature: symbol): boolean {
-        return feature === selectFeature || feature === fadeFeature || feature === layoutFeature
-            || feature === hoverFeedbackFeature || feature == popupFeature
+        return feature === selectFeature || feature === fadeFeature || feature === layoutFeature
+            || feature === hoverFeedbackFeature || feature === popupFeature
     }
 }
 

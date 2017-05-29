@@ -47,6 +47,5 @@ export default (useWebsocket: boolean) => {
     viewRegistry.register('comp', SCompartmentView)
     viewRegistry.register('html', HtmlRootView)
     viewRegistry.register('pre-rendered', PreRenderedView)
-    
     return container
 }
