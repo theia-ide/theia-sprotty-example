@@ -1,4 +1,5 @@
 import { ILogger } from 'sprotty/lib/utils';
+import { SelectCommand } from 'sprotty/lib/features'
 import { TheiaDiagramConnector } from './theia-diagram-server-connector';
 import {
     ActionHandlerRegistry,
@@ -22,6 +23,11 @@ export class TheiaDiagramServer extends DiagramServer {
                 @inject(TYPES.ILogger) logger: ILogger) {
         super(actionDispatcher, actionHandlerRegistry, viewerOptions, storage, logger)
         //actionDispatcher.dispatch(new SetModelAction(storage.load()))
+    }
+
+    initialize(registry: ActionHandlerRegistry): void {
+        super.initialize(registry)
+        registry.register(SelectCommand.KIND, this)
     }
 
     connect(connector: TheiaDiagramConnector)  {
