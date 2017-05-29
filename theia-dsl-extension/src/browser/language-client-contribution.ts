@@ -6,7 +6,7 @@
  */
 
 import { injectable, inject } from "inversify"
-import { BaseLanguageClientContribution, Workspace, Languages, LanguageClientFactory, ILanguageClient } from "theia-core/lib/languages/browser"
+import { BaseLanguageClientContribution, Workspace, Languages, LanguageClientFactory } from "theia-core/lib/languages/browser"
 
 @injectable()
 export class MultiCoreLanguageClientContribution extends BaseLanguageClientContribution {
@@ -26,10 +26,5 @@ export class MultiCoreLanguageClientContribution extends BaseLanguageClientContr
         return [
             '**/*.multicore'
         ]
-    }
-
-    protected onReady(languageClient: ILanguageClient): void {
-        // handle custom notifications here
-        super.onReady(languageClient)
     }
 }

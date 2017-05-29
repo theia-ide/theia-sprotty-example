@@ -12,9 +12,11 @@ export class TheiaDiagramConnector {
     private servers: TheiaDiagramServer[] = []
     
     constructor(@inject(LanguageClientContribution) private languageClientContribution: MultiCoreLanguageClientContribution) {
-        languageClientContribution.languageClient.then(
-            lc => lc.onNotification(actionMessageType, this.messageReceived.bind(this)
-        ))
+        this.languageClientContribution.languageClient.then(
+            lc => lc.onNotification(actionMessageType, this.messageReceived.bind(this)))
+        .catch(
+            err => console.error(err)
+        )
     }
     
     createDiagramServer(widgetId:string): TheiaDiagramServer {
