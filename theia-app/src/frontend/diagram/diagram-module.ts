@@ -1,5 +1,5 @@
 import { ContainerModule } from 'inversify'
-import {  OpenHandler, FrontendApplicationContribution } from 'theia-core/lib/application/browser'
+import { OpenHandler, FrontendApplicationContribution } from 'theia-core/lib/application/browser'
 import { DiagramManager, DiagramManagerImpl } from "./diagram-manager"
 import { WidgetRegistry } from "./diagram-registry"
 import { DiagramModelSource } from "./diagram-model-source"

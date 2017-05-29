@@ -8,7 +8,7 @@
 import { Direction } from "sprotty/lib/utils"
 import {
     ChannelSchema, CoreSchema, CrossbarSchema, ProcessorSchema
-} from './chipmodel';
+} from './chipmodel'
 import createContainer from "./di.config"
 import { LocalModelSource } from "sprotty/lib/local"
 import { TYPES } from "sprotty/lib/base/types"
@@ -30,11 +30,11 @@ export default function runMulticore() {
                 row: j,
                 kernelNr: Math.round(Math.random() * 11),
                 layout: 'vbox',
-    			resizeContainer: false,
+                resizeContainer: false,
                 children: [{
                     id: 'nr_' + pos,
-				    type: 'label:heading',
-				    text: '' + pos
+                    type: 'label:heading',
+                    text: '' + pos
                 }]
             })
             channels.push(createChannel(i, j, Direction.up))
@@ -101,7 +101,7 @@ export default function runMulticore() {
 
     function changeModel() {
         for (let i = 0; i < processor.children!.length; ++i) {
-            const child = processor.children![i] 
+            const child = processor.children![i]
             if (child.type === 'simplecore' && Math.random() > 0.7) {
                 (child as CoreSchema).kernelNr = Math.round(Math.random() * 11)
             }

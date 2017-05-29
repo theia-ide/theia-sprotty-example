@@ -58,7 +58,7 @@ export default function runClassDiagram(containerId: string) {
             }
         ]
     }
-    const graph: SGraphSchema = { id: 'graph', type: 'graph', children: [node0] }
+    const graph: SGraphSchema = { id: 'graph' + containerId, type: 'graph', children: [node0] }
 
     // Run
     const modelSource = container.get<LocalModelSource>(TYPES.ModelSource)
@@ -87,4 +87,6 @@ export default function runClassDiagram(containerId: string) {
         return undefined
     }
     modelSource.setModel(graph)
+
+    return container
 }
