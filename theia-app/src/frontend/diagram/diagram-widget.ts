@@ -20,7 +20,7 @@ export class DiagramWidget extends Widget {
         this.node.appendChild(svgContainer)
         const diagramServer = this.diagramConnector.createDiagramServer(this.id)
         diagramServer.handle(new RequestModelAction('flow', undefined, {
-            resourceID: this.uri.toString()
+            resourceId: this.uri.toString()
         })) 
     }
 
