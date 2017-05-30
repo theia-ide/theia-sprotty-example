@@ -1,3 +1,4 @@
+import { TextDocumentPositionParams } from 'vscode-base-languageclient/lib/services';
 import { DiagramContainerRegistry } from './diagram-container-registry';
 import { MultiCoreLanguageClientContribution } from './language-client-contribution';
 import { TYPES } from 'sprotty/lib/base';
@@ -5,6 +6,9 @@ import { TheiaDiagramServer } from './theia-diagram-server';
 import { NotificationType } from 'vscode-jsonrpc/lib/messages';
 import { LanguageClientContribution } from 'theia-core/lib/languages/browser';
 import { injectable, inject } from "inversify"
+
+const actionMessageType = new NotificationType<string, void>('diagram/onAction')
+const textPositionMessageType = new NotificationType<TextDocumentPositionParams, void>('diagram/update')
 
 @injectable()
 export class TheiaDiagramConnector {
@@ -32,6 +36,10 @@ export class TheiaDiagramConnector {
         this.languageClientContribution.languageClient.then(lc => lc.sendNotification(actionMessageType, message))
     }
 
+    sendTextPosition(params: TextDocumentPositionParams) {
+        this.languageClientContribution.languageClient.then(lc => lc.sendNotification(textPositionMessageType, params))
+    }
+
     messageReceived(message: string) {
         this.servers.forEach(element => {
             element.messageReceived(message)
@@ -39,4 +47,3 @@ export class TheiaDiagramConnector {
     }
 }
 
-const actionMessageType = new NotificationType<string, void>('diagram/onAction')

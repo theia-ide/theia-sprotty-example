@@ -8,6 +8,7 @@ package io.typefox.sprotty.example.multicore.ide
 
 import io.typefox.sprotty.example.multicore.ide.diagram.DiagramLanguageServerImpl
 import org.eclipse.xtext.ide.server.ILanguageServerExtension
+import org.eclipse.xtext.ide.server.occurrences.IDocumentHighlightService
 
 /**
  * Use this class to register ide components.
@@ -18,4 +19,7 @@ class MulticoreAllocationIdeModule extends AbstractMulticoreAllocationIdeModule 
 		DiagramLanguageServerImpl
 	}
 
+	def Class<? extends IDocumentHighlightService> bindIDocumentHighlightService() {
+		MulticoreDocumentHighlightService
+	}
 }

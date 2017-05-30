@@ -6,7 +6,6 @@ import { Widget } from "@phosphor/widgets"
 import { Message } from "@phosphor/messaging/lib"
 import URI from "theia-core/lib/application/common/uri"
 import { InitializeCanvasBoundsAction } from "sprotty/lib/base/features/initialize-canvas"
-// import { TYPES, ActionDispatcher } from "sprotty/lib/base"
 
 export class DiagramWidget extends Widget {
 
@@ -32,7 +31,6 @@ export class DiagramWidget extends Widget {
 
     protected onAfterShow(msg: Message): void {
         super.onAfterShow(msg)
-
     }
 
     protected getBoundsInPage(element: Element) {

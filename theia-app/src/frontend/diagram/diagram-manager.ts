@@ -1,3 +1,5 @@
+import { TextDocumentPositionParams } from 'vscode-base-languageclient/lib/services';
+import { TextEditorSelection } from 'theia-core/lib/editor/browser';
 import {
     TheiaDiagramConnector
 } from 'theia-dsl-extension/lib/browser/theia-diagram-server-connector';
@@ -37,6 +39,19 @@ export abstract class DiagramManagerImpl implements DiagramManager {
 
     onStart(app: FrontendApplication): void {
         this._resolveApp(app)
+        this.selectionService.onSelectionChanged((e: any) => this.onSelectionChanged(e))
+    }
+
+    onSelectionChanged(e: any) {
+        if(TextEditorSelection.is(e) && e.cursor !== undefined) {
+            const params: TextDocumentPositionParams = {
+                textDocument: {
+                    uri: e.uri.toString()
+                },
+                position: e.cursor
+            }
+            this.diagramConnector.sendTextPosition(params)
+        }
     }
 
     canHandle(uri: URI, options?: OpenerOptions | undefined): number {
@@ -44,18 +59,16 @@ export abstract class DiagramManagerImpl implements DiagramManager {
     }
 
     open(uri: URI, input?: OpenerOptions): Promise<DiagramWidget> {
-        const promiseDiagramWidget = this.getOrCreateEditor(uri)
+        const promiseDiagramWidget = this.getOrCreateDiagramWidget(uri)
         promiseDiagramWidget.then((diagramWidget) => {
             this.resolveApp.then(app =>
                 app.shell.activateMain(diagramWidget.id)
             )
         })
-
-
         return promiseDiagramWidget
     }
 
-    protected getOrCreateEditor(uri: URI): Promise<DiagramWidget> {
+    protected getOrCreateDiagramWidget(uri: URI): Promise<DiagramWidget> {
         return this.resolveApp.then(app => {
             const widget = this.widgetRegistry.getWidget(uri, this.diagramType)
             if (widget !== undefined) {
