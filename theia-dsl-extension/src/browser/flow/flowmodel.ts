@@ -34,7 +34,7 @@ export interface BarrierNodeSchema extends SNodeSchema {
 
 export class BarrierNode extends SNode implements BarrierNodeSchema {
     name: string = ''
-    bounds: Bounds = {x: 0, y: 0, width: 50, height: 20}
+    bounds: Bounds = { x: 0, y: 0, width: 50, height: 20 }
 
     hasFeature(feature: symbol): boolean {
         if (feature === moveFeature)
