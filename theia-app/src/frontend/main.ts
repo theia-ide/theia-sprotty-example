@@ -22,6 +22,7 @@ import "theia-core/src/navigator/browser/style/index.css";
 import "theia-core/src/terminal/browser/terminal.css";
 import "../../../theia-dsl-extension/src/browser/flow/css/diagram.css"
 import "../../../theia-dsl-extension/src/browser/flow/css/page.css"
+import "sprotty/src/styles/sprotty.css"
 
 // terminal extension
 import terminalFrontendModule from 'theia-core/lib/terminal/browser/terminal-frontend-module';
