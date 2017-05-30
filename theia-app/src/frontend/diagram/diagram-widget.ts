@@ -22,9 +22,9 @@ export class DiagramWidget extends Widget {
         const svgContainer = document.createElement("div")
         svgContainer.id = this.id + "sprotty"
         this.node.appendChild(svgContainer)
-        const diagramServer = this.diagramConnector.createDiagramServer(this.id)
+        const diagramServer = this.diagramConnector.createDiagramServer(svgContainer.id)
 
-        diagramServer.handle(new RequestModelAction('flow', 'bla', {
+        diagramServer.handle(new RequestModelAction('flow', undefined, {
             resourceId: this.uri.toString()
         })) 
     }
@@ -55,9 +55,9 @@ export class DiagramWidget extends Widget {
     protected onActivateRequest(msg: Message): void {
         super.onActivateRequest(msg)
         // TODO: this must be changed with a more dynamically fetched element id.
-        // const svgElement = document.getElementById('graph' + this.svgContainer.id)
-        // if (svgElement !== null)
-        //     svgElement.focus()
+        const svgElement = document.getElementById('flow')
+        if (svgElement !== null)
+            svgElement.focus()
     }
 
     protected onCloseRequest(msg: Message): void {
