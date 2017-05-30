@@ -10,11 +10,10 @@ import { Container, ContainerModule } from "inversify"
 import { defaultModule, TYPES, ViewRegistry, overrideViewerOptions } from "sprotty/lib/base"
 import { ChipModelFactory } from "./chipmodel-factory"
 import { ConsoleLogger, LogLevel } from "sprotty/lib/utils"
-import { WebSocketDiagramServer } from "sprotty/lib/remote"
 import { boundsModule, selectModule, viewportModule, moveModule, fadeModule, hoverModule } from "sprotty/lib/features"
 import { ProcessorView, CoreView, CrossbarView, ChannelView, SimpleCoreView } from "./views"
-import { LocalModelSource } from "sprotty/lib/local/local-model-source"
 import { HtmlRootView, PreRenderedView } from "sprotty/lib/lib"
+import { TheiaDiagramServer } from '../theia-diagram-server';
 
 const multicoreModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
@@ -22,15 +21,13 @@ const multicoreModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.IModelFactory).to(ChipModelFactory).inSingletonScope()
 })
 
-export default (useWebsocket: boolean) => {
+export default (widgetId: string) => {
     const container = new Container()
     container.load(defaultModule, boundsModule, selectModule, moveModule, viewportModule, fadeModule, multicoreModule, hoverModule)
-    if (useWebsocket)
-        container.bind(TYPES.ModelSource).to(WebSocketDiagramServer).inSingletonScope()
-    else
-        container.bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope()
+    container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
+
     overrideViewerOptions(container, {
-        baseDiv: 'sprotty-cores',
+        baseDiv: widgetId,
         popupDiv: 'sprotty-popup-cores',
         boundsComputation: 'fixed'
     })

@@ -15,7 +15,7 @@ import selectModule from "sprotty/lib/features/select/di.config"
 import { SGraphView } from "sprotty/lib/graph"
 import { TaskNodeView, BarrierNodeView, FlowEdgeView } from "./views"
 import { HtmlRootView, PreRenderedView } from "sprotty/lib/lib"
-import { TheiaDiagramServer } from './theia-diagram-server';
+import { TheiaDiagramServer } from '../theia-diagram-server';
 
 const flowModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()

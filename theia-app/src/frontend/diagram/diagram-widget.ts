@@ -1,6 +1,6 @@
 import {
     TheiaDiagramConnector
-} from 'theia-dsl-extension/lib/browser/flow/theia-diagram-server-connector'
+} from 'theia-dsl-extension/lib/browser/theia-diagram-server-connector'
 import { RequestModelAction, IActionDispatcher } from 'sprotty/lib/base'
 import { Widget } from "@phosphor/widgets"
 import { Message } from "@phosphor/messaging/lib"
@@ -13,6 +13,7 @@ export class DiagramWidget extends Widget {
     private actionDispatcher: IActionDispatcher // TODO where do I get the actionDispatcher from
 
     constructor(protected readonly uri: URI,
+                protected readonly diagramType: string,
                 protected readonly diagramConnector: TheiaDiagramConnector) {
         super()
     }
@@ -22,9 +23,9 @@ export class DiagramWidget extends Widget {
         const svgContainer = document.createElement("div")
         svgContainer.id = this.id + "sprotty"
         this.node.appendChild(svgContainer)
-        const diagramServer = this.diagramConnector.createDiagramServer(svgContainer.id)
+        const diagramServer = this.diagramConnector.createDiagramServer(svgContainer.id, this.diagramType)
         this.actionDispatcher = diagramServer.actionDispatcher
-        diagramServer.handle(new RequestModelAction('flow', undefined, {
+        diagramServer.handle(new RequestModelAction(this.diagramType, undefined, {
             resourceId: this.uri.toString()
         })) 
     }

@@ -1,3 +1,4 @@
+import { DiagramContainerRegistry } from './diagram-container-registry';
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
@@ -97,5 +98,6 @@ export default new ContainerModule(bind => {
             ],
         },
     });
-    bind(LanguageClientContribution).to(MultiCoreLanguageClientContribution).inSingletonScope();
+    bind(LanguageClientContribution).to(MultiCoreLanguageClientContribution).inSingletonScope()
+    bind(DiagramContainerRegistry).to(DiagramContainerRegistry).inSingletonScope()
 });
