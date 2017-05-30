@@ -16,7 +16,7 @@ export class TheiaDiagramServer extends DiagramServer {
 
     protected connector: TheiaDiagramConnector
 
-    constructor(@inject(TYPES.IActionDispatcher) actionDispatcher: IActionDispatcher,
+    constructor(@inject(TYPES.IActionDispatcher) public actionDispatcher: IActionDispatcher,
                 @inject(TYPES.ActionHandlerRegistry) actionHandlerRegistry: ActionHandlerRegistry,
                 @inject(TYPES.ViewerOptions) viewerOptions: ViewerOptions,
                 @inject(TYPES.SModelStorage) storage: SModelStorage,
