@@ -1,6 +1,7 @@
 .core {
-    stroke: #666;
-    stroke-width: 1;
+    stroke: #aaa;
+    fill: #aaa;
+    stroke-width: 0;
     rx: 4;
     ry: 4;
     line-height: 1px;
@@ -8,12 +9,12 @@
 
 .crossbar {
     fill: #aaa;
-    stroke: #333;
+    stroke: #aaa;
     stroke-width: 0;
 }
 
 .channel {
-    stroke: #666;
+    stroke: #aaa;
     stroke-width: 1;
 }
 

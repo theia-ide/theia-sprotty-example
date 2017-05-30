@@ -139,7 +139,7 @@ class KernelColor {
 
     static getSVG(index: number): string {
         if(index < 0)
-            return toSVG({red: 150, green:150, blue: 150})
+            return toSVG({red: 170, green:170, blue: 170})
         else
             return toSVG(KernelColor.colorMap[index % KernelColor.colorMap.length])
     }

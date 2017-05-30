@@ -1,5 +1,6 @@
 .node {
-    stroke: #444;
+    stroke: #aaa;
+    fill: #aaa;
     stroke-width: 1;
 }
 
@@ -15,17 +16,18 @@
 }
 
 .barrier {
+    stroke-width: 0;
     fill: #f4daa6;
 }
 
 .edge {
     fill: none;
-    stroke: #222;
+    stroke: #aaa;
     stroke-width: 1;
 }
 
 .edge.arrow {
-    fill: #888;
+    fill: #aaa;
 }
 
 .text {
