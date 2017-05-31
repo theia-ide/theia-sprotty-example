@@ -48,6 +48,7 @@ import org.eclipse.xtext.ide.server.ILanguageServerAccess
 import org.eclipse.xtext.resource.ILocationInFileProvider
 
 import static io.typefox.sprotty.layout.ElkLayoutEngine.*
+import org.eclipse.xtext.resource.XtextResource
 
 class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 	
@@ -68,6 +69,8 @@ class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 	
 	@Inject extension ILocationInFileProvider  
 
+	@Inject DiagramService diagramService
+	  
 	ILayoutEngine layoutEngine
 	
 	@Accessors(PUBLIC_GETTER)
@@ -88,6 +91,13 @@ class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 	
 	override protected getModel(ModelAction action, String clientId) {
 		modelProvider.getModel(resourceId, action.modelType)
+		?: {
+			languageServerAccess.doRead(resourceId) [ context |
+				diagramService.compute(context.resource as XtextResource, context.cancelChecker)
+				return null
+			] 
+			null
+		}
 	}
 	
 	override protected needsServerLayout(SModelRoot root) {
