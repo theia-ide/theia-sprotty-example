@@ -51,6 +51,7 @@ import { diagramModule } from "./diagram/diagram-module"
     // terminal extension
     container.load(terminalFrontendModule)
 
+    // sprotty example
     container.load(multiCoreFrontendExtension)
     container.load(diagramModule)
 

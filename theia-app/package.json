@@ -22,7 +22,7 @@
     "build:frontend": "webpack && cp src/frontend/index.html lib/frontend",
     "lint": "tslint -c ../tslint.json --project ./tsconfig.json",
     "start": "concurrently --names watch-deps,backend,webpack-server --prefix \"[{name}]\" \"npm run start:backend\" \"npm run start:frontend\"",
-    "start:backend": "node ./lib/backend/main.js --root-dir=/Users/koehnlein/mycode",
+    "start:backend": "node ./lib/backend/main.js --root-dir=../workspace",
     "start:frontend": "webpack-dev-server --open",
     "cold:start": "npm run clean && npm run build && npm start",
     "watch:backend": "tsc --watch",
