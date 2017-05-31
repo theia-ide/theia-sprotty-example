@@ -53,7 +53,7 @@ class DiagramLanguageServerImpl implements ILanguageServerExtension, IBuildListe
 	@JsonNotification
 	override void onAction(String jsonMessage) {
 		try {
-			val message = gson.fromJson(jsonMessage.unescape, ActionMessage)
+			val message = gson.fromJson(jsonMessage, ActionMessage)
 			val server = servers.computeIfAbsent(message.clientId) [
 				createDiagramServer
 			]
@@ -63,13 +63,6 @@ class DiagramLanguageServerImpl implements ILanguageServerExtension, IBuildListe
 		}
 	}
 	
-	private def unescape(String message) {
-		if(message.startsWith('"') && message.endsWith('"'))
-			gson.fromJson(message, String)
-		else
-			message
-	}
-
 	protected def MulticoreAllocationDiagramServer createDiagramServer() {
 		val diagramServer = diagramServerProvider.get();
 		diagramService.addServer(diagramServer)

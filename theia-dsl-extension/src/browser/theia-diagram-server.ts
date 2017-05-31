@@ -35,7 +35,7 @@ export class TheiaDiagramServer extends DiagramServer {
     }
 
     sendMessage(message: string) {
-        this.connector.sendMessage(JSON.stringify(message))
+        this.connector.sendMessage(message)
     }
 
     messageReceived(message: string) {
