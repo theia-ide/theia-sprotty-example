@@ -31,7 +31,7 @@ const m0 = Symbol('Manager0')
 const m1 = Symbol('Manager1')
 
 describe('inversify', () => {
-    it('sucks', ()=> {
+    it('error', ()=> {
         const module = new ContainerModule(bind => {
             bind(Connector).to(Connector).inSingletonScope()
             bind(Manager0).to(Manager0).inSingletonScope()

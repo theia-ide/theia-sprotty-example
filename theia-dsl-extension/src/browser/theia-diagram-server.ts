@@ -22,7 +22,6 @@ export class TheiaDiagramServer extends DiagramServer {
                 @inject(TYPES.SModelStorage) storage: SModelStorage,
                 @inject(TYPES.ILogger) logger: ILogger) {
         super(actionDispatcher, actionHandlerRegistry, viewerOptions, storage, logger)
-        //actionDispatcher.dispatch(new SetModelAction(storage.load()))
     }
 
     initialize(registry: ActionHandlerRegistry): void {
