@@ -7,7 +7,6 @@
 package io.typefox.sprotty.example.multicore.ide.diagram
 
 import com.google.inject.Inject
-import com.google.inject.Provider
 import io.typefox.sprotty.api.ActionMessage
 import io.typefox.sprotty.server.json.ActionTypeAdapter
 import java.util.List
@@ -26,7 +25,7 @@ class DiagramLanguageServerImpl implements ILanguageServerExtension, IBuildListe
 
 	@Inject extension UriExtensions
 	@Inject extension DiagramService diagramService
-	@Inject Provider<MulticoreAllocationDiagramServer> diagramServerProvider
+	@Inject MulticoreAllocationDiagramServer.Factory diagramServerFactory
 
 	DiagramLanguageClient _client
 
@@ -64,7 +63,7 @@ class DiagramLanguageServerImpl implements ILanguageServerExtension, IBuildListe
 	}
 	
 	protected def MulticoreAllocationDiagramServer createDiagramServer() {
-		val diagramServer = diagramServerProvider.get();
+		val diagramServer = diagramServerFactory.create(access, getClient)
 		diagramService.addServer(diagramServer)
 		diagramServer.remoteEndpoint = [ message |
 			val client = client

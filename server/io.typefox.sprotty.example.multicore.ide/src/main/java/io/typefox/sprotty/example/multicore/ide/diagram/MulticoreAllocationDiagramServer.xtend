@@ -9,6 +9,7 @@ package io.typefox.sprotty.example.multicore.ide.diagram
 import com.google.common.collect.HashMultimap
 import com.google.common.collect.Multimap
 import com.google.inject.Inject
+import com.google.inject.Provider
 import io.typefox.sprotty.api.AbstractDiagramServer
 import io.typefox.sprotty.api.ActionMessage
 import io.typefox.sprotty.api.Bounds
@@ -21,6 +22,7 @@ import io.typefox.sprotty.api.RequestModelAction
 import io.typefox.sprotty.api.RequestPopupModelAction
 import io.typefox.sprotty.api.SGraph
 import io.typefox.sprotty.api.SModelElement
+import io.typefox.sprotty.api.SModelIndex
 import io.typefox.sprotty.api.SModelRoot
 import io.typefox.sprotty.api.SelectAction
 import io.typefox.sprotty.example.multicore.multicoreAllocation.Barrier
@@ -39,23 +41,43 @@ import org.eclipse.elk.core.options.CoreOptions
 import org.eclipse.elk.core.options.Direction
 import org.eclipse.elk.core.options.PortConstraints
 import org.eclipse.elk.core.options.SizeConstraint
+import org.eclipse.lsp4j.Location
+import org.eclipse.lsp4j.Range
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtext.ide.server.ILanguageServerAccess
+import org.eclipse.xtext.resource.ILocationInFileProvider
 
 import static io.typefox.sprotty.layout.ElkLayoutEngine.*
 
 class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 	
+	public static class Factory {
+		@Inject Provider<MulticoreAllocationDiagramServer> provider
+		
+		def create(ILanguageServerAccess languageServerAccess, DiagramLanguageClient diagramLanguageClient) {
+			val server = provider.get()
+			server.languageServerAccess = languageServerAccess
+			server.diagramLanguageClient = diagramLanguageClient
+			return server
+		}
+	}
+	
 	static val LOG = Logger.getLogger(MulticoreAllocationDiagramServer)
 	
 	@Inject ModelProvider modelProvider
 	
+	@Inject extension ILocationInFileProvider  
+
 	ILayoutEngine layoutEngine
 	
 	@Accessors(PUBLIC_GETTER)
 	String resourceId
 	
+	@Accessors(PUBLIC_GETTER, PROTECTED_SETTER) ILanguageServerAccess languageServerAccess
+	@Accessors(PUBLIC_GETTER, PROTECTED_SETTER) DiagramLanguageClient diagramLanguageClient
+
 	val Multimap<String, String> type2Clients = HashMultimap.create()
-	
+
 	def notifyClients(SModelRoot newRoot, SModelRoot oldRoot) {
 		if (remoteEndpoint !== null) {
 			for (client : type2Clients.get(newRoot.type)) {
@@ -248,8 +270,36 @@ class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 	}
 	
 	override protected handle(SelectAction action, ActionMessage message) {
+		if(diagramLanguageClient !== null) {
+			if(action.selectedElementsIDs?.length === 1 && !action.deselectAll) { 
+				val location = getLocationInTextEditor(action.selectedElementsIDs.head, 'flow')
+					?: getLocationInTextEditor(action.selectedElementsIDs.head, 'processor')
+				if(location !== null) 
+					diagramLanguageClient.openInTextEditor(location)
+			}
+				
+		}
 		LOG.info('element selected = ' + action)
 	}
 	
+	protected def Location getLocationInTextEditor(String sElementID, String modelType) {
+		val model = modelProvider.getModel(resourceId, modelType)
+		if(model !== null) {
+			val index = new SModelIndex(model)
+			val sElement = index.get(sElementID)
+			if(sElement !== null) {
+				val mapping = modelProvider.getMapping(resourceId, modelType)
+				val element = mapping.inverse.get(sElement)
+				if(element !== null) {
+					val nameRegion = element.getSignificantTextRegion()
+					return languageServerAccess.doRead(resourceId) [ context |
+						val start = context.document.getPosition(nameRegion.offset)
+						val end = context.document.getPosition(nameRegion.offset + nameRegion.length)
+						new Location(resourceId, new Range(start, end))
+					].get
+				}
+			}
+		}
+		return null
+	}
 }
-			
