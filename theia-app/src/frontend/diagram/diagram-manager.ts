@@ -22,13 +22,10 @@ export abstract class DiagramManagerImpl implements DiagramManager {
     @inject(SelectionService) protected readonly selectionService: SelectionService
     
     abstract get diagramType(): string
+    abstract iconClass: string
 
     get id() {
         return this.diagramType + "-diagram-opener"
-    }
-
-    get label() {
-        return this.diagramType + "Diagram"
     }
 
     private _resolveApp: (app: FrontendApplication) => void
@@ -77,6 +74,7 @@ export abstract class DiagramManagerImpl implements DiagramManager {
             const newWidget = new DiagramWidget(uri, this.diagramType, this.diagramConnector)
             newWidget.title.closable = true
             newWidget.title.label = uri.lastSegment
+            newWidget.title.icon = this.iconClass
             this.widgetRegistry.addWidget(uri, this.diagramType, newWidget)
             newWidget.disposed.connect(() =>
                 this.widgetRegistry.removeWidget(uri, this.diagramType)
@@ -90,9 +88,19 @@ export abstract class DiagramManagerImpl implements DiagramManager {
 @injectable() 
 export class FlowDiagramManager extends DiagramManagerImpl {
     readonly diagramType = 'flow'
+    readonly iconClass = 'fa fa-long-arrow-down'
+
+    get label() {
+        return 'Flowdiagram'
+    }
 }
 
 @injectable() 
 export class ProcessorDiagramManager extends DiagramManagerImpl {
     readonly diagramType = 'processor'
+    readonly iconClass = 'fa fa-microchip'
+
+    get label() {
+        return 'Processordiagram'
+    }
 }

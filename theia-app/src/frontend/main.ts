@@ -21,7 +21,8 @@ import "theia-core/src/monaco/browser/style/index.css";
 import "theia-core/src/navigator/browser/style/index.css";
 import "theia-core/src/terminal/browser/terminal.css";
 import "../../../theia-dsl-extension/src/browser/flow/css/diagram.css"
-import "../../../theia-dsl-extension/src/browser/flow/css/page.css"
+import "../../../theia-dsl-extension/src/browser/css/page.css"
+import "../../../theia-dsl-extension/src/browser/css/theia.css"
 import "../../../theia-dsl-extension/src/browser/processor/css/diagram.css"
 import "sprotty/src/styles/sprotty.css"
 
