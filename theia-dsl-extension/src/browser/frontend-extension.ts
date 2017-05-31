@@ -1,4 +1,3 @@
-import { DiagramContainerRegistry } from './diagram-container-registry'
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
@@ -6,6 +5,7 @@ import { DiagramContainerRegistry } from './diagram-container-registry'
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
+import { DiagramContainerRegistry } from './diagram-container-registry'
 import { ContainerModule } from "inversify"
 import { LanguageClientContribution } from "theia-core/lib/languages/browser"
 import { MultiCoreLanguageClientContribution } from "./language-client-contribution"
