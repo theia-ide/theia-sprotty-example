@@ -26,8 +26,7 @@
     "start:frontend": "webpack-dev-server --open",
     "cold:start": "npm run clean && npm run build && npm start",
     "watch:backend": "tsc --watch",
-    "watch:frontend": "npm run build:frontend && webpack --watch",
-    "test": "mocha --opts ./mocha.opts"
+    "watch:frontend": "npm run build:frontend && webpack --watch"
   },
   "devDependencies": {
     "circular-dependency-plugin": "^3.0.0",
@@ -47,11 +46,6 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.1",
-    "webpack-merge": "^4.1.0",
-    "@types/chai": "^3.4.35",
-    "@types/mocha": "^2.2.40",
-    "@types/node": "^7.0.10",
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "webpack-merge": "^4.1.0"
   }
 }

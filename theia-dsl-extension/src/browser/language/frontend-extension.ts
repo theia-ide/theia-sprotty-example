@@ -5,10 +5,15 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { DiagramContainerRegistry } from './diagram-container-registry'
 import { ContainerModule } from "inversify"
 import { LanguageClientContribution } from "theia-core/lib/languages/browser"
 import { MultiCoreLanguageClientContribution } from "./language-client-contribution"
+import { FlowDiagramManager } from "../flow/flow-diagram-manager"
+import { ProcessorDiagramManager } from "../processor/processor-diagram-manager"
+import { DiagramConfiguration } from "../diagram/diagram-configuration"
+import { FrontendApplicationContribution, OpenHandler } from 'theia-core/lib/application/browser'
+import flowConfiguration from "../flow/di.config"
+import processorConfiguration from "../processor/di.config"
 
 export default new ContainerModule(bind => {
     monaco.languages.register({
@@ -99,5 +104,12 @@ export default new ContainerModule(bind => {
         },
     })
     bind(LanguageClientContribution).to(MultiCoreLanguageClientContribution).inSingletonScope()
-    bind(DiagramContainerRegistry).to(DiagramContainerRegistry).inSingletonScope()
+    bind(DiagramConfiguration).toConstantValue(flowConfiguration)
+    bind(DiagramConfiguration).toConstantValue(processorConfiguration)
+    bind(FlowDiagramManager).toSelf().inSingletonScope()
+    bind(ProcessorDiagramManager).toSelf().inSingletonScope()
+    bind(FrontendApplicationContribution).toDynamicValue(context => context.container.get(FlowDiagramManager))
+    bind(OpenHandler).toDynamicValue(context => context.container.get(FlowDiagramManager))
+    bind(FrontendApplicationContribution).toDynamicValue(context => context.container.get(ProcessorDiagramManager))
+    bind(OpenHandler).toDynamicValue(context => context.container.get(ProcessorDiagramManager))
 })

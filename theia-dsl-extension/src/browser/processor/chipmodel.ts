@@ -14,7 +14,7 @@ import {
 } from 'sprotty/lib/features'
 import { ViewportRootElement } from "sprotty/lib/features/viewport/viewport-root"
 import { CORE_DISTANCE, CORE_WIDTH } from "./views"
-import {Hoverable} from "sprotty/lib/features/hover/model"
+import { Hoverable } from "sprotty/lib/features/hover/model"
 
 export interface ProcessorSchema extends SModelRootSchema {
     rows: number

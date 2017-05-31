@@ -7,7 +7,7 @@
 
 import { ILogger } from 'sprotty/lib/utils'
 import { SelectCommand } from 'sprotty/lib/features'
-import { TheiaDiagramConnector } from './theia-diagram-server-connector'
+import { TheiaDiagramServerConnector } from './theia-diagram-server-connector'
 import {
     ActionHandlerRegistry,
     IActionDispatcher,
@@ -21,7 +21,7 @@ import { injectable, inject } from "inversify"
 @injectable()
 export class TheiaDiagramServer extends DiagramServer {
 
-    protected connector: TheiaDiagramConnector
+    protected connector: TheiaDiagramServerConnector
 
     constructor(@inject(TYPES.IActionDispatcher) public actionDispatcher: IActionDispatcher,
                 @inject(TYPES.ActionHandlerRegistry) actionHandlerRegistry: ActionHandlerRegistry,
@@ -36,7 +36,7 @@ export class TheiaDiagramServer extends DiagramServer {
         registry.register(SelectCommand.KIND, this)
     }
 
-    connect(connector: TheiaDiagramConnector)  {
+    connect(connector: TheiaDiagramServerConnector)  {
         this.connector = connector
     }
 

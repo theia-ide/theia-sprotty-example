@@ -16,7 +16,6 @@ import { Direction } from "sprotty/lib//utils"
 import { CORE_WIDTH, CORE_DISTANCE } from "./views"
 import { HtmlRootSchema, PreRenderedElementSchema, PreRenderedElement, HtmlRoot } from "sprotty/lib/lib"
 
-
 export class ChipModelFactory extends SGraphFactory {
 
     createElement(schema: SModelElementSchema, parent?: SParentElement): SChildElement {

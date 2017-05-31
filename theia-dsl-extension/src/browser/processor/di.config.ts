@@ -13,7 +13,8 @@ import { ConsoleLogger, LogLevel } from "sprotty/lib/utils"
 import { boundsModule, selectModule, viewportModule, moveModule, fadeModule, hoverModule } from "sprotty/lib/features"
 import { ProcessorView, CoreView, CrossbarView, ChannelView, SimpleCoreView } from "./views"
 import { HtmlRootView, PreRenderedView } from "sprotty/lib/lib"
-import { TheiaDiagramServer } from '../theia-diagram-server'
+import { TheiaDiagramServer } from '../diagram/theia-diagram-server'
+import { DiagramConfiguration } from '../diagram/diagram-configuration'
 
 const multicoreModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
@@ -21,30 +22,33 @@ const multicoreModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.IModelFactory).to(ChipModelFactory).inSingletonScope()
 })
 
-export default (widgetId: string) => {
-    const container = new Container()
-    container.load(defaultModule, boundsModule, selectModule, moveModule, viewportModule, fadeModule, multicoreModule, hoverModule)
-    container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
+export default {
+    diagramType: 'processor',
+    factory: (widgetId: string) => {
+        const container = new Container()
+        container.load(defaultModule, boundsModule, selectModule, moveModule, viewportModule, fadeModule, multicoreModule, hoverModule)
+        container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
 
-    overrideViewerOptions(container, {
-        baseDiv: widgetId,
-        hiddenDiv: 'sprotty-hidden-cores',
-        popupDiv: 'sprotty-popup-cores',
-        boundsComputation: 'fixed'
-    })
+        overrideViewerOptions(container, {
+            baseDiv: widgetId,
+            hiddenDiv: 'sprotty-hidden-cores',
+            popupDiv: 'sprotty-popup-cores',
+            boundsComputation: 'fixed'
+        })
 
-    // Register views
-    const viewRegistry = container.get<ViewRegistry>(TYPES.ViewRegistry)
-    viewRegistry.register('processor', ProcessorView)
-    viewRegistry.register('core', CoreView)
-    viewRegistry.register('simplecore', SimpleCoreView)
-    viewRegistry.register('crossbar', CrossbarView)
-    viewRegistry.register('channel', ChannelView)
-    viewRegistry.register('label:heading', SLabelView)
-    viewRegistry.register('label:info', SLabelView)
-    viewRegistry.register('comp', SCompartmentView)
-    viewRegistry.register('html', HtmlRootView)
-    viewRegistry.register('pre-rendered', PreRenderedView)
+        // Register views
+        const viewRegistry = container.get<ViewRegistry>(TYPES.ViewRegistry)
+        viewRegistry.register('processor', ProcessorView)
+        viewRegistry.register('core', CoreView)
+        viewRegistry.register('simplecore', SimpleCoreView)
+        viewRegistry.register('crossbar', CrossbarView)
+        viewRegistry.register('channel', ChannelView)
+        viewRegistry.register('label:heading', SLabelView)
+        viewRegistry.register('label:info', SLabelView)
+        viewRegistry.register('comp', SCompartmentView)
+        viewRegistry.register('html', HtmlRootView)
+        viewRegistry.register('pre-rendered', PreRenderedView)
 
-    return container
-}
+        return container
+    }
+} as DiagramConfiguration

@@ -7,8 +7,7 @@
 
 import { EditorManager } from 'theia-core/lib/editor/browser'
 import { TextDocumentPositionParams, Location } from 'vscode-base-languageclient/lib/services'
-import { DiagramContainerRegistry } from './diagram-container-registry'
-import { MultiCoreLanguageClientContribution } from './language-client-contribution'
+import { DiagramConfigurationRegistry } from './diagram-configuration'
 import { TYPES } from 'sprotty/lib/base'
 import { TheiaDiagramServer } from './theia-diagram-server'
 import { NotificationType } from 'vscode-jsonrpc/lib/messages'
@@ -21,12 +20,12 @@ const openInTextEditorType = new NotificationType<Location, void>('diagram/openI
 const textPositionMessageType = new NotificationType<TextDocumentPositionParams, void>('diagram/update')
 
 @injectable()
-export class TheiaDiagramConnector {
+export class TheiaDiagramServerConnector {
 
     private servers: TheiaDiagramServer[] = []
 
-    constructor(@inject(LanguageClientContribution) private languageClientContribution: MultiCoreLanguageClientContribution,
-                @inject(DiagramContainerRegistry) private diagramContainerRegistry: DiagramContainerRegistry,
+    constructor(@inject(LanguageClientContribution) private languageClientContribution: LanguageClientContribution,
+                @inject(DiagramConfigurationRegistry) private diagramConfigurationRegistry: DiagramConfigurationRegistry,
                 @inject(EditorManager) private editorManager: EditorManager) {
         this.languageClientContribution.languageClient.then(
             lc => {
@@ -39,7 +38,7 @@ export class TheiaDiagramConnector {
     }
 
     createDiagramServer(widgetId: string, diagramType: string): TheiaDiagramServer {
-        const containerFactory = this.diagramContainerRegistry.get(diagramType)
+        const containerFactory = this.diagramConfigurationRegistry.get(diagramType)
         const newServer = containerFactory(widgetId).get<TheiaDiagramServer>(TYPES.ModelSource)
         newServer.connect(this)
         this.servers.push(newServer)

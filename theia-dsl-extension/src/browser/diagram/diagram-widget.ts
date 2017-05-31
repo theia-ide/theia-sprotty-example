@@ -5,7 +5,7 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { TheiaDiagramConnector } from 'theia-dsl-extension/lib/browser/theia-diagram-server-connector'
+import { TheiaDiagramServerConnector } from './theia-diagram-server-connector'
 import { RequestModelAction, IActionDispatcher } from 'sprotty/lib/base'
 import { Widget } from "@phosphor/widgets"
 import { Message } from "@phosphor/messaging/lib"
@@ -18,7 +18,7 @@ export class DiagramWidget extends Widget {
 
     constructor(protected readonly uri: URI,
                 protected readonly diagramType: string,
-                protected readonly diagramConnector: TheiaDiagramConnector) {
+                protected readonly diagramConnector: TheiaDiagramServerConnector) {
         super()
     }
 

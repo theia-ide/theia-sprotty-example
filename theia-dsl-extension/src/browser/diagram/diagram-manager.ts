@@ -7,7 +7,7 @@
 
 import { TextDocumentPositionParams } from 'vscode-base-languageclient/lib/services'
 import { TextEditorSelection } from 'theia-core/lib/editor/browser'
-import { TheiaDiagramConnector } from 'theia-dsl-extension/lib/browser/theia-diagram-server-connector'
+import { TheiaDiagramServerConnector } from './theia-diagram-server-connector'
 import { injectable, inject } from "inversify"
 import { OpenerOptions, OpenHandler, FrontendApplication, FrontendApplicationContribution } from "theia-core/lib/application/browser"
 import URI from "theia-core/lib/application/common/uri"
@@ -22,7 +22,7 @@ export interface DiagramManager extends OpenHandler, FrontendApplicationContribu
 @injectable()
 export abstract class DiagramManagerImpl implements DiagramManager {
 
-    @inject(TheiaDiagramConnector) readonly diagramConnector: TheiaDiagramConnector
+    @inject(TheiaDiagramServerConnector) readonly diagramConnector: TheiaDiagramServerConnector
     @inject(DiagramWidgetRegistry) protected readonly widgetRegistry: DiagramWidgetRegistry
     @inject(SelectionService) protected readonly selectionService: SelectionService
 
@@ -90,22 +90,3 @@ export abstract class DiagramManagerImpl implements DiagramManager {
     }
 }
 
-@injectable()
-export class FlowDiagramManager extends DiagramManagerImpl {
-    readonly diagramType = 'flow'
-    readonly iconClass = 'fa fa-long-arrow-down'
-
-    get label() {
-        return 'Flowdiagram'
-    }
-}
-
-@injectable()
-export class ProcessorDiagramManager extends DiagramManagerImpl {
-    readonly diagramType = 'processor'
-    readonly iconClass = 'fa fa-microchip'
-
-    get label() {
-        return 'Processordiagram'
-    }
-}
