@@ -1,19 +1,23 @@
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+ * Licensed under the Apache License, Version 2.0 (the "License") you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
-import { ContainerModule } from "inversify";
+
+import { DiagramContainerRegistry } from './diagram-container-registry'
+import { ContainerModule } from "inversify"
+import { LanguageClientContribution } from "theia-core/lib/languages/browser"
+import { MultiCoreLanguageClientContribution } from "./language-client-contribution"
 
 export default new ContainerModule(bind => {
     monaco.languages.register({
-        id: 'dsl',
-        aliases: ['DSL', 'dsl'],
-        extensions: ['.dsl'],
-        mimetypes: ['text/dsl']
+        id: 'multicore',
+        aliases: ['Multicore', 'multicore'],
+        extensions: ['.multicore'],
+        mimetypes: ['text/multicore']
     })
-    monaco.languages.setLanguageConfiguration('dsl', {
+    monaco.languages.setLanguageConfiguration('multicore', {
         comments: {
             lineComment: "//",
             blockComment: ['/*', '*/']
@@ -29,21 +33,18 @@ export default new ContainerModule(bind => {
                 close: ')'
             }]
     })
-    monaco.languages.setMonarchTokensProvider('dsl', <any>{
+    monaco.languages.setMonarchTokensProvider('multicore', <any>{
         // Set defaultToken to invalid to see what you do not tokenize yet
         // defaultToken: 'invalid',
 
         keywords: [
-            'protocol', 'type', 'request', 'notification', 'extends'
+            'program', 'for', 'cores', 'kernel', 'duration', 'stackSize', 'stackStartAddr', 'task', 'execute', 'barrier', 'join',
+            'then', 'step', 'core', 'runs', '$pc', '$sp', 'srcfile', 'stackTrace', 'core', 'finished'
         ],
 
-        typeKeywords: [
-            'boolean', 'number', 'string'
-        ],
+        typeKeywords: [],
 
-        operators: [
-            ':'
-        ],
+        operators: [],
 
         // we include these common regular expressions
         symbols: /[=><!~?:&|+\-*\/\^%]+/,
@@ -97,4 +98,6 @@ export default new ContainerModule(bind => {
             ],
         },
     })
+    bind(LanguageClientContribution).to(MultiCoreLanguageClientContribution).inSingletonScope()
+    bind(DiagramContainerRegistry).to(DiagramContainerRegistry).inSingletonScope()
 })

@@ -29,11 +29,18 @@ module.exports = function (dirname, config = {}) {
 
         module: {
             rules: rules(dirname),
-            noParse: /vscode-languageserver-types|vscode-uri/
+            noParse: /vscode-languageserver-types|vscode-uri/,
+            loaders: [
+                // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+                {
+                    test: /\.tsx?$/,
+                    loader: 'ts-loader'
+                }
+            ]
         },
 
         resolve: {
-            extensions: ['.ts', '.js'],
+            extensions: ['.ts', '.tsx', '.js'],
             alias: {
                 'vs': path.resolve(paths(dirname).BUILD_ROOT, monacoEditorPath)
             }
@@ -42,8 +49,7 @@ module.exports = function (dirname, config = {}) {
         devtool: 'source-map',
 
         plugins: [
-            new CopyWebpackPlugin([
-                {
+            new CopyWebpackPlugin([{
                     from: monacoEditorPath,
                     to: 'vs'
                 },

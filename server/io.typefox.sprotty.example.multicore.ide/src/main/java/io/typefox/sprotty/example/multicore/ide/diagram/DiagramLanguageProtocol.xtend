@@ -9,6 +9,7 @@ package io.typefox.sprotty.example.multicore.ide.diagram
 import org.eclipse.lsp4j.TextDocumentPositionParams
 import org.eclipse.lsp4j.jsonrpc.services.JsonNotification
 import org.eclipse.lsp4j.jsonrpc.services.JsonSegment
+import org.eclipse.lsp4j.Location
 
 @JsonSegment('diagram')
 interface DiagramLanguageEndpoint {
@@ -20,6 +21,9 @@ interface DiagramLanguageEndpoint {
 
 @JsonSegment('diagram')
 interface DiagramLanguageClient extends DiagramLanguageEndpoint {
+	
+	@JsonNotification
+	def void openInTextEditor(Location selection);
 }
 
 @JsonSegment('diagram')

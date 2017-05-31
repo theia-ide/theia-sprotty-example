@@ -7,7 +7,11 @@ dependencies {
 	compile "org.eclipse.elk:org.eclipse.elk.alg.layered:$versions.elk"
 	compile "io.typefox.sprotty:diagram-server:$versions.sprotty"
 	compile "io.typefox.sprotty:diagram-layout-engine:$versions.sprotty"
+	testCompile 'junit:junit:4.12'
+	testCompile "org.eclipse.xtext:org.eclipse.xtext.testing:$versions.xtext"
 }
 
 mainClassName = 'org.eclipse.xtext.ide.server.ServerLauncher'
 applicationName = 'example-server'
+applicationDefaultJvmArgs = ['-agentlib:jdwp=transport=dt_socket,address=localhost:8787,server=y,suspend=n,quiet=y']
+
