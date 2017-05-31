@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+ * Licensed under the Apache License, Version 2.0 (the "License") you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
@@ -13,7 +13,7 @@ import {
     Channel, ChannelSchema, Core, CoreSchema, Crossbar, CrossbarSchema, Processor, ProcessorSchema
 } from "./chipmodel"
 import { Direction } from "sprotty/lib//utils"
-import { CORE_WIDTH, CORE_DISTANCE } from "./views";
+import { CORE_WIDTH, CORE_DISTANCE } from "./views"
 import { HtmlRootSchema, PreRenderedElementSchema, PreRenderedElement, HtmlRoot } from "sprotty/lib/lib"
 
 
@@ -67,7 +67,7 @@ export class ChipModelFactory extends SGraphFactory {
                         break
                     default:
                         columnDelta = 1
-                        break;
+                        break
                 }
             }
             if (coreOrChannel.row < 0 || coreOrChannel.row >= processor.rows + rowDelta
@@ -82,7 +82,7 @@ export class ChipModelFactory extends SGraphFactory {
 
     isCoreSchema(schema: SModelElementSchema): schema is CoreSchema {
         const basicType = getBasicType(schema)
-        return basicType === 'core' || basicType == 'simplecore'
+        return basicType === 'core' || basicType === 'simplecore'
     }
 
     isChannelSchema(schema: SModelElementSchema): schema is ChannelSchema {

@@ -26,7 +26,7 @@ export class DiagramWidget extends Widget {
         this.actionDispatcher = diagramServer.actionDispatcher
         diagramServer.handle(new RequestModelAction(this.diagramType, undefined, {
             resourceId: this.uri.toString()
-        })) 
+        }))
     }
 
     protected onAfterShow(msg: Message): void {
@@ -45,7 +45,7 @@ export class DiagramWidget extends Widget {
 
     protected onResize(msg: Widget.ResizeMessage): void {
         super.onResize(msg)
-        if(this.actionDispatcher !== undefined) {
+        if (this.actionDispatcher !== undefined) {
             const newBounds = this.getBoundsInPage(this.node as Element)
             this.actionDispatcher.dispatch(new InitializeCanvasBoundsAction(newBounds))
         }

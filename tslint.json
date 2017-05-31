@@ -33,6 +33,7 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ]
+    ],
+    "semicolon": [ true, "never" ]
   }
 }

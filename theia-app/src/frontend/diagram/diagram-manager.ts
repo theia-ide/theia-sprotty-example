@@ -1,8 +1,8 @@
-import { TextDocumentPositionParams } from 'vscode-base-languageclient/lib/services';
-import { TextEditorSelection } from 'theia-core/lib/editor/browser';
+import { TextDocumentPositionParams } from 'vscode-base-languageclient/lib/services'
+import { TextEditorSelection } from 'theia-core/lib/editor/browser'
 import {
     TheiaDiagramConnector
-} from 'theia-dsl-extension/lib/browser/theia-diagram-server-connector';
+} from 'theia-dsl-extension/lib/browser/theia-diagram-server-connector'
 import { injectable, inject } from "inversify"
 import { OpenerOptions, OpenHandler, FrontendApplication, FrontendApplicationContribution } from "theia-core/lib/application/browser"
 import URI from "theia-core/lib/application/common/uri"
@@ -14,13 +14,13 @@ export interface DiagramManager extends OpenHandler, FrontendApplicationContribu
     readonly diagramType: string
 }
 
-@injectable() 
+@injectable()
 export abstract class DiagramManagerImpl implements DiagramManager {
 
     @inject(TheiaDiagramConnector) readonly diagramConnector: TheiaDiagramConnector
     @inject(DiagramWidgetRegistry) protected readonly widgetRegistry: DiagramWidgetRegistry
     @inject(SelectionService) protected readonly selectionService: SelectionService
-    
+
     abstract get diagramType(): string
     abstract iconClass: string
 
@@ -40,7 +40,7 @@ export abstract class DiagramManagerImpl implements DiagramManager {
     }
 
     onSelectionChanged(e: any) {
-        if(TextEditorSelection.is(e) && e.cursor !== undefined) {
+        if (TextEditorSelection.is(e) && e.cursor !== undefined) {
             const params: TextDocumentPositionParams = {
                 textDocument: {
                     uri: e.uri.toString()
@@ -85,7 +85,7 @@ export abstract class DiagramManagerImpl implements DiagramManager {
     }
 }
 
-@injectable() 
+@injectable()
 export class FlowDiagramManager extends DiagramManagerImpl {
     readonly diagramType = 'flow'
     readonly iconClass = 'fa fa-long-arrow-down'
@@ -95,7 +95,7 @@ export class FlowDiagramManager extends DiagramManagerImpl {
     }
 }
 
-@injectable() 
+@injectable()
 export class ProcessorDiagramManager extends DiagramManagerImpl {
     readonly diagramType = 'processor'
     readonly iconClass = 'fa fa-microchip'

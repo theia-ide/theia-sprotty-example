@@ -1,13 +1,13 @@
-import { EditorManager } from 'theia-core/lib/editor/browser';
-import { TextDocumentPositionParams, Location } from 'vscode-base-languageclient/lib/services';
-import { DiagramContainerRegistry } from './diagram-container-registry';
-import { MultiCoreLanguageClientContribution } from './language-client-contribution';
-import { TYPES } from 'sprotty/lib/base';
-import { TheiaDiagramServer } from './theia-diagram-server';
-import { NotificationType } from 'vscode-jsonrpc/lib/messages';
-import { LanguageClientContribution } from 'theia-core/lib/languages/browser';
+import { EditorManager } from 'theia-core/lib/editor/browser'
+import { TextDocumentPositionParams, Location } from 'vscode-base-languageclient/lib/services'
+import { DiagramContainerRegistry } from './diagram-container-registry'
+import { MultiCoreLanguageClientContribution } from './language-client-contribution'
+import { TYPES } from 'sprotty/lib/base'
+import { TheiaDiagramServer } from './theia-diagram-server'
+import { NotificationType } from 'vscode-jsonrpc/lib/messages'
+import { LanguageClientContribution } from 'theia-core/lib/languages/browser'
 import { injectable, inject } from "inversify"
-import URI from "theia-core/lib/application/common/uri";
+import URI from "theia-core/lib/application/common/uri"
 
 const actionMessageType = new NotificationType<string, void>('diagram/onAction')
 const openInTextEditorType = new NotificationType<Location, void>('diagram/openInTextEditor')
@@ -17,7 +17,7 @@ const textPositionMessageType = new NotificationType<TextDocumentPositionParams,
 export class TheiaDiagramConnector {
 
     private servers: TheiaDiagramServer[] = []
-    
+
     constructor(@inject(LanguageClientContribution) private languageClientContribution: MultiCoreLanguageClientContribution,
                 @inject(DiagramContainerRegistry) private diagramContainerRegistry: DiagramContainerRegistry,
                 @inject(EditorManager) private editorManager: EditorManager) {
@@ -30,7 +30,7 @@ export class TheiaDiagramConnector {
             err => console.error(err)
         )
     }
-    
+
     createDiagramServer(widgetId: string, diagramType: string): TheiaDiagramServer {
         const containerFactory = this.diagramContainerRegistry.get(diagramType)
         const newServer = containerFactory(widgetId).get<TheiaDiagramServer>(TYPES.ModelSource)
@@ -62,7 +62,7 @@ export class TheiaDiagramConnector {
     actionMessageReceived(message: string) {
         this.servers.forEach(element => {
             element.messageReceived(message)
-        });
+        })
     }
 }
 

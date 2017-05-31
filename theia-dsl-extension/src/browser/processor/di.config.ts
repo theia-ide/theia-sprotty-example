@@ -1,11 +1,11 @@
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+ * Licensed under the Apache License, Version 2.0 (the "License") you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { SCompartmentView, SLabelView } from 'sprotty/lib/graph';
+import { SCompartmentView, SLabelView } from 'sprotty/lib/graph'
 import { Container, ContainerModule } from "inversify"
 import { defaultModule, TYPES, ViewRegistry, overrideViewerOptions } from "sprotty/lib/base"
 import { ChipModelFactory } from "./chipmodel-factory"
@@ -13,7 +13,7 @@ import { ConsoleLogger, LogLevel } from "sprotty/lib/utils"
 import { boundsModule, selectModule, viewportModule, moveModule, fadeModule, hoverModule } from "sprotty/lib/features"
 import { ProcessorView, CoreView, CrossbarView, ChannelView, SimpleCoreView } from "./views"
 import { HtmlRootView, PreRenderedView } from "sprotty/lib/lib"
-import { TheiaDiagramServer } from '../theia-diagram-server';
+import { TheiaDiagramServer } from '../theia-diagram-server'
 
 const multicoreModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
@@ -45,6 +45,6 @@ export default (widgetId: string) => {
     viewRegistry.register('comp', SCompartmentView)
     viewRegistry.register('html', HtmlRootView)
     viewRegistry.register('pre-rendered', PreRenderedView)
-    
+
     return container
 }

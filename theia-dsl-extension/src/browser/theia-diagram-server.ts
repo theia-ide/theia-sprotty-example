@@ -1,14 +1,14 @@
-import { ILogger } from 'sprotty/lib/utils';
+import { ILogger } from 'sprotty/lib/utils'
 import { SelectCommand } from 'sprotty/lib/features'
-import { TheiaDiagramConnector } from './theia-diagram-server-connector';
+import { TheiaDiagramConnector } from './theia-diagram-server-connector'
 import {
     ActionHandlerRegistry,
     IActionDispatcher,
     SModelStorage,
     TYPES,
     ViewerOptions
-} from 'sprotty/lib/base';
-import { DiagramServer } from 'sprotty/lib/remote';
+} from 'sprotty/lib/base'
+import { DiagramServer } from 'sprotty/lib/remote'
 import { injectable, inject } from "inversify"
 
 @injectable()
@@ -41,5 +41,3 @@ export class TheiaDiagramServer extends DiagramServer {
         super.messageReceived(message)
     }
 }
-   
-

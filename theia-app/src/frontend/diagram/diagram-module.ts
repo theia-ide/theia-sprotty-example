@@ -1,9 +1,9 @@
 import {
     TheiaDiagramConnector
-} from 'theia-dsl-extension/lib/browser/theia-diagram-server-connector';
+} from 'theia-dsl-extension/lib/browser/theia-diagram-server-connector'
 import { ContainerModule } from 'inversify'
 import { OpenHandler, FrontendApplicationContribution } from 'theia-core/lib/application/browser'
-import { FlowDiagramManager, ProcessorDiagramManager } from './diagram-manager';
+import { FlowDiagramManager, ProcessorDiagramManager } from './diagram-manager'
 import { DiagramWidgetRegistry } from "./diagram-widget-registry"
 
 export const diagramModule = new ContainerModule(bind => {

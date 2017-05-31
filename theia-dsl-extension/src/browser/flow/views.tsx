@@ -22,7 +22,7 @@ export class TaskNodeView extends CircularNodeView {
         const radius = this.getRadius(node)
         const fillColor = KernelColor.getSVG(node.kernelNr)
         return <g key={node.id} id={node.id} >
-                <circle class-node={true} 
+                <circle class-node={true}
                 fill={fillColor}
                 class-task={true} class-mouseover={node.hoverFeedback} class-selected={node.selected}
                         class-running={node.status === 'running'}
@@ -42,9 +42,8 @@ export class BarrierNodeView extends RectangularNodeView {
         return <g key={node.id} id={node.id} >
                 <rect class-node={true} class-barrier={true} class-mouseover={node.hoverFeedback} class-selected={node.selected}
                       x="0" y="0" width={node.bounds.width} height={node.bounds.height}></rect>
-                <text x={node.bounds.width/2} y={node.bounds.height/2 + 5} class-text={true}>{node.name}</text>
+                <text x={node.bounds.width / 2} y={node.bounds.height / 2 + 5} class-text={true}>{node.name}</text>
             </g>
-            
     }
 }
 
@@ -61,9 +60,9 @@ export class FlowEdgeView extends PolylineEdgeView {
 
 class KernelColor {
     static colorMap: RGBColor[] = [
-        rgb(141,211,199), rgb(255,255,179), rgb(190,186,218), rgb(251,128,114), 
-        rgb(128,177,211), rgb(253,180,98), rgb(179,222,105), rgb(252,205,229), 
-        rgb(217,217,217), rgb(188,128,189), rgb(204,235,197), rgb(255,237,111)
+        rgb(141, 211, 199), rgb(255, 255, 179), rgb(190, 186, 218), rgb(251, 128, 114),
+        rgb(128, 177, 211), rgb(253, 180, 98), rgb(179, 222, 105), rgb(252, 205, 229),
+        rgb(217, 217, 217), rgb(188, 128, 189), rgb(204, 235, 197), rgb(255, 237, 111)
     ]
 
     static getSVG(index: number): string {
