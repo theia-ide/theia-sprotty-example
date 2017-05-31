@@ -184,9 +184,8 @@ class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 			}
 		} else if (request.modelType == 'processor') {
 			if (element instanceof Core) {
-				val processor = model as Processor
-				title = '''Core «processor.columns * element.row + element.column + 1»'''
 				if (source instanceof TaskAllocation) {
+					title = '''Core «source.core»'''
 					if (source.task !== null) {
 						body += '''Task: «source.task.name»'''
 						if (source.task.kernel !== null) {
