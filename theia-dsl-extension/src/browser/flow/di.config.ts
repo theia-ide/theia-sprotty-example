@@ -30,6 +30,7 @@ export default (widgetId: string) => {
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,
+        hiddenDiv: 'sprotty-hidden-flow',
         popupDiv: 'sprotty-popup-flow',
         boundsComputation: 'dynamic'
     })

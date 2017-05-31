@@ -28,6 +28,7 @@ export default (widgetId: string) => {
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,
+        hiddenDiv: 'sprotty-hidden-cores',
         popupDiv: 'sprotty-popup-cores',
         boundsComputation: 'fixed'
     })
