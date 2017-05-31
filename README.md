@@ -1,8 +1,8 @@
 # theia-sprotty-example
 An example application integrating Sprotty views for an Xtext-based DSL with Theia
 
-## Run it
-```
+## Build and Run
+```bash
 # Build the diagram aware language server for the example DSL
 cd server
 ./gradlew installDist
@@ -19,4 +19,3 @@ npm run build
 # Start the Theia app
 npm run start
 ```
-
