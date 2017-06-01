@@ -5,7 +5,7 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { Container, ContainerModule } from "inversify"
+import { Container, ContainerModule, injectable } from "inversify"
 import { defaultModule, TYPES, ViewRegistry, overrideViewerOptions } from "sprotty/lib/base"
 import { ConsoleLogger, LogLevel } from "sprotty/lib/utils"
 import { boundsModule, moveModule, fadeModule, hoverModule } from "sprotty/lib/features"
@@ -24,9 +24,14 @@ const flowModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.IModelFactory).to(FlowModelFactory).inSingletonScope()
 })
 
-export default {
-    diagramType: 'flow',
-    factory: (widgetId: string) => {
+@injectable()
+export class FlowDiagramConfiguration implements DiagramConfiguration {
+
+    get diagramType() {
+        return 'flow'
+    }
+
+    createContainer(widgetId: string) {
         const container = new Container()
         container.load(defaultModule, selectModule, moveModule, boundsModule, fadeModule, viewportModule, flowModule, hoverModule)
         container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
@@ -49,4 +54,4 @@ export default {
 
         return container
     }
-} as DiagramConfiguration
+}

@@ -12,8 +12,9 @@ import { FlowDiagramManager } from "../flow/flow-diagram-manager"
 import { ProcessorDiagramManager } from "../processor/processor-diagram-manager"
 import { DiagramConfiguration } from "../diagram/diagram-configuration"
 import { FrontendApplicationContribution, OpenHandler } from 'theia-core/lib/application/browser'
-import flowConfiguration from "../flow/di.config"
-import processorConfiguration from "../processor/di.config"
+import { ProcessorDiagramConfiguration } from '../processor/di.config'
+import { FlowDiagramConfiguration } from '../flow/di.config'
+import { DiagramManager, DiagramManagerProvider } from '../diagram/diagram-manager'
 
 export default new ContainerModule(bind => {
     monaco.languages.register({
@@ -104,9 +105,23 @@ export default new ContainerModule(bind => {
         },
     })
     bind(LanguageClientContribution).to(MultiCoreLanguageClientContribution).inSingletonScope()
-    bind(DiagramConfiguration).toConstantValue(flowConfiguration)
-    bind(DiagramConfiguration).toConstantValue(processorConfiguration)
+    bind(DiagramConfiguration).to(FlowDiagramConfiguration).inSingletonScope()
+    bind(DiagramConfiguration).to(ProcessorDiagramConfiguration).inSingletonScope()
     bind(FlowDiagramManager).toSelf().inSingletonScope()
+    bind(DiagramManagerProvider).toProvider<DiagramManager>(context => {
+        return () => {
+            return new Promise<DiagramManager>((resolve) =>
+                resolve(context.container.get(FlowDiagramManager))
+            )
+        }
+    }).whenTargetNamed('flow')
+    bind(DiagramManagerProvider).toProvider<DiagramManager>(context => {
+        return () => {
+            return new Promise<DiagramManager>((resolve) =>
+                resolve(context.container.get(ProcessorDiagramManager))
+            )
+        }
+    }).whenTargetNamed('processor')
     bind(ProcessorDiagramManager).toSelf().inSingletonScope()
     bind(FrontendApplicationContribution).toDynamicValue(context => context.container.get(FlowDiagramManager))
     bind(OpenHandler).toDynamicValue(context => context.container.get(FlowDiagramManager))

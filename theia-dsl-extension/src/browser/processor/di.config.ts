@@ -6,7 +6,7 @@
  */
 
 import { SCompartmentView, SLabelView } from 'sprotty/lib/graph'
-import { Container, ContainerModule } from "inversify"
+import { injectable, Container, ContainerModule } from "inversify"
 import { defaultModule, TYPES, ViewRegistry, overrideViewerOptions } from "sprotty/lib/base"
 import { ChipModelFactory } from "./chipmodel-factory"
 import { ConsoleLogger, LogLevel } from "sprotty/lib/utils"
@@ -22,9 +22,14 @@ const multicoreModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.IModelFactory).to(ChipModelFactory).inSingletonScope()
 })
 
-export default {
-    diagramType: 'processor',
-    factory: (widgetId: string) => {
+@injectable()
+export class ProcessorDiagramConfiguration implements DiagramConfiguration {
+
+    get diagramType() {
+        return 'processor'
+    }
+
+    createContainer(widgetId: string) {
         const container = new Container()
         container.load(defaultModule, boundsModule, selectModule, moveModule, viewportModule, fadeModule, multicoreModule, hoverModule)
         container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
@@ -51,4 +56,4 @@ export default {
 
         return container
     }
-} as DiagramConfiguration
+}

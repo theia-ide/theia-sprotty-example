@@ -11,14 +11,14 @@ import { injectable, Container, multiInject, optional } from "inversify"
 export const DiagramConfiguration = Symbol('DiagramConfiguration')
 
 export interface DiagramConfiguration {
-    diagramType: string
-    factory(widgetId: string): Container
+    createContainer(widgetId: string): Container
+    readonly diagramType: string
 }
 
 @injectable()
-export class DiagramConfigurationRegistry extends InstanceRegistry<(widgetId: string) => Container> {
-    constructor(@multiInject(DiagramConfiguration)@optional() diagramContainers: DiagramConfiguration[]) {
+export class DiagramConfigurationRegistry extends InstanceRegistry<DiagramConfiguration> {
+    constructor(@multiInject(DiagramConfiguration)@optional() diagramConfigs: DiagramConfiguration[]) {
         super()
-        diagramContainers.forEach(c => this.register(c.diagramType, c.factory))
+        diagramConfigs.forEach(c => this.register(c.diagramType, c))
     }
 }

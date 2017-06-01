@@ -38,8 +38,8 @@ export class TheiaDiagramServerConnector {
     }
 
     createDiagramServer(widgetId: string, diagramType: string): TheiaDiagramServer {
-        const containerFactory = this.diagramConfigurationRegistry.get(diagramType)
-        const newServer = containerFactory(widgetId).get<TheiaDiagramServer>(TYPES.ModelSource)
+        const diagramConfiguration = this.diagramConfigurationRegistry.get(diagramType)
+        const newServer = diagramConfiguration.createContainer(widgetId).get<TheiaDiagramServer>(TYPES.ModelSource)
         newServer.connect(this)
         this.servers.push(newServer)
         return newServer

@@ -13,10 +13,15 @@ import { OpenerOptions, OpenHandler, FrontendApplication, FrontendApplicationCon
 import URI from "theia-core/lib/application/common/uri"
 import { DiagramWidget } from "./diagram-widget"
 import { DiagramWidgetRegistry } from "./diagram-widget-registry"
-import { SelectionService } from "theia-core/lib/application/common"
+import { Emitter, Event, SelectionService } from 'theia-core/lib/application/common'
+
+export const DiagramManagerProvider = Symbol('DiagramManagerProvider')
+
+export type DiagramManagerProvider = () => Promise<DiagramManager>
 
 export interface DiagramManager extends OpenHandler, FrontendApplicationContribution {
     readonly diagramType: string
+    readonly onDiagramOpened: Event<URI>
 }
 
 @injectable()
@@ -25,6 +30,8 @@ export abstract class DiagramManagerImpl implements DiagramManager {
     @inject(TheiaDiagramServerConnector) readonly diagramConnector: TheiaDiagramServerConnector
     @inject(DiagramWidgetRegistry) protected readonly widgetRegistry: DiagramWidgetRegistry
     @inject(SelectionService) protected readonly selectionService: SelectionService
+
+    protected readonly onDiagramOpenedEmitter = new Emitter<URI>()
 
     abstract get diagramType(): string
     abstract iconClass: string
@@ -38,6 +45,10 @@ export abstract class DiagramManagerImpl implements DiagramManager {
     protected readonly resolveApp = new Promise<FrontendApplication>(resolve =>
         this._resolveApp = resolve
     )
+
+    get onDiagramOpened(): Event<URI> {
+        return this.onDiagramOpenedEmitter.event
+    }
 
     onStart(app: FrontendApplication): void {
         this._resolveApp(app)
@@ -63,9 +74,10 @@ export abstract class DiagramManagerImpl implements DiagramManager {
     open(uri: URI, input?: OpenerOptions): Promise<DiagramWidget> {
         const promiseDiagramWidget = this.getOrCreateDiagramWidget(uri)
         promiseDiagramWidget.then((diagramWidget) => {
-            this.resolveApp.then(app =>
+            this.resolveApp.then(app => {
                 app.shell.activateMain(diagramWidget.id)
-            )
+                this.onDiagramOpenedEmitter.fire(uri)
+            })
         })
         return promiseDiagramWidget
     }
