@@ -9,11 +9,13 @@ package io.typefox.sprotty.example.multicore.ide.diagram
 import com.google.inject.Inject
 import com.google.inject.Singleton
 import io.typefox.sprotty.api.SGraph
+import io.typefox.sprotty.example.multicore.ide.NodeModelExtensions
 import io.typefox.sprotty.example.multicore.multicoreAllocation.Program
 import io.typefox.sprotty.example.multicore.multicoreAllocation.Step
 import io.typefox.sprotty.example.multicore.multicoreAllocation.TaskAllocation
 import io.typefox.sprotty.layout.LayoutUtil
 import java.util.List
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.service.OperationCanceledManager
@@ -33,6 +35,8 @@ class DiagramService {
 	@Inject extension OperationCanceledManager
 
 	@Inject extension EObjectAtOffsetHelper
+
+	@Inject extension NodeModelExtensions
 	
 	val List<MulticoreAllocationDiagramServer> diagramServers = newArrayList
 	
@@ -79,7 +83,7 @@ class DiagramService {
 		val previousElement = selectionProvider.getSelection(uri)
 		val previousStep = previousElement.getContainerOfType(Step)
 		val previousTaskAllocation = previousElement.getContainerOfType(TaskAllocation)
-		val selectedElement = resource.resolveContainedElementAt(offset)
+		val selectedElement = getCurrentSelection(resource, offset)
 		val selectedStep = selectedElement.getContainerOfType(Step)
 		val selectedTaskAllocation = selectedElement.getContainerOfType(TaskAllocation)
 		if (previousStep != selectedStep || previousTaskAllocation != selectedTaskAllocation) {
@@ -89,6 +93,28 @@ class DiagramService {
 			}
 			selectionProvider.setSelection(uri, selectedElement)
 			compute(resource, cancelIndicator)
+		}
+	}
+	
+	protected def EObject getCurrentSelection(XtextResource resource, int caretOffset) {
+		var element = resource.resolveContainedElementAt(caretOffset)
+		var node = element.node
+		while (node !== null) {
+			if (node.contains(caretOffset))
+				return element
+			if (element.eContainingFeature.isMany) {
+				val container = element.eContainer
+				val list = container.eGet(element.eContainingFeature) as List<? extends EObject>
+				val index = list.indexOf(element)
+				val previousElement = if (index > 0) list.get(index - 1)
+				if (previousElement.node.contains(caretOffset))
+					return previousElement
+				val nextElement = if (index < list.size - 1) list.get(index + 1)
+				if (nextElement.node.contains(caretOffset))
+					return nextElement
+			}
+			element = element.eContainer
+			node = element.node
 		}
 	}
 	
