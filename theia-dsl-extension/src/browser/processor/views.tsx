@@ -74,10 +74,11 @@ export class CoreView implements IView {
         return <g
                   id={model.id}
                   key={model.id}
-                  class-core={true}>
-                <rect class-node={true}
-                      class-mouseover={model.hoverFeedback}
-                      class-selected={model.selected}
+                  class-core={true}
+                  class-mouseover={model.hoverFeedback}
+                  class-selected={model.selected}
+                  class-node={true}>
+                <rect
                       width={model.size.width}
                       height={model.size.height}
                       rx={4}

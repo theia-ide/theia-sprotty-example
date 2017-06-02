@@ -15,7 +15,7 @@ export class KernelColor {
     ]
 
     static getSVG(index: number): string {
-        if (!index || index < 0)
+        if (index === undefined || index < 0)
             return toSVG({red: 150, green: 150, blue: 150})
         else
             return toSVG(KernelColor.colorMap[index % KernelColor.colorMap.length])
