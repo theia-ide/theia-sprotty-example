@@ -73,9 +73,9 @@ export class CoreView implements IView {
         setAttr(content, 'clip-path', 'url(#core-clip)')
         return <g
                   id={model.id}
-                  key={model.id}>
+                  key={model.id}
+                  class-core={true}>
                 <rect class-node={true}
-                      class-core={true}
                       class-mouseover={model.hoverFeedback}
                       class-selected={model.selected}
                       width={model.size.width}
