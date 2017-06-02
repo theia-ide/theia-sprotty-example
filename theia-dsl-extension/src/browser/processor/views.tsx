@@ -9,9 +9,13 @@ import * as snabbdom from 'snabbdom-jsx'
 import { IView, RenderingContext, setAttr, ThunkView } from 'sprotty/lib/base'
 import { VNode } from "snabbdom/vnode"
 import { Channel, Core, Crossbar, Processor } from './chipmodel'
-import { Direction, RGBColor, toSVG, rgb } from "sprotty/lib/utils"
+import { Direction, toSVG } from "sprotty/lib/utils"
+import { KernelColor } from "../flow/kernel-color"
 
 const JSX = {createElement: snabbdom.svg}
+
+export const CORE_WIDTH = 50
+export const CORE_DISTANCE = 10
 
 export class ProcessorView implements IView {
     render(model: Processor, context: RenderingContext): VNode {
@@ -28,9 +32,6 @@ export class ProcessorView implements IView {
             </svg>
     }
 }
-
-export const CORE_WIDTH = 50
-export const CORE_DISTANCE = 10
 
 export class SimpleCoreView extends ThunkView {
 
@@ -127,21 +128,6 @@ export class CrossbarView implements IView {
                      height={height}
                      x={x}
                      y={y} />
-    }
-}
-
-class KernelColor {
-    static colorMap: RGBColor[] = [
-        rgb(141, 211, 199), rgb(255, 255, 179), rgb(190, 186, 218), rgb(251, 128, 114),
-        rgb(128, 177, 211), rgb(253, 180, 98), rgb(179, 222, 105), rgb(252, 205, 229),
-        rgb(217, 217, 217), rgb(188, 128, 189), rgb(204, 235, 197), rgb(255, 237, 111)
-    ]
-
-    static getSVG(index: number): string {
-        if (index < 0)
-            return toSVG({red: 170, green: 170, blue: 170})
-        else
-            return toSVG(KernelColor.colorMap[index % KernelColor.colorMap.length])
     }
 }
 

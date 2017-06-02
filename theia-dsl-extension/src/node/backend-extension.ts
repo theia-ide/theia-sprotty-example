@@ -8,10 +8,6 @@
 import { injectable, ContainerModule } from "inversify"
 import { BaseLanguageServerContribution, IConnection, LanguageServerContribution } from "theia-core/lib/languages/node"
 
-export default new ContainerModule(bind => {
-    bind(LanguageServerContribution).to(MultiCoreLanguageServerContribution).inSingletonScope()
-})
-
 const EXECUTABLE = './node_modules/theia-dsl-extension/build/example-server/bin/example-server'
 
 @injectable()
@@ -36,3 +32,7 @@ class MultiCoreLanguageServerContribution extends BaseLanguageServerContribution
     }
 
 }
+
+export default new ContainerModule(bind => {
+    bind(LanguageServerContribution).to(MultiCoreLanguageServerContribution).inSingletonScope()
+})
