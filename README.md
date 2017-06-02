@@ -13,13 +13,11 @@ cd sprotty/server
 ./gradlew install
 cd ../client
 npm install
-npm run build
 cd ../..
 
 # Prepare Theia 
 cd theia
 npm install
-npm run build
 cd ..
 
 # Build the diagram aware language server for the example DSL
