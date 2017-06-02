@@ -71,15 +71,18 @@ export class CoreView implements IView {
                 {context.renderChildren(model)}
             </g>
         setAttr(content, 'clip-path', 'url(#core-clip)')
-        return <g class-core={true}
+        return <g
                   id={model.id}
                   key={model.id}>
-                <rect width={model.size.width}
+                <rect class-node={true}
+                      class-core={true}
+                      class-mouseover={model.hoverFeedback}
+                      class-selected={model.selected}
+                      width={model.size.width}
                       height={model.size.height}
                       rx={4}
                       ry={4}
                       fill={fillColor}
-                      class-mouseover={model.hoverFeedback}
                 />
                 {content}
             </g>

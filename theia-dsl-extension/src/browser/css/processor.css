@@ -1,5 +1,4 @@
 .core {
-    stroke: #aaa;
     fill: #aaa;
     stroke-width: 0;
     rx: 4;
@@ -23,11 +22,13 @@
     font-weight: inherit;
 }
 
-.core.selected {
+.core.mouseover {
     stroke-width: 3;
+    stroke: #f4daa6;
 }
 
-.mouseover {
+.core.selected {
+    stroke-width: 5;
     stroke: #f4daa6;
 }
 
@@ -51,7 +52,7 @@
 .comp {
     padding-left: 5px;
     padding-right: 5px;
-    padding-top: 0px;
+    padding-top: 5px;
     padding-bottom: 0px;
     line-height: 0px;
 }

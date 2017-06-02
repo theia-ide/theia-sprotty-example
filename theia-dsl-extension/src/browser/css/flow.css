@@ -1,5 +1,4 @@
 .node {
-    stroke: #aaa;
     stroke-width: 0;
 }
 
@@ -39,11 +38,23 @@
     text-anchor: middle;
 }
 
-.selected {
-    stroke-width: 5;
+.task.mouseover {
+    stroke-width: 3;
+    stroke: #f4daa6;
 }
 
-.mouseover {
+.task.selected {
+    stroke-width: 5;
+    stroke: #f4daa6;
+}
+
+.barrier.mouseover {
+    stroke-width: 3;
+    stroke: #f4daa6;
+}
+
+.barriers.selected {
+    stroke-width: 5;
     stroke: #f4daa6;
 }
 
