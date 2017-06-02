@@ -1,6 +1,6 @@
 .node {
     stroke: #aaa;
-    stroke-width: 1;
+    stroke-width: 0;
 }
 
 
@@ -26,6 +26,7 @@
 }
 
 .edge.arrow {
+    stroke-width: 1;
     fill: #aaa;
 }
 

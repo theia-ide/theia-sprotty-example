@@ -14,8 +14,7 @@
 }
 
 .channel {
-    stroke: #aaa;
-    stroke-width: 1;
+    stroke-width: 0;
 }
 
 .label {
