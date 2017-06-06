@@ -11,6 +11,7 @@ import { Widget } from "@phosphor/widgets"
 import { Message } from "@phosphor/messaging/lib"
 import URI from "theia-core/lib/application/common/uri"
 import { InitializeCanvasBoundsAction } from "sprotty/lib/base/features/initialize-canvas"
+import { CenterAction } from 'sprotty/lib/features'
 
 export class DiagramWidget extends Widget {
 
@@ -53,6 +54,7 @@ export class DiagramWidget extends Widget {
         if (this.actionDispatcher !== undefined) {
             const newBounds = this.getBoundsInPage(this.node as Element)
             this.actionDispatcher.dispatch(new InitializeCanvasBoundsAction(newBounds))
+            this.actionDispatcher.dispatch(new CenterAction([]))
         }
     }
 
