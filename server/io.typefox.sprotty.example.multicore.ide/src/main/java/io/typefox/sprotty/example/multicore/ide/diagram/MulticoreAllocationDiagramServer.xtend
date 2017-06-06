@@ -49,6 +49,10 @@ import org.eclipse.xtext.resource.ILocationInFileProvider
 
 import static io.typefox.sprotty.layout.ElkLayoutEngine.*
 import org.eclipse.xtext.resource.XtextResource
+import static extension org.eclipse.xtext.EcoreUtil2.*
+import io.typefox.sprotty.example.multicore.multicoreAllocation.Step
+import org.eclipse.emf.ecore.EObject
+import io.typefox.sprotty.example.multicore.multicoreAllocation.Program
 
 class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 	
@@ -71,6 +75,8 @@ class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 
 	@Inject DiagramService diagramService
 	  
+	@Inject SelectionProvider selectionProvider
+	 
 	ILayoutEngine layoutEngine
 	
 	@Accessors(PUBLIC_GETTER)
@@ -300,7 +306,7 @@ class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 				val mapping = modelProvider.getMapping(resourceId, modelType)
 				val element = mapping.inverse.get(sElement)
 				if(element !== null) {
-					val nameRegion = element.getSignificantTextRegion()
+					val nameRegion = element.elementToSelectInText.significantTextRegion
 					return languageServerAccess.doRead(resourceId) [ context |
 						val start = context.document.getPosition(nameRegion.offset)
 						val end = context.document.getPosition(nameRegion.offset + nameRegion.length)
@@ -310,5 +316,30 @@ class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 			}
 		}
 		return null
+	}
+	
+	protected def getElementToSelectInText(EObject selectionInDiagram) {
+		switch selectionInDiagram {
+			Task: {
+				val previousSelection = selectionProvider.getSelection(resourceId)
+				val previousStep = previousSelection.getContainerOfType(Step) 
+				if(previousStep !== null)
+					for(allocation: previousStep.allocations)
+						if(allocation.task === selectionInDiagram)
+							return allocation
+				val program = selectionInDiagram.getContainerOfType(Program)
+				if(program !== null)
+					for(allocation: program.eAllOfType(TaskAllocation))
+						if(allocation.task === selectionInDiagram)
+							return allocation
+			}
+			Barrier: {
+				val previousSelection = selectionProvider.getSelection(resourceId)
+				val previousStep = previousSelection.getContainerOfType(Step) 
+				if(previousStep !== null)
+					return previousStep				
+			}
+		}		
+		return selectionInDiagram
 	}
 }
