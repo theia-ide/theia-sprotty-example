@@ -53,6 +53,7 @@ import static extension org.eclipse.xtext.EcoreUtil2.*
 import io.typefox.sprotty.example.multicore.multicoreAllocation.Step
 import org.eclipse.emf.ecore.EObject
 import io.typefox.sprotty.example.multicore.multicoreAllocation.Program
+import io.typefox.sprotty.example.multicore.multicoreAllocation.TaskRunning
 
 class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 	
@@ -333,13 +334,10 @@ class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
 						if(allocation.task === selectionInDiagram)
 							return allocation
 			}
-			Barrier: {
-				val previousSelection = selectionProvider.getSelection(resourceId)
-				val previousStep = previousSelection.getContainerOfType(Step) 
-				if(previousStep !== null)
-					return previousStep				
-			}
+			TaskRunning:
+				return selectionInDiagram
 		}		
-		return selectionInDiagram
+		val previousStep = selectionInDiagram.getContainerOfType(Step) 
+		return previousStep	?: selectionInDiagram
 	}
 }
