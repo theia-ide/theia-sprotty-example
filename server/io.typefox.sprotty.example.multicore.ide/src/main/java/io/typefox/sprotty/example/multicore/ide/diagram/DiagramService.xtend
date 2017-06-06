@@ -22,6 +22,9 @@ import org.eclipse.xtext.service.OperationCanceledManager
 import org.eclipse.xtext.util.CancelIndicator
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.xtext.validation.IResourceValidator
+import org.eclipse.xtext.validation.CheckMode
+import org.eclipse.xtext.diagnostics.Severity
 
 @Singleton
 class DiagramService {
@@ -38,6 +41,8 @@ class DiagramService {
 
 	@Inject extension NodeModelExtensions
 	
+	@Inject extension IResourceValidator
+	
 	val List<MulticoreAllocationDiagramServer> diagramServers = newArrayList
 	
 	def void addServer(MulticoreAllocationDiagramServer server) {
@@ -53,6 +58,8 @@ class DiagramService {
 	}
 	
 	def void compute(XtextResource resource, CancelIndicator cancelIndicator) {
+		if(resource.hasErrors(cancelIndicator))
+			return
 		val program = resource.contents.head as Program
 		val uri = resource.URI.toString
 		val selection = selectionProvider.getSelection(uri)
@@ -117,5 +124,11 @@ class DiagramService {
 			node = element.node
 		}
 	}
+	
+	def boolean hasErrors(XtextResource resource, CancelIndicator cancelIndicator) {
+		resource.validate(CheckMode.NORMAL_AND_FAST, cancelIndicator).exists [
+			severity === Severity.ERROR
+		]
+	} 
 	
 }
