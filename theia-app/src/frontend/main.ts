@@ -15,7 +15,6 @@ import { frontendLanguagesModule } from 'theia-core/lib/languages/browser'
 import { monacoModule } from 'theia-core/lib/monaco/browser'
 import { browserClipboardModule } from 'theia-core/lib/application/browser/clipboard/clipboard-module'
 import { browserMenuModule } from "theia-core/lib/application/browser/menu/menu-module"
-import multiCoreFrontendExtension from 'theia-dsl-extension/lib/browser/language/frontend-extension'
 import "theia-core/src/application/browser/style/index.css"
 import "theia-core/src/monaco/browser/style/index.css"
 import "theia-core/src/navigator/browser/style/index.css"
@@ -30,6 +29,7 @@ import "sprotty/src/styles/sprotty.css"
 import terminalFrontendModule from 'theia-core/lib/terminal/browser/terminal-frontend-module'
 import "xterm/dist/xterm.css"
 
+import multiCoreFrontendExtension from 'theia-dsl-extension/lib/browser/language/frontend-extension'
 import { diagramModule } from 'theia-dsl-extension/lib/browser/diagram/diagram-module'
 
 (() => {
