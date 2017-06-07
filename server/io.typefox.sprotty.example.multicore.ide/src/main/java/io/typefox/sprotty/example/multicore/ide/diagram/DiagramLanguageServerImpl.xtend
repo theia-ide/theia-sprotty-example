@@ -89,7 +89,7 @@ class DiagramLanguageServerImpl implements DiagramLanguageServer, ILanguageServe
 			var server = diagramServers.get(clientId)
 			if (server === null) {
 				server = diagramServerProvider.get
-				server.diagramLanguageClient = _client
+				server.diagramLanguageClient = client
 				server.languageServerAccess = languageServerAccess
 				server.clientId = clientId
 				server.remoteEndpoint = [ message |

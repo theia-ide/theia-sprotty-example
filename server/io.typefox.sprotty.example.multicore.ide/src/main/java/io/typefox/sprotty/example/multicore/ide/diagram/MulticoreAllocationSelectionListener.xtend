@@ -24,7 +24,7 @@ class MulticoreAllocationSelectionListener implements IDiagramSelectionListener 
 	override selectionChanged(SelectAction action, IDiagramServer server) {
 		val it = server as MulticoreAllocationDiagramServer
 		if (diagramLanguageClient !== null && model !== null) {
-			if (action.selectedElementsIDs?.size == 1 && !action.deselectAll) { 
+			if (!action.deselectAll) { 
 				val location = getLocationInTextEditor(action.selectedElementsIDs.head)
 				if (location !== null) 
 					diagramLanguageClient.openInTextEditor(location)
@@ -34,16 +34,14 @@ class MulticoreAllocationSelectionListener implements IDiagramSelectionListener 
 	
 	protected def Location getLocationInTextEditor(MulticoreAllocationDiagramServer it, String elementID) {
 		val sElement = SModelIndex.find(model, elementID)
-		if (sElement !== null) {
-			val element = modelMapping.inverse.get(sElement)
-			if (element !== null) {
-				val nameRegion = getElementToSelectInText(element).significantTextRegion
-				return languageServerAccess.doRead(resourceId) [ context |
-					val start = context.document.getPosition(nameRegion.offset)
-					val end = context.document.getPosition(nameRegion.offset + nameRegion.length)
-					new Location(resourceId, new Range(start, end))
-				].get
-			}
+		val element = modelMapping.inverse.get(sElement)
+		val nameRegion = getElementToSelectInText(element)?.significantTextRegion
+		if (nameRegion !== null) {
+			return languageServerAccess.doRead(resourceId) [ context |
+				val start = context.document.getPosition(nameRegion.offset)
+				val end = context.document.getPosition(nameRegion.offset + nameRegion.length)
+				new Location(resourceId, new Range(start, end))
+			].get
 		}
 	}
 	
@@ -66,10 +64,14 @@ class MulticoreAllocationSelectionListener implements IDiagramSelectionListener 
 					}
 				}
 			}
-			TaskRunning:
+			TaskRunning: {
 				return selectionInDiagram
+			}
+			case null: {
+				return server.selection.getContainerOfType(Step) 
+			}
 		}
-		val previousStep = selectionInDiagram.getContainerOfType(Step) 
+		val previousStep = selectionInDiagram.getContainerOfType(Step)
 		return previousStep	?: selectionInDiagram
 	}
 	
