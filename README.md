@@ -1,6 +1,8 @@
 # theia-sprotty-example
 An example application integrating graphical [sprotty](https://github.com/TypeFox/sprotty) views for an [Xtext](http://www.xtext.org)-based DSL with [Theia](https://github.com/theia-ide/theia)
 
+[![sprotty Theia Demo](./sprotty_theia_demo_screenshot.png)](http://www.youtube.com/watch?v=S8WCwwfHDfU "sprotty Theia Demo")
+
 ## Build and Run
 After checking out sprotty, Theia and this repository into the same root directory, do
 ```bash
