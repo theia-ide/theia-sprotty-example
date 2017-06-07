@@ -6,338 +6,84 @@
  */
 package io.typefox.sprotty.example.multicore.ide.diagram
 
-import com.google.common.collect.HashMultimap
-import com.google.common.collect.Multimap
+import com.google.common.collect.BiMap
 import com.google.inject.Inject
-import com.google.inject.Provider
-import io.typefox.sprotty.api.AbstractDiagramServer
-import io.typefox.sprotty.api.ActionMessage
-import io.typefox.sprotty.api.Bounds
-import io.typefox.sprotty.api.ComputedBoundsAction
-import io.typefox.sprotty.api.FitToScreenAction
-import io.typefox.sprotty.api.HtmlRoot
-import io.typefox.sprotty.api.ModelAction
-import io.typefox.sprotty.api.PreRenderedElement
+import io.typefox.sprotty.api.DefaultDiagramServer
 import io.typefox.sprotty.api.RequestModelAction
-import io.typefox.sprotty.api.RequestPopupModelAction
-import io.typefox.sprotty.api.SGraph
 import io.typefox.sprotty.api.SModelElement
-import io.typefox.sprotty.api.SModelIndex
 import io.typefox.sprotty.api.SModelRoot
-import io.typefox.sprotty.api.SelectAction
-import io.typefox.sprotty.example.multicore.multicoreAllocation.Barrier
-import io.typefox.sprotty.example.multicore.multicoreAllocation.Task
-import io.typefox.sprotty.example.multicore.multicoreAllocation.TaskAllocation
-import io.typefox.sprotty.layout.ILayoutEngine
-import io.typefox.sprotty.layout.LayoutUtil
-import io.typefox.sprotty.layout.SprottyLayoutConfigurator
-import java.util.List
-import org.apache.log4j.Logger
-import org.eclipse.elk.alg.layered.options.LayeredOptions
-import org.eclipse.elk.alg.layered.options.NodeFlexibility
-import org.eclipse.elk.alg.layered.options.NodePlacementStrategy
-import org.eclipse.elk.core.math.KVector
-import org.eclipse.elk.core.options.CoreOptions
-import org.eclipse.elk.core.options.Direction
-import org.eclipse.elk.core.options.PortConstraints
-import org.eclipse.elk.core.options.SizeConstraint
-import org.eclipse.lsp4j.Location
-import org.eclipse.lsp4j.Range
+import io.typefox.sprotty.example.multicore.multicoreAllocation.Program
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.ide.server.ILanguageServerAccess
-import org.eclipse.xtext.resource.ILocationInFileProvider
-
-import static io.typefox.sprotty.layout.ElkLayoutEngine.*
 import org.eclipse.xtext.resource.XtextResource
-import static extension org.eclipse.xtext.EcoreUtil2.*
-import io.typefox.sprotty.example.multicore.multicoreAllocation.Step
-import org.eclipse.emf.ecore.EObject
-import io.typefox.sprotty.example.multicore.multicoreAllocation.Program
-import io.typefox.sprotty.example.multicore.multicoreAllocation.TaskRunning
+import org.eclipse.xtext.util.CancelIndicator
 
-class MulticoreAllocationDiagramServer extends AbstractDiagramServer {
+class MulticoreAllocationDiagramServer extends DefaultDiagramServer {
 	
-	public static class Factory {
-		@Inject Provider<MulticoreAllocationDiagramServer> provider
-		
-		def create(ILanguageServerAccess languageServerAccess, DiagramLanguageClient diagramLanguageClient) {
-			val server = provider.get()
-			server.languageServerAccess = languageServerAccess
-			server.diagramLanguageClient = diagramLanguageClient
-			return server
-		}
-	}
+	@Inject MulticoreAllocationDiagramGenerator diagramGenerator
 	
-	static val LOG = Logger.getLogger(MulticoreAllocationDiagramServer)
+	@Accessors
+	extension ILanguageServerAccess languageServerAccess
 	
-	@Inject ModelProvider modelProvider
+	@Accessors
+	DiagramLanguageClient diagramLanguageClient
 	
-	@Inject extension ILocationInFileProvider  
-
-	@Inject DiagramService diagramService
-	  
-	@Inject SelectionProvider selectionProvider
-	 
-	ILayoutEngine layoutEngine
+	@Accessors
+	EObject selection
+	
+	@Accessors
+	BiMap<EObject, SModelElement> modelMapping
 	
 	@Accessors(PUBLIC_GETTER)
 	String resourceId
 	
-	@Accessors(PUBLIC_GETTER, PROTECTED_SETTER) ILanguageServerAccess languageServerAccess
-	@Accessors(PUBLIC_GETTER, PROTECTED_SETTER) DiagramLanguageClient diagramLanguageClient
-
-	val Multimap<String, String> type2Clients = HashMultimap.create()
-
-	def notifyClients(SModelRoot newRoot, SModelRoot oldRoot) {
-		if (remoteEndpoint !== null) {
-			for (client : type2Clients.get(newRoot.type)) {
-				sendModel(newRoot, oldRoot, client)
+	@Accessors(PUBLIC_GETTER)
+	String diagramType
+	
+	def generateDiagram(XtextResource resource, CancelIndicator cancelIndicator) {
+		val program = resource.contents.head
+		if (program instanceof Program) {
+			modelMapping = switch diagramType {
+				case 'processor':
+					diagramGenerator.generateProcessorView(program, selection, cancelIndicator)
+				case 'flow':
+					diagramGenerator.generateFlowView(program, selection, cancelIndicator)
 			}
+			return modelMapping.get(program) as SModelRoot
 		}
 	}
 	
-	override protected getModel(ModelAction action, String clientId) {
-		modelProvider.getModel(resourceId, action.modelType)
-		?: {
-			languageServerAccess.doRead(resourceId) [ context |
-				diagramService.compute(context.resource as XtextResource, context.cancelChecker)
-				return null
-			] 
-			null
-		}
-	}
-	
-	override protected needsServerLayout(SModelRoot root) {
-		switch root.type {
-			case 'flow': !modelProvider.isLayoutDone(resourceId, root.type)
-			default: false
-		}
-	}
-
 	override protected needsClientLayout(SModelRoot root) {
 		switch root.type {
 			case 'processor': true
 			default: false
 		}
 	}
-
-	override protected handle(RequestModelAction action, ActionMessage message) {
-		val resourceId = action.options?.get('resourceId')
-		LOG.info('Model requested for resource ' + resourceId)
-		this.resourceId = resourceId
-		this.type2Clients.put(action.modelType, message.clientId)
-		super.handle(action, message)
-	}
 	
-	override protected modelSent(SModelRoot newRoot, SModelRoot oldRoot, String clientId) {
-		if (newRoot instanceof Flow) {
-			val taskNodes = newRoot.children.filter(TaskNode)
-			val selectedNodes = taskNodes.filter[selected !== null && selected].toList
-			if (selectedNodes.empty) {
-				val activeNodes = taskNodes.filter[status !== null].map[id]
-				sendAction(new FitToScreenAction [
-					elementIds = activeNodes.toList
-					maxZoom = 1.0
-					padding = 10.0
-				], clientId)
-			} else {
-				sendAction(new SelectAction [
-					selectedElementsIDs = selectedNodes.map[id]
-					deselectAll = true
-				], clientId)
-				sendAction(new FitToScreenAction [
-					elementIds = selectedNodes.map[id]
-					maxZoom = 1.0
-					padding = 10.0
-				], clientId)
-			}
-		}
-		if (newRoot instanceof Processor) {
-			val selectedCores = newRoot.children.filter(Core).filter[selected !== null && selected].toList
-			var sizeChanged = true
-			var selectionChanged = true
-			if (oldRoot instanceof Processor) {
-				sizeChanged = newRoot.rows != oldRoot.rows || newRoot.columns != oldRoot.columns
-				selectionChanged = selectedCores != oldRoot.children.filter(Core).filter[selected !== null && selected].toList
-			}
-			if (sizeChanged || selectionChanged) {
-				sendAction(new SelectAction [
-					selectedElementsIDs = selectedCores.map[id]
-					deselectAll = true
-				], clientId)
-				sendAction(new FitToScreenAction [
-					elementIds = selectedCores.map[id]
-					maxZoom = 3.0
-					padding = 10.0
-				], clientId)
-			}
+	override protected needsServerLayout(SModelRoot root) {
+		switch root.type {
+			case 'flow': true
+			default: false
 		}
 	}
 	
-	override protected getPopupModel(SModelElement element, SModelRoot model, RequestPopupModelAction request, String clientId) {
-		val mapping = modelProvider.getMapping(resourceId, request.modelType)
-		val source = mapping.inverse.get(element)
-		var String title
-		val body = newArrayList
-		if (request.modelType == 'flow') {
-			switch source {
-				Task: {
-					title = '''Task «source.name»'''
-					if (source.kernel !== null) {
-						body += '''Kernel: «source.kernel.name»'''
-						if (source.kernel.duration > 0)
-							body += '''Stack size: «source.kernel.stackSize»'''
-						if (source.kernel.stackBeginAddr !== null)
-							body += '''Stack start address: «source.kernel.stackBeginAddr»'''
-					}
+	override protected handle(RequestModelAction request) {
+		resourceId = request.options?.get('resourceId')
+		diagramType = request.options?.get('diagramType')
+		if (model === null || model.type == 'NONE') {
+			resourceId.doRead [ context |
+				val resource = context.resource
+				if (resource instanceof XtextResource) {
+					val newRoot = generateDiagram(resource, context.cancelChecker)
+					if (newRoot !== null)
+						setModel(newRoot)
 				}
-				Barrier: {
-					title = '''Barrier «source.name»'''
-					if (!source.joined.empty)
-						body += '''Joins «FOR t : source.joined SEPARATOR ', '»«t.name»«ENDFOR»'''
-					if (!source.triggered.empty)
-						body += '''Triggers «FOR t : source.triggered SEPARATOR ', '»«t.name»«ENDFOR»'''
-				}
-			}
-		} else if (request.modelType == 'processor') {
-			if (element instanceof Core) {
-				if (source instanceof TaskAllocation) {
-					title = '''Core «source.core»'''
-					if (source.task !== null) {
-						body += '''Task: «source.task.name»'''
-						if (source.task.kernel !== null) {
-							body += '''Kernel: «source.task.kernel.name»'''
-							if (source.task.kernel.duration > 0)
-								body += '''Stack size: «source.task.kernel.stackSize»'''
-							if (source.task.kernel.stackBeginAddr !== null)
-								body += '''Stack start address: «source.task.kernel.stackBeginAddr»'''
-						}
-					}
-					if (source.programCounter !== null)
-						body += '''Program counter: «source.programCounter»'''
-					if (source.stackPointer !== null)
-						body += '''Stack pointer: «source.stackPointer»'''
-					if (source.sourceFile !== null)
-						body += '''Source file: «source.sourceFile»'''
-					if (source.stackTrace !== null)
-						body += '''Stack trace: «source.stackTrace»'''
-				}
-			}
-		}
-		if (title !== null) {
-			return createPopupModel(title, body, request.bounds)
-		}
-	}
-	
-	protected def createPopupModel(String title, List<String> body, Bounds bounds) {
-		new HtmlRoot [
-			type = 'html'
-			id = 'popup'
-			children = #[
-				new PreRenderedElement[
-					type = 'pre-rendered'
-					id = 'popup-title'
-					code = '''<div class="popup-title">«title»</div>'''
-				],
-				new PreRenderedElement[
-					type = 'pre-rendered'
-					id = 'popup-body'
-					code = '''
-									<div class="popup-body">
-										«FOR text : body»
-											<p>«text»</p>
-										«ENDFOR»
-									</div>
-								'''
-				]
+				return null
 			]
-			canvasBounds = bounds
-		]
-	}
-	
-	protected def initializeLayoutEngine() {
-		if (layoutEngine === null) {
-			layoutEngine = new MulticoreAllocationLayoutEngine => [
-				initialize(new LayeredOptions)
-			]
+		} else {
+			super.handle(request)
 		}
 	}
 	
-	override protected computeLayout(SModelRoot root, ComputedBoundsAction computedBounds) {
-		if (root instanceof SGraph) {
-			LayoutUtil.applyBounds(root, computedBounds)
-			initializeLayoutEngine()
-			val configurator = new SprottyLayoutConfigurator
-			configurator.configureByType('flow')
-				.setProperty(CoreOptions.DIRECTION, Direction.DOWN)
-				.setProperty(CoreOptions.SPACING_NODE_NODE, 40.0)
-				.setProperty(CoreOptions.SPACING_EDGE_NODE, 25.0)
-				.setProperty(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, 20.0)
-				.setProperty(LayeredOptions.SPACING_NODE_NODE_BETWEEN_LAYERS, 30.0)
-				.setProperty(LayeredOptions.NODE_PLACEMENT_STRATEGY, NodePlacementStrategy.NETWORK_SIMPLEX)
-			configurator.configureByType('barrier')
-				.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.free())
-				.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(50, 20))
-				.setProperty(CoreOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_ORDER)
-				.setProperty(LayeredOptions.NODE_PLACEMENT_NETWORK_SIMPLEX_NODE_FLEXIBILITY, NodeFlexibility.NODE_SIZE)
-			layoutEngine.layout(root, configurator)
-			modelProvider.setLayoutDone(resourceId, root.type)
-		}
-	}
-	
-	override protected handle(SelectAction action, ActionMessage message) {
-		if(diagramLanguageClient !== null) {
-			if(action.selectedElementsIDs?.length === 1 && !action.deselectAll) { 
-				val location = getLocationInTextEditor(action.selectedElementsIDs.head, 'flow')
-					?: getLocationInTextEditor(action.selectedElementsIDs.head, 'processor')
-				if(location !== null) 
-					diagramLanguageClient.openInTextEditor(location)
-			}
-				
-		}
-		LOG.info('element selected = ' + action)
-	}
-	
-	protected def Location getLocationInTextEditor(String sElementID, String modelType) {
-		val model = modelProvider.getModel(resourceId, modelType)
-		if(model !== null) {
-			val index = new SModelIndex(model)
-			val sElement = index.get(sElementID)
-			if(sElement !== null) {
-				val mapping = modelProvider.getMapping(resourceId, modelType)
-				val element = mapping.inverse.get(sElement)
-				if(element !== null) {
-					val nameRegion = element.elementToSelectInText.significantTextRegion
-					return languageServerAccess.doRead(resourceId) [ context |
-						val start = context.document.getPosition(nameRegion.offset)
-						val end = context.document.getPosition(nameRegion.offset + nameRegion.length)
-						new Location(resourceId, new Range(start, end))
-					].get
-				}
-			}
-		}
-		return null
-	}
-	
-	protected def getElementToSelectInText(EObject selectionInDiagram) {
-		switch selectionInDiagram {
-			Task: {
-				val previousSelection = selectionProvider.getSelection(resourceId)
-				val previousStep = previousSelection.getContainerOfType(Step) 
-				if(previousStep !== null)
-					for(allocation: previousStep.allocations)
-						if(allocation.task === selectionInDiagram)
-							return allocation
-				val program = selectionInDiagram.getContainerOfType(Program)
-				if(program !== null)
-					for(allocation: program.eAllOfType(TaskAllocation))
-						if(allocation.task === selectionInDiagram)
-							return allocation
-			}
-			TaskRunning:
-				return selectionInDiagram
-		}		
-		val previousStep = selectionInDiagram.getContainerOfType(Step) 
-		return previousStep	?: selectionInDiagram
-	}
 }

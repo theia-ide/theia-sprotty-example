@@ -40,7 +40,8 @@ export class FlowDiagramConfiguration implements DiagramConfiguration {
             baseDiv: widgetId,
             hiddenDiv: 'sprotty-hidden-flow',
             popupDiv: 'sprotty-popup-flow',
-            boundsComputation: 'dynamic'
+            needsClientLayout: false,
+            needsServerLayout: true
         })
 
         // Register views

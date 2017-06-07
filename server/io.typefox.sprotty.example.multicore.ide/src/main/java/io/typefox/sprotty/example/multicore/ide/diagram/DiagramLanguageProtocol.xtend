@@ -24,6 +24,7 @@ interface DiagramLanguageClient extends DiagramLanguageEndpoint {
 	
 	@JsonNotification
 	def void openInTextEditor(Location selection);
+	
 }
 
 @JsonSegment('diagram')

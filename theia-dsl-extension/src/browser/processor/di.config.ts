@@ -38,7 +38,8 @@ export class ProcessorDiagramConfiguration implements DiagramConfiguration {
             baseDiv: widgetId,
             hiddenDiv: 'sprotty-hidden-cores',
             popupDiv: 'sprotty-popup-cores',
-            boundsComputation: 'fixed'
+            needsClientLayout: true,
+            needsServerLayout: false
         })
 
         // Register views
