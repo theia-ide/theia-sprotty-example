@@ -30,11 +30,15 @@ cd theia-dsl-extension
 npm install
 cd ..
 
-# Build the Theia app
+# Build and run the Theia webapp
 cd theia-app
 npm install
 npm run build
+npm run start
 
-# Start the Theia app
+# Build the Theia electron app
+cd theia-electron
+npm install
+npm run build
 npm run start
 ```
