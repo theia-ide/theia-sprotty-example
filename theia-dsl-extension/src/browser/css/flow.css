@@ -39,21 +39,18 @@
 }
 
 .task.mouseover {
-    stroke-width: 3;
-    stroke: #f4daa6;
+    stroke-width: 2;
 }
 
 .task.selected {
-    stroke-width: 5;
-    stroke: #f4daa6;
+    stroke-width: 4;
 }
 
 .barrier.mouseover {
-    stroke-width: 3;
-    stroke: #f4daa6;
+    stroke-width: 2;
 }
 
 .barriers.selected {
-    stroke-width: 5;
-    stroke: #f4daa6;
+    stroke-width: 4;
 }
+

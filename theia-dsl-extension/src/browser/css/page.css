@@ -47,3 +47,7 @@ svg {
 .popup-body > p {
     margin-bottom: 2px;
 }
+
+svg .mouseover, svg .selected {
+    stroke: var(--theia-info-color1);
+}
