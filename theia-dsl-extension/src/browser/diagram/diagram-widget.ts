@@ -15,7 +15,9 @@ import { CenterAction } from 'sprotty/lib/features'
 
 export class DiagramWidget extends Widget {
 
-    private actionDispatcher: IActionDispatcher // TODO where do I get the actionDispatcher from
+    private actionDispatcher: IActionDispatcher
+    private svgContainerId: string
+    private svgId: string
 
     constructor(protected readonly uri: URI,
                 protected readonly diagramType: string,
@@ -26,7 +28,9 @@ export class DiagramWidget extends Widget {
     protected onAfterAttach(msg: Message): void {
         super.onAfterAttach(msg)
         const svgContainer = document.createElement("div")
-        svgContainer.id = this.id + "sprotty"
+        this.svgContainerId = this.id + "sprotty"
+        this.svgId = this.svgContainerId + "_" + this.diagramType
+        svgContainer.id = this.svgContainerId
         this.node.appendChild(svgContainer)
         const diagramServer = this.diagramConnector.createDiagramServer(svgContainer.id, this.diagramType)
         this.actionDispatcher = diagramServer.actionDispatcher
@@ -61,8 +65,7 @@ export class DiagramWidget extends Widget {
 
     protected onActivateRequest(msg: Message): void {
         super.onActivateRequest(msg)
-        // TODO: this must be changed with a more dynamically fetched element id.
-        const svgElement = document.getElementById('flow')
+        const svgElement = document.getElementById(this.svgId)
         if (svgElement !== null)
             svgElement.focus()
     }
