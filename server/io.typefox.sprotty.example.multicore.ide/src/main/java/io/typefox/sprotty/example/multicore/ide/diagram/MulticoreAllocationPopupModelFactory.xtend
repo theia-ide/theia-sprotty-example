@@ -49,6 +49,7 @@ class MulticoreAllocationPopupModelFactory implements IPopupModelFactory {
 				val processor = server.model as Processor
 				title = '''Core «processor.columns * element.row + element.column + 1»'''
 				if (source instanceof TaskAllocation) {
+					title = '''Core «source.core»'''
 					if (source.task !== null) {
 						body += '''Task: «source.task.name»'''
 						if (source.task.kernel !== null) {
@@ -67,6 +68,8 @@ class MulticoreAllocationPopupModelFactory implements IPopupModelFactory {
 						body += '''Source file: «source.sourceFile»'''
 					if (source.stackTrace !== null)
 						body += '''Stack trace: «source.stackTrace»'''
+				} else {
+					title = '''Core «processor.columns * element.row + element.column + 1»'''
 				}
 			}
 		}
