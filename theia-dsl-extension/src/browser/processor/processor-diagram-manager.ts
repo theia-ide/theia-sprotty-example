@@ -14,6 +14,6 @@ export class ProcessorDiagramManager extends DiagramManagerImpl {
     readonly iconClass = 'fa fa-microchip'
 
     get label() {
-        return 'Processordiagram'
+        return 'Processor diagram'
     }
 }

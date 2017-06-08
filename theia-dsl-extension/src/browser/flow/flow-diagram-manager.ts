@@ -14,7 +14,7 @@ export class FlowDiagramManager extends DiagramManagerImpl {
     readonly iconClass = 'fa fa-long-arrow-down'
 
     get label() {
-        return 'Flowdiagram'
+        return 'Flow diagram'
     }
 }
 
