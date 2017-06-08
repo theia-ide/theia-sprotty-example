@@ -55,7 +55,7 @@ export class DiagramWidget extends Widget {
         if (this.actionDispatcher !== undefined) {
             const newBounds = this.getBoundsInPage(this.node as Element)
             this.actionDispatcher.dispatch(new InitializeCanvasBoundsAction(newBounds))
-            this.actionDispatcher.dispatch(new CenterAction([]))
+            this.actionDispatcher.dispatch(new CenterAction([], false))
         }
     }
 
