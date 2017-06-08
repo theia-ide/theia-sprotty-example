@@ -57,20 +57,3 @@
     stroke-width: 5;
     stroke: #f4daa6;
 }
-
-.missing {
-    stroke-width: 1;
-    stroke: #f00;
-    fill: #f00;
-    font-family: SansSerif;
-    font-size: 14pt;
-}
-
-.popup-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.popup-body > p {
-    margin-bottom: 2px;
-}
