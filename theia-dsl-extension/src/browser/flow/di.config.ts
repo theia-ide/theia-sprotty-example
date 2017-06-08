@@ -6,15 +6,13 @@
  */
 
 import { Container, ContainerModule, injectable } from "inversify"
-import { defaultModule, TYPES, ViewRegistry, overrideViewerOptions } from "sprotty/lib/base"
-import { ConsoleLogger, LogLevel } from "sprotty/lib/utils"
-import { boundsModule, moveModule, fadeModule, hoverModule } from "sprotty/lib/features"
+import {
+    defaultModule, TYPES, ViewRegistry, overrideViewerOptions, ConsoleLogger, LogLevel, boundsModule,
+    moveModule, fadeModule, hoverModule, SGraphView, HtmlRootView, PreRenderedView, viewportModule,
+    selectModule
+} from "sprotty/lib"
 import { FlowModelFactory } from "./flowmodel-factory"
-import viewportModule from "sprotty/lib/features/viewport/di.config"
-import selectModule from "sprotty/lib/features/select/di.config"
-import { SGraphView } from "sprotty/lib/graph"
 import { TaskNodeView, BarrierNodeView, FlowEdgeView } from "./views"
-import { HtmlRootView, PreRenderedView } from "sprotty/lib/lib"
 import { TheiaDiagramServer } from '../diagram/theia-diagram-server'
 import { DiagramConfiguration } from '../diagram/diagram-configuration'
 

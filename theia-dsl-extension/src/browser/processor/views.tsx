@@ -6,10 +6,9 @@
  */
 
 import * as snabbdom from 'snabbdom-jsx'
-import { IView, RenderingContext, setAttr, ThunkView } from 'sprotty/lib/base'
 import { VNode } from "snabbdom/vnode"
+import { IView, RenderingContext, setAttr, ThunkView, Direction, toSVG } from 'sprotty/lib'
 import { Channel, Core, Crossbar, Processor } from './chipmodel'
-import { Direction, toSVG } from "sprotty/lib/utils"
 import { KernelColor } from "../flow/kernel-color"
 
 const JSX = {createElement: snabbdom.svg}

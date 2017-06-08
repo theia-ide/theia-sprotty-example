@@ -5,16 +5,14 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { SGraphFactory } from 'sprotty/lib/graph'
 import {
-    SChildElement, SModelElementSchema, SModelRoot, SModelRootSchema, SParentElement, getBasicType
-} from "sprotty/lib/base"
+    SChildElement, SModelElementSchema, SModelRoot, SModelRootSchema, SParentElement, getBasicType, SGraphFactory,
+    Direction, HtmlRootSchema, PreRenderedElementSchema, PreRenderedElement, HtmlRoot
+} from "sprotty/lib"
 import {
     Channel, ChannelSchema, Core, CoreSchema, Crossbar, CrossbarSchema, Processor, ProcessorSchema
 } from "./chipmodel"
-import { Direction } from "sprotty/lib//utils"
 import { CORE_WIDTH, CORE_DISTANCE } from "./views"
-import { HtmlRootSchema, PreRenderedElementSchema, PreRenderedElement, HtmlRoot } from "sprotty/lib/lib"
 
 export class ChipModelFactory extends SGraphFactory {
 

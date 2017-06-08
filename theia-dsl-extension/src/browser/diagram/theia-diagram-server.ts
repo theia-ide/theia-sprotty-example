@@ -5,17 +5,11 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { ILogger } from 'sprotty/lib/utils'
-import { SelectCommand } from 'sprotty/lib/features'
-import { TheiaDiagramServerConnector } from './theia-diagram-server-connector'
 import {
-    ActionHandlerRegistry,
-    IActionDispatcher,
-    SModelStorage,
-    TYPES,
-    ViewerOptions
-} from 'sprotty/lib/base'
-import { DiagramServer } from 'sprotty/lib/remote'
+    ILogger, SelectCommand, ActionHandlerRegistry, IActionDispatcher, SModelStorage, TYPES,
+    ViewerOptions, DiagramServer
+} from 'sprotty/lib'
+import { TheiaDiagramServerConnector } from './theia-diagram-server-connector'
 import { injectable, inject } from "inversify"
 
 @injectable()

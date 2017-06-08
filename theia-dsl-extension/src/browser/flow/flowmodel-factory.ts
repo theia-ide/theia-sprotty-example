@@ -6,11 +6,10 @@
  */
 
 import {
-    SChildElement, SModelElementSchema, SModelRoot, SModelRootSchema, SParentElement, getBasicType
-} from "sprotty/lib/base"
-import { SGraph, SGraphFactory, SGraphSchema } from "sprotty/lib/graph"
+    SChildElement, SModelElementSchema, SModelRoot, SModelRootSchema, SParentElement, getBasicType,
+    SGraph, SGraphFactory, SGraphSchema, HtmlRootSchema, PreRenderedElementSchema, PreRenderedElement, HtmlRoot
+} from "sprotty/lib"
 import { BarrierNode, BarrierNodeSchema, TaskNode, TaskNodeSchema } from "./flowmodel"
-import { HtmlRootSchema, PreRenderedElementSchema, PreRenderedElement, HtmlRoot } from "sprotty/lib/lib"
 
 export class FlowModelFactory extends SGraphFactory {
 

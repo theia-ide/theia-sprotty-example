@@ -5,16 +5,13 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { SCompartmentElementSchema, SShapeElement } from 'sprotty/lib/graph'
-import { SChildElement, SModelElementSchema, SModelRootSchema } from "sprotty/lib/base"
-import { Bounds, Direction } from "sprotty/lib/utils"
 import {
-    BoundsAware, boundsFeature, Fadeable, fadeFeature, layoutFeature, Layouting, Selectable,
-    selectFeature, viewportFeature, hoverFeedbackFeature, popupFeature
-} from 'sprotty/lib/features'
-import { ViewportRootElement } from "sprotty/lib/features/viewport/viewport-root"
+    SCompartmentElementSchema, SShapeElement, SChildElement, SModelElementSchema, SModelRootSchema,
+    Bounds, Direction, BoundsAware, boundsFeature, Fadeable, fadeFeature, layoutFeature, Layouting,
+    Selectable, selectFeature, viewportFeature, hoverFeedbackFeature, popupFeature, Hoverable,
+    ViewportRootElement
+} from 'sprotty/lib'
 import { CORE_DISTANCE, CORE_WIDTH } from "./views"
-import { Hoverable } from "sprotty/lib/features/hover/model"
 
 export interface ProcessorSchema extends SModelRootSchema {
     rows: number

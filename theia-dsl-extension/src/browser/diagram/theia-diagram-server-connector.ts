@@ -8,7 +8,7 @@
 import { EditorManager } from 'theia-core/lib/editor/browser'
 import { TextDocumentPositionParams, Location } from 'vscode-base-languageclient/lib/services'
 import { DiagramConfigurationRegistry } from './diagram-configuration'
-import { TYPES } from 'sprotty/lib/base'
+import { TYPES } from 'sprotty/lib'
 import { TheiaDiagramServer } from './theia-diagram-server'
 import { NotificationType } from 'vscode-jsonrpc/lib/messages'
 import { LanguageClientContribution } from 'theia-core/lib/languages/browser'

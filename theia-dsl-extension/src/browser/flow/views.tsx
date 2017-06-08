@@ -6,10 +6,7 @@
  */
 
 import { VNode } from "snabbdom/vnode"
-import { RenderingContext } from "sprotty/lib/base"
-import { SEdge } from "sprotty/lib/graph/model/sgraph"
-import { PolylineEdgeView } from "sprotty/lib/graph/view/views"
-import { CircularNodeView, RectangularNodeView } from "sprotty/lib/lib"
+import { RenderingContext, SEdge, PolylineEdgeView, CircularNodeView, RectangularNodeView } from "sprotty/lib"
 import { angle, Point, toDegrees } from "sprotty/lib/utils/geometry"
 import * as snabbdom from "snabbdom-jsx"
 import { BarrierNode, TaskNode } from "./flowmodel"

@@ -6,12 +6,10 @@
  */
 
 import { TheiaDiagramServerConnector } from './theia-diagram-server-connector'
-import { RequestModelAction, IActionDispatcher } from 'sprotty/lib/base'
+import { RequestModelAction, IActionDispatcher, CenterAction, InitializeCanvasBoundsAction } from 'sprotty/lib'
 import { Widget } from "@phosphor/widgets"
 import { Message } from "@phosphor/messaging/lib"
 import URI from "theia-core/lib/application/common/uri"
-import { InitializeCanvasBoundsAction } from "sprotty/lib/base/features/initialize-canvas"
-import { CenterAction } from 'sprotty/lib/features'
 
 export class DiagramWidget extends Widget {
 

@@ -5,14 +5,13 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { SCompartmentView, SLabelView } from 'sprotty/lib/graph'
 import { injectable, Container, ContainerModule } from "inversify"
-import { defaultModule, TYPES, ViewRegistry, overrideViewerOptions } from "sprotty/lib/base"
+import {
+    SCompartmentView, SLabelView, defaultModule, TYPES, ViewRegistry, overrideViewerOptions, ConsoleLogger, LogLevel,
+    boundsModule, selectModule, viewportModule, moveModule, fadeModule, hoverModule, HtmlRootView, PreRenderedView
+} from 'sprotty/lib'
 import { ChipModelFactory } from "./chipmodel-factory"
-import { ConsoleLogger, LogLevel } from "sprotty/lib/utils"
-import { boundsModule, selectModule, viewportModule, moveModule, fadeModule, hoverModule } from "sprotty/lib/features"
 import { ProcessorView, CoreView, CrossbarView, ChannelView, SimpleCoreView } from "./views"
-import { HtmlRootView, PreRenderedView } from "sprotty/lib/lib"
 import { TheiaDiagramServer } from '../diagram/theia-diagram-server'
 import { DiagramConfiguration } from '../diagram/diagram-configuration'
 
