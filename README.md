@@ -4,23 +4,11 @@ An example application integrating graphical [sprotty](https://github.com/TypeFo
 [![sprotty Theia Demo](./sprotty_theia_demo_screenshot.png)](http://www.youtube.com/watch?v=S8WCwwfHDfU "sprotty Theia Demo")
 
 ## Build and Run
-After checking out sprotty, Theia and this repository into the same root directory, do
+
 ```bash
-git clone git@github.com:theia-ide/theia.git
-git clone git@github.com:TypeFox/sprotty.git
 git clone git@github.com:TypeFox/theia-sprotty-example.git
 
-# Prepare sprotty
-cd sprotty/client
-npm install
-cd ../..
-
-# Prepare Theia 
-cd theia
-npm install
-cd ..
-
-# Build the diagram aware language server for the example DSL
+# Build the diagram-aware language server for the example DSL
 cd theia-sprotty-example/server
 ./gradlew installDist
 cd ..
@@ -36,9 +24,19 @@ npm install
 npm run build
 npm run start
 
-# Build the Theia electron app
+# Build and run the Theia electron app
 cd theia-electron
 npm install
 npm run build
 npm run start
 ```
+
+## How to Use the Examples
+
+ * Expand the files browser on the left.
+ * Double-click an example file to open it. You'll get a text editor with language support for [the multicore DSL](https://github.com/TypeFox/theia-sprotty-example/blob/master/server/io.typefox.sprotty.example.multicore/src/main/java/io/typefox/sprotty/example/multicore/MulticoreAllocation.xtext) powered by [Xtext](http://www.xtext.org). The DSL describes the execution of parallel algorithms on many-core processors.
+ * Right-click the same file in the files browser and select "Open With &rarr; Flow diagram". You'll see a graph view of the tasks and barriers in the DSL file, with automatic layout powered by [ELK](https://www.eclipse.org/elk/).
+ * Drag the graph view tab to the right to get a side-by-side layout.
+ * Right-click the file again, select "Open With &rarr; Processor diagram", and drag the new tab to the bottom right (below the graph view).
+ * Click on task nodes in the graph view and observe how the application adapts to that selection. Clicking on the black background also has an effect if you previously selected a task node.
+ * The same kind of view synchronization is done if you click on a color-highlighted core in the processor view.

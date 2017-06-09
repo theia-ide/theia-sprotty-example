@@ -13,9 +13,9 @@
     "monaco-languages": "^0.7.0",
     "monaco-typescript": "^2.1.2",
     "reflect-metadata": "^0.1.10",
-    "theia-core": "file:../../theia",
-    "theia-dsl-extension": "file:../theia-dsl-extension",
-    "sprotty": "file:../../sprotty/client"
+    "theia-core": "0.0.1-alpha.2",
+    "sprotty": "^0.1.0",
+    "theia-dsl-extension": "file:../theia-dsl-extension"
   },
   "scripts": {
     "clean": "rimraf lib",

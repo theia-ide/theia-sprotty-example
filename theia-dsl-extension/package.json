@@ -11,8 +11,8 @@
     "monaco-editor": "^0.8.3",
     "monaco-editor-core": "^0.8.2",
     "monaco-languages": "^0.7.0",
-    "theia-core": "file:../../theia",
-    "sprotty": "file:../../sprotty/client"
+    "theia-core": "0.0.1-alpha.2",
+    "sprotty": "^0.1.0"
   },
   "scripts": {
     "prepublish": "npm run copy-ls && npm run build",
