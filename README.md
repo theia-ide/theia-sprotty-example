@@ -10,10 +10,8 @@ git clone git@github.com:theia-ide/theia.git
 git clone git@github.com:TypeFox/sprotty.git
 git clone git@github.com:TypeFox/theia-sprotty-example.git
 
-# Build sprotty server framework
-cd sprotty/server
-./gradlew install
-cd ../client
+# Prepare sprotty
+cd sprotty/client
 npm install
 cd ../..
 
