@@ -17,14 +17,20 @@ cd ..
 cd theia-dsl-extension
 npm install
 cd ..
+```
 
+To run the Theia web app:
+```bash
 # Build and run the Theia webapp
 cd theia-app
 npm install
 npm run build
 npm run start
+```
 
-# Build and run the Theia electron app
+To run the Theia Electron app
+```bash
+# Build and run the Theia Electron app
 cd theia-electron
 npm install
 npm run build
