@@ -18,7 +18,7 @@ import terminalBackendModule from 'theia-core/lib/terminal/node/terminal-backend
 import multiCoreBackendExtension from 'theia-dsl-extension/lib/node/backend-extension'
 
 // FIXME introduce default error handler contribution
-process.on('uncaughtException', function (err: any) {
+(process as NodeJS.EventEmitter).on('uncaughtException', function (err: any) {
     console.error('Uncaught Exception: ', err.toString())
     if (err.stack) {
         console.error(err.stack)
