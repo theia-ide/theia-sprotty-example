@@ -5,8 +5,7 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { SNode, SNodeSchema, moveFeature } from "sprotty/lib"
-import { Bounds } from "sprotty/lib/utils/geometry"
+import { Bounds, SNode, SNodeSchema, moveFeature } from "sprotty/lib"
 
 export interface TaskNodeSchema extends SNodeSchema {
     name?: string
