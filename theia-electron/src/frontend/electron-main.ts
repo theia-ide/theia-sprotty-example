@@ -5,6 +5,11 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
+if (process.env.LC_ALL) {
+    process.env.LC_ALL = 'C'
+}
+process.env.LC_NUMERIC = 'C'
+
 import * as electron from 'electron'
 import * as path from 'path'
 
